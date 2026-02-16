@@ -1,0 +1,2249 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns2="http://InterfazOficinaVirtualClientes.DTOs.occamWS.ejb.negocio.occam.agbar.com" xmlns:intf="http://occamWS.ejb.negocio.occam.agbar.com" xmlns:impl="http://occamWS.ejb.negocio.occam.agbar.com" targetNamespace="http://occamWS.ejb.negocio.occam.agbar.com">
+  <wsdl:types>
+<schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns2="http://InterfazOficinaVirtualClientes.DTOs.occamWS.ejb.negocio.occam.agbar.com" xmlns:intf="http://occamWS.ejb.negocio.occam.agbar.com" xmlns:impl="http://occamWS.ejb.negocio.occam.agbar.com" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://occamWS.ejb.negocio.occam.agbar.com">
+   <import namespace="http://InterfazOficinaVirtualClientes.DTOs.occamWS.ejb.negocio.occam.agbar.com"/>
+   <element name="getConsumosParaGraficasResponse">
+    <complexType>
+     <sequence>
+      <element name="getConsumosParaGraficasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Consumo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarDomiciliacionBancaria">
+    <complexType>
+     <sequence>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="codigoBanco" nillable="true" type="xsd:string"/>
+      <element name="codigoAgencia" nillable="true" type="xsd:string"/>
+      <element name="cuenta" nillable="true" type="xsd:string"/>
+      <element name="digitoControl" nillable="true" type="xsd:string"/>
+      <element name="tipoPersona" nillable="true" type="xsd:string"/>
+      <element name="nombreTitular" nillable="true" type="xsd:string"/>
+      <element name="ape1Titular" nillable="true" type="xsd:string"/>
+      <element name="ape2Titular" nillable="true" type="xsd:string"/>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="codigoOficina" nillable="true" type="xsd:short"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarDomiciliacionBancariaResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarDomiciliacionBancariaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUltimoMensaje">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUltimoMensajeResponse">
+    <complexType>
+     <sequence>
+      <element name="getUltimoMensajeReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTarifasVigente">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="tipoConcepto" nillable="true" type="tns2:IDShortShort"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTarifasVigenteResponse">
+    <complexType>
+     <sequence>
+      <element name="getTarifasVigenteReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Tarifa"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConsumos">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConsumosResponse">
+    <complexType>
+     <sequence>
+      <element name="getConsumosReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Consumo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLocalidadesDePoblacion">
+    <complexType>
+     <sequence>
+      <element name="idPoblacion" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLocalidadesDePoblacionResponse">
+    <complexType>
+     <sequence>
+      <element name="getLocalidadesDePoblacionReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Localidad"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCallesPorPatron">
+    <complexType>
+     <sequence>
+      <element name="idExplotacion" nillable="true" type="xsd:short"/>
+      <element name="patron" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCallesPorPatronResponse">
+    <complexType>
+     <sequence>
+      <element name="getCallesPorPatronReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Calle"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorContrato">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="getTitularPorContratoReturn" nillable="true" type="tns2:Titular"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancoPorExplotacionCodigo">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codBanco" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancoPorExplotacionCodigoResponse">
+    <complexType>
+     <sequence>
+      <element name="getBancoPorExplotacionCodigoReturn" nillable="true" type="tns2:Banco"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLecturasParaGraficas">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLecturasParaGraficasResponse">
+    <complexType>
+     <sequence>
+      <element name="getLecturasParaGraficasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Lectura"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorNif">
+    <complexType>
+     <sequence>
+      <element name="nif" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorNifResponse">
+    <complexType>
+     <sequence>
+      <element name="getTitularPorNifReturn" nillable="true" type="tns2:Titular"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomiciliosContratados">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codCalle" nillable="true" type="xsd:int"/>
+      <element name="numeroFinca" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomiciliosContratadosResponse">
+    <complexType>
+     <sequence>
+      <element name="getDomiciliosContratadosReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Domicilio"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTarifaDeAguaPorContrato">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTarifaDeAguaPorContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="getTarifaDeAguaPorContratoReturn" nillable="true" type="tns2:Tarifa"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomicilio">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codContrato" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomicilioResponse">
+    <complexType>
+     <sequence>
+      <element name="getDomicilioReturn" nillable="true" type="tns2:Domicilio"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorNie_crn">
+    <complexType>
+     <sequence>
+      <element name="nie_crn" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorNie_crnResponse">
+    <complexType>
+     <sequence>
+      <element name="getContratosPorNie_crnReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Contrato"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProvinciasDeComunidad">
+    <complexType>
+     <sequence>
+      <element name="idComunidad" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProvinciasDeComunidadResponse">
+    <complexType>
+     <sequence>
+      <element name="getProvinciasDeComunidadReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Provincia"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptoConTarifasDeContrato">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptoConTarifasDeContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="getConceptoConTarifasDeContratoReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_ConceptoConTarifasFacturadas"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProvincia">
+    <complexType>
+     <sequence>
+      <element name="idPais" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProvinciaResponse">
+    <complexType>
+     <sequence>
+      <element name="getProvinciaReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Provincia"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitulares">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="nombre" nillable="true" type="xsd:string"/>
+      <element name="apellido1" nillable="true" type="xsd:string"/>
+      <element name="apellido2" nillable="true" type="xsd:string"/>
+      <element name="domicilio" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularesResponse">
+    <complexType>
+     <sequence>
+      <element name="getTitularesReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Titular"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPoblacionesDeProvincia">
+    <complexType>
+     <sequence>
+      <element name="idProvincia" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPoblacionesDeProvinciaResponse">
+    <complexType>
+     <sequence>
+      <element name="getPoblacionesDeProvinciaReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Poblacion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorNif">
+    <complexType>
+     <sequence>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorNifResponse">
+    <complexType>
+     <sequence>
+      <element name="getContratosPorNifReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Contrato"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptoConTarifasDeFactura">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="numFactura" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptoConTarifasDeFacturaResponse">
+    <complexType>
+     <sequence>
+      <element name="getConceptoConTarifasDeFacturaReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_ConceptoConTarifasFacturadas"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorNie_crn">
+    <complexType>
+     <sequence>
+      <element name="nie_crn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTitularPorNie_crnResponse">
+    <complexType>
+     <sequence>
+      <element name="getTitularPorNie_crnReturn" nillable="true" type="tns2:Titular"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFactura">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="numeroFactura" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFacturaResponse">
+    <complexType>
+     <sequence>
+      <element name="getFacturaReturn" nillable="true" type="tns2:Factura"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getIdiomaExplotacion">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getIdiomaExplotacionResponse">
+    <complexType>
+     <sequence>
+      <element name="getIdiomaExplotacionReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancosPorExplotacionDescripcion">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="descBanco" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancosPorExplotacionDescripcionResponse">
+    <complexType>
+     <sequence>
+      <element name="getBancosPorExplotacionDescripcionReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Banco"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptos">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConceptosResponse">
+    <complexType>
+     <sequence>
+      <element name="getConceptosReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Concepto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancosPorDescripcion">
+    <complexType>
+     <sequence>
+      <element name="descBanco" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancosPorDescripcionResponse">
+    <complexType>
+     <sequence>
+      <element name="getBancosPorDescripcionReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Banco"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFacturas">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFacturasResponse">
+    <complexType>
+     <sequence>
+      <element name="getFacturasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Factura"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPaises">
+    <complexType>
+     <sequence/>
+    </complexType>
+   </element>
+   <element name="getPaisesResponse">
+    <complexType>
+     <sequence>
+      <element name="getPaisesReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Pais"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getComunidadesDePais">
+    <complexType>
+     <sequence>
+      <element name="idPais" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getComunidadesDePaisResponse">
+    <complexType>
+     <sequence>
+      <element name="getComunidadesDePaisReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Comunidad"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getActuaciones">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getActuacionesResponse">
+    <complexType>
+     <sequence>
+      <element name="getActuacionesReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Actuacion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBanco">
+    <complexType>
+     <sequence>
+      <element name="codBanco" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBancoResponse">
+    <complexType>
+     <sequence>
+      <element name="getBancoReturn" nillable="true" type="tns2:Banco"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLecturas">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLecturasResponse">
+    <complexType>
+     <sequence>
+      <element name="getLecturasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Lectura"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAgencias">
+    <complexType>
+     <sequence>
+      <element name="codBanco" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAgenciasResponse">
+    <complexType>
+     <sequence>
+      <element name="getAgenciasReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Agencia"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContrato">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:long"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="getContratoReturn" nillable="true" type="tns2:Contrato"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getNumeroCuentaBancaria">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getNumeroCuentaBancariaResponse">
+    <complexType>
+     <sequence>
+      <element name="getNumeroCuentaBancariaReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_NumeroCuentaBancaria"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomiciliosPendientesContratar">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codCalle" nillable="true" type="xsd:int"/>
+      <element name="numeroFinca" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDomiciliosPendientesContratarResponse">
+    <complexType>
+     <sequence>
+      <element name="getDomiciliosPendientesContratarReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Domicilio"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarDireccionCorrespondencia">
+    <complexType>
+     <sequence>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="textoDireccion" nillable="true" type="xsd:string"/>
+      <element name="localidadId" nillable="true" type="xsd:int"/>
+      <element name="calleId" nillable="true" type="xsd:int"/>
+      <element name="numFinca" nillable="true" type="xsd:int"/>
+      <element name="complementoFinca" nillable="true" type="xsd:string"/>
+      <element name="bloque" nillable="true" type="xsd:string"/>
+      <element name="escalera" nillable="true" type="xsd:string"/>
+      <element name="codigoPostal" nillable="true" type="xsd:string"/>
+      <element name="telefono" nillable="true" type="xsd:long"/>
+      <element name="codigoOficina" nillable="true" type="xsd:short"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarDireccionCorrespondenciaResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarDireccionCorrespondenciaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratoPorDatosGenerales">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codCalle" nillable="true" type="xsd:int"/>
+      <element name="numeroFinca" nillable="true" type="xsd:int"/>
+      <element name="bloque" nillable="true" type="xsd:string"/>
+      <element name="escalera" nillable="true" type="xsd:string"/>
+      <element name="planta" nillable="true" type="xsd:string"/>
+      <element name="puerta" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratoPorDatosGeneralesResponse">
+    <complexType>
+     <sequence>
+      <element name="getContratoPorDatosGeneralesReturn" nillable="true" type="tns2:Contrato"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorDatosGenerales">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="codCalle" nillable="true" type="xsd:int"/>
+      <element name="numeroFinca" nillable="true" type="xsd:int"/>
+      <element name="bloque" nillable="true" type="xsd:string"/>
+      <element name="escalera" nillable="true" type="xsd:string"/>
+      <element name="planta" nillable="true" type="xsd:string"/>
+      <element name="puerta" nillable="true" type="xsd:string"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContratosPorDatosGeneralesResponse">
+    <complexType>
+     <sequence>
+      <element name="getContratosPorDatosGeneralesReturn" nillable="true" type="impl:ArrayOf_tns2_nillable_Contrato"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarEmailNotificacionPersona">
+    <complexType>
+     <sequence>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="nombre" nillable="true" type="xsd:string"/>
+      <element name="apellido1" nillable="true" type="xsd:string"/>
+      <element name="apellido2" nillable="true" type="xsd:string"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="emailAntigo" nillable="true" type="xsd:string"/>
+      <element name="emailNuevo" nillable="true" type="xsd:string"/>
+      <element name="atencionDe" nillable="true" type="xsd:string"/>
+      <element name="codigoOficina" nillable="true" type="xsd:short"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarEmailNotificacionPersonaResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarEmailNotificacionPersonaReturn" nillable="true" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarTipoFacturaContrato">
+    <complexType>
+     <sequence>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="tipoFactura" nillable="true" type="xsd:short"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarTipoFacturaContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarTipoFacturaContratoReturn" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarUrlOficinaVirtualExplotacion">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="urlOficnaVirtual" nillable="true" type="xsd:string"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarUrlOficinaVirtualExplotacionResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarUrlOficinaVirtualExplotacionReturn" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarUrlOficinaVirtualSociedad">
+    <complexType>
+     <sequence>
+      <element name="sociedad" nillable="true" type="xsd:int"/>
+      <element name="urlOficnaVirtual" nillable="true" type="xsd:string"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarUrlOficinaVirtualSociedadResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarUrlOficinaVirtualSociedadReturn" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarMovilNotificacionContrato">
+    <complexType>
+     <sequence>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="movil" nillable="true" type="xsd:long"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarMovilNotificacionContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarMovilNotificacionContratoReturn" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarPersonaNotificacionContrato">
+    <complexType>
+     <sequence>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="nif" nillable="true" type="xsd:string"/>
+      <element name="email1" nillable="true" type="xsd:string"/>
+      <element name="email2" nillable="true" type="xsd:string"/>
+      <element name="usuario" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cambiarPersonaNotificacionContratoResponse">
+    <complexType>
+     <sequence>
+      <element name="cambiarPersonaNotificacionContratoReturn" nillable="true" type="xsd:short"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getConsumosParaGraficas">
+    <complexType>
+     <sequence>
+      <element name="explotacion" nillable="true" type="xsd:short"/>
+      <element name="contrato" nillable="true" type="xsd:int"/>
+      <element name="idioma" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_nillable_Consumo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Consumo" nillable="true" type="tns2:Consumo"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Tarifa">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Tarifa" nillable="true" type="tns2:Tarifa"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Localidad">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Localidad" nillable="true" type="tns2:Localidad"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Calle">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Calle" nillable="true" type="tns2:Calle"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Lectura">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Lectura" nillable="true" type="tns2:Lectura"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Domicilio">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Domicilio" nillable="true" type="tns2:Domicilio"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Contrato">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Contrato" nillable="true" type="tns2:Contrato"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Provincia">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Provincia" nillable="true" type="tns2:Provincia"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_ConceptoConTarifasFacturadas">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="ConceptoConTarifasFacturadas" nillable="true" type="tns2:ConceptoConTarifasFacturadas"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Titular">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Titular" nillable="true" type="tns2:Titular"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Poblacion">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Poblacion" nillable="true" type="tns2:Poblacion"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Banco">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Banco" nillable="true" type="tns2:Banco"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Concepto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Concepto" nillable="true" type="tns2:Concepto"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Factura">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Factura" nillable="true" type="tns2:Factura"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Pais">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Pais" nillable="true" type="tns2:Pais"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Comunidad">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Comunidad" nillable="true" type="tns2:Comunidad"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Actuacion">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Actuacion" nillable="true" type="tns2:Actuacion"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_Agencia">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Agencia" nillable="true" type="tns2:Agencia"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_nillable_NumeroCuentaBancaria">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="NumeroCuentaBancaria" nillable="true" type="tns2:NumeroCuentaBancaria"/>
+    </sequence>
+   </complexType>
+  </schema>
+<schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns2="http://InterfazOficinaVirtualClientes.DTOs.occamWS.ejb.negocio.occam.agbar.com" xmlns:intf="http://occamWS.ejb.negocio.occam.agbar.com" xmlns:impl="http://occamWS.ejb.negocio.occam.agbar.com" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://InterfazOficinaVirtualClientes.DTOs.occamWS.ejb.negocio.occam.agbar.com">
+   <complexType name="Consumo">
+    <sequence>
+     <element name="estimado" nillable="true" type="xsd:boolean"/>
+     <element name="año" nillable="true" type="xsd:short"/>
+     <element name="metrosCubicos" nillable="true" type="xsd:int"/>
+     <element name="periodicidad" nillable="true" type="xsd:string"/>
+     <element name="periodo" nillable="true" type="xsd:string"/>
+     <element name="fechaLectura" nillable="true" type="xsd:string"/>
+     <element name="consumos" nillable="true" type="tns2:ArrayOfElementoConsumo"/>
+     <element name="variablesDeCiclo" nillable="true" type="tns2:ArrayOfVariable"/>
+    </sequence>
+   </complexType>
+   <complexType name="ElementoConsumo">
+    <sequence>
+     <element name="observacion" nillable="true" type="xsd:string"/>
+     <element name="origen" nillable="true" type="xsd:string"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+     <element name="estimado" nillable="true" type="xsd:boolean"/>
+     <element name="fecha" nillable="true" type="xsd:string"/>
+     <element name="m3" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfElementoConsumo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="ElementoConsumo" nillable="true" type="tns2:ElementoConsumo"/>
+    </sequence>
+   </complexType>
+   <complexType name="Variable">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="valor" nillable="true" type="xsd:anyType"/>
+     <element name="id" nillable="true" type="xsd:short"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfVariable">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Variable" nillable="true" type="tns2:Variable"/>
+    </sequence>
+   </complexType>
+   <complexType name="IDShortShort">
+    <sequence>
+     <element name="id1Short" nillable="true" type="xsd:short"/>
+     <element name="id2Short" nillable="true" type="xsd:short"/>
+    </sequence>
+   </complexType>
+   <complexType name="Tarifa">
+    <sequence>
+     <element name="codigo" nillable="true" type="tns2:IDShortShortShort"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="publicacion" nillable="true" type="tns2:Publicacion"/>
+     <element name="subconceptos" nillable="true" type="tns2:ArrayOfSubconcepto"/>
+     <element name="variablesContratos" nillable="true" type="tns2:ArrayOfVariable"/>
+     <element name="variablesPuntoServicio" nillable="true" type="tns2:ArrayOfVariable"/>
+    </sequence>
+   </complexType>
+   <complexType name="IDShortShortShort">
+    <sequence>
+     <element name="id1Short" nillable="true" type="xsd:short"/>
+     <element name="id2Short" nillable="true" type="xsd:short"/>
+     <element name="id3Short" nillable="true" type="xsd:short"/>
+    </sequence>
+   </complexType>
+   <complexType name="Publicacion">
+    <sequence>
+     <element name="fechaPublicacion" nillable="true" type="xsd:string"/>
+     <element name="textoPublicacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Subconcepto">
+    <sequence>
+     <element name="correctoresAplicables" nillable="true" type="tns2:ArrayOfCorrector"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="variables" nillable="true" type="tns2:ArrayOfVariable"/>
+    </sequence>
+   </complexType>
+   <complexType name="Corrector">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfCorrector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Corrector" nillable="true" type="tns2:Corrector"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfSubconcepto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Subconcepto" nillable="true" type="tns2:Subconcepto"/>
+    </sequence>
+   </complexType>
+   <complexType name="Localidad">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Calle">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="tipoVia" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Titular">
+    <sequence>
+     <element name="apellido1" nillable="true" type="xsd:string"/>
+     <element name="apellido2" nillable="true" type="xsd:string"/>
+     <element name="EMail" nillable="true" type="xsd:string"/>
+     <element name="nie_crn" nillable="true" type="xsd:string"/>
+     <element name="fax" nillable="true" type="xsd:string"/>
+     <element name="nif" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Banco">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:short"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Lectura">
+    <sequence>
+     <element name="año" nillable="true" type="xsd:short"/>
+     <element name="estimado" nillable="true" type="xsd:boolean"/>
+     <element name="metrosCubicos" nillable="true" type="xsd:int"/>
+     <element name="periodicidad" nillable="true" type="xsd:string"/>
+     <element name="periodo" nillable="true" type="xsd:string"/>
+     <element name="fechaLectura" nillable="true" type="xsd:string"/>
+     <element name="lecturas" nillable="true" type="tns2:ArrayOfElementoLectura"/>
+     <element name="variablesDeCiclo" nillable="true" type="tns2:ArrayOfVariable"/>
+    </sequence>
+   </complexType>
+   <complexType name="ElementoLectura">
+    <sequence>
+     <element name="observacion" nillable="true" type="xsd:string"/>
+     <element name="origen" nillable="true" type="xsd:string"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+     <element name="fecha" nillable="true" type="xsd:string"/>
+     <element name="m3" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfElementoLectura">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="ElementoLectura" nillable="true" type="tns2:ElementoLectura"/>
+    </sequence>
+   </complexType>
+   <complexType name="Domicilio">
+    <sequence>
+     <element name="bloque" nillable="true" type="xsd:string"/>
+     <element name="domicilioSuministro" nillable="true" type="xsd:string"/>
+     <element name="escalera" nillable="true" type="xsd:string"/>
+     <element name="calle" nillable="true" type="tns2:Calle"/>
+     <element name="numeroFinca" nillable="true" type="xsd:int"/>
+     <element name="planta" nillable="true" type="xsd:string"/>
+     <element name="provincia" nillable="true" type="xsd:string"/>
+     <element name="puerta" nillable="true" type="xsd:string"/>
+     <element name="contrato" nillable="true" type="xsd:int"/>
+     <element name="idExplotacion" nillable="true" type="xsd:short"/>
+     <element name="localidad" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Contrato">
+    <sequence>
+     <element name="ampliacionDireccion" nillable="true" type="xsd:string"/>
+     <element name="calibreContador" nillable="true" type="xsd:short"/>
+     <element name="codigoGrupoFacturacion" nillable="true" type="xsd:string"/>
+     <element name="codigoPostalCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="descripcionGrupoFacturacion" nillable="true" type="xsd:string"/>
+     <element name="domicilioCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="explotacion" nillable="true" type="xsd:string"/>
+     <element name="fechaAlta" nillable="true" type="xsd:string"/>
+     <element name="fechaBaja" nillable="true" type="xsd:string"/>
+     <element name="fechaInstalacionContador" nillable="true" type="xsd:string"/>
+     <element name="marcaContador" nillable="true" type="xsd:string"/>
+     <element name="nifTitularDomiciliacionBancaria" nillable="true" type="xsd:string"/>
+     <element name="nifTitularDomicilioNotificaciones" nillable="true" type="xsd:string"/>
+     <element name="numero" nillable="true" type="xsd:int"/>
+     <element name="numeroContador" nillable="true" type="xsd:string"/>
+     <element name="numeroViviendas" nillable="true" type="xsd:short"/>
+     <element name="paisCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="periodicidad" nillable="true" type="xsd:string"/>
+     <element name="periodicidadID" nillable="true" type="xsd:short"/>
+     <element name="poblacionCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="provinciaCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="situacionContador" nillable="true" type="xsd:string"/>
+     <element name="telefonoCorrespondencia" nillable="true" type="xsd:string"/>
+     <element name="tipoCobro" nillable="true" type="xsd:string"/>
+     <element name="tipoContador" nillable="true" type="xsd:string"/>
+     <element name="tipoDomicilioNotificaciones" nillable="true" type="xsd:string"/>
+     <element name="zona" nillable="true" type="xsd:string"/>
+     <element name="titularCorrespondencia" nillable="true" type="tns2:Titular"/>
+     <element name="uso" nillable="true" type="xsd:string"/>
+     <element name="explotacionID" nillable="true" type="xsd:short"/>
+     <element name="sntelelectura" nillable="true" type="xsd:boolean"/>
+     <element name="moduloComunicacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Provincia">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ConceptoConTarifasFacturadas">
+    <sequence>
+     <element name="concepto" nillable="true" type="tns2:Concepto"/>
+     <element name="tarifasFacturadas" nillable="true" type="tns2:ArrayOfTarifa"/>
+    </sequence>
+   </complexType>
+   <complexType name="Concepto">
+    <sequence>
+     <element name="codigoConcepto" nillable="true" type="tns2:IDShortShort"/>
+     <element name="descripcionConcepto" nillable="true" type="xsd:string"/>
+     <element name="organismoPropietario" nillable="true" type="xsd:string"/>
+     <element name="conceptoPeriodico" nillable="true" type="xsd:boolean"/>
+     <element name="importe" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfTarifa">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Tarifa" nillable="true" type="tns2:Tarifa"/>
+    </sequence>
+   </complexType>
+   <complexType name="Poblacion">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Factura">
+    <sequence>
+     <element name="conceptosCobrados" nillable="true" type="tns2:ArrayOfConcepto"/>
+     <element name="contrato" nillable="true" type="xsd:int"/>
+     <element name="fechaCobro" nillable="true" type="xsd:string"/>
+     <element name="importeTotal" nillable="true" type="xsd:decimal"/>
+     <element name="numero" nillable="true" type="xsd:string"/>
+     <element name="tipoCobro" nillable="true" type="xsd:string"/>
+     <element name="año" nillable="true" type="xsd:short"/>
+     <element name="fechaEmision" nillable="true" type="xsd:string"/>
+     <element name="periodo" nillable="true" type="xsd:short"/>
+     <element name="idDocumentoFactura" nillable="true" type="xsd:string"/>
+     <element name="tipoDocumento" nillable="true" type="xsd:short"/>
+     <element name="origenFactura" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:short"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfConcepto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="Concepto" nillable="true" type="tns2:Concepto"/>
+    </sequence>
+   </complexType>
+   <complexType name="Pais">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Comunidad">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Actuacion">
+    <sequence>
+     <element name="fechaActuacion" nillable="true" type="xsd:string"/>
+     <element name="motivoActuacion" nillable="true" type="xsd:string"/>
+     <element name="tipoActuacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Agencia">
+    <sequence>
+     <element name="codigo" nillable="true" type="tns2:IDShortShort"/>
+     <element name="codigoPostal" nillable="true" type="xsd:string"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="fax" nillable="true" type="xsd:decimal"/>
+     <element name="localidad" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="NumeroCuentaBancaria">
+    <sequence>
+     <element name="agencia" nillable="true" type="tns2:Agencia"/>
+     <element name="banco" nillable="true" type="tns2:Banco"/>
+     <element name="cuenta" nillable="true" type="xsd:string"/>
+     <element name="digitoControl" nillable="true" type="xsd:string"/>
+     <element name="fechaAlta" nillable="true" type="xsd:string"/>
+     <element name="fechaBaja" nillable="true" type="xsd:string"/>
+     <element name="nombreUsuarioCuenta" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="getTitularesResponse">
+    <wsdl:part element="impl:getTitularesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumosResponse">
+    <wsdl:part element="impl:getConsumosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancosPorDescripcionRequest">
+    <wsdl:part element="impl:getBancosPorDescripcion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDomiciliacionBancariaResponse">
+    <wsdl:part element="impl:cambiarDomiciliacionBancariaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarPersonaNotificacionContratoResponse">
+    <wsdl:part element="impl:cambiarPersonaNotificacionContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancoPorExplotacionCodigoResponse">
+    <wsdl:part element="impl:getBancoPorExplotacionCodigoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarPersonaNotificacionContratoRequest">
+    <wsdl:part element="impl:cambiarPersonaNotificacionContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomiciliosPendientesContratarRequest">
+    <wsdl:part element="impl:getDomiciliosPendientesContratar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancosPorDescripcionResponse">
+    <wsdl:part element="impl:getBancosPorDescripcionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumosRequest">
+    <wsdl:part element="impl:getConsumos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancoPorExplotacionCodigoRequest">
+    <wsdl:part element="impl:getBancoPorExplotacionCodigo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProvinciasDeComunidadResponse">
+    <wsdl:part element="impl:getProvinciasDeComunidadResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDireccionCorrespondenciaResponse">
+    <wsdl:part element="impl:cambiarDireccionCorrespondenciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoPorDatosGeneralesRequest">
+    <wsdl:part element="impl:getContratoPorDatosGenerales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptoConTarifasDeContratoRequest">
+    <wsdl:part element="impl:getConceptoConTarifasDeContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLecturasResponse">
+    <wsdl:part element="impl:getLecturasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getIdiomaExplotacionResponse">
+    <wsdl:part element="impl:getIdiomaExplotacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarUrlOficinaVirtualExplotacionResponse">
+    <wsdl:part element="impl:cambiarUrlOficinaVirtualExplotacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorDatosGeneralesResponse">
+    <wsdl:part element="impl:getContratosPorDatosGeneralesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumeroCuentaBancariaResponse">
+    <wsdl:part element="impl:getNumeroCuentaBancariaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorNifResponse">
+    <wsdl:part element="impl:getTitularPorNifResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptoConTarifasDeFacturaRequest">
+    <wsdl:part element="impl:getConceptoConTarifasDeFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActuacionesRequest">
+    <wsdl:part element="impl:getActuaciones" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNifRequest">
+    <wsdl:part element="impl:getContratosPorNif" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarEmailNotificacionPersonaResponse">
+    <wsdl:part element="impl:cambiarEmailNotificacionPersonaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomiciliosContratadosResponse">
+    <wsdl:part element="impl:getDomiciliosContratadosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getComunidadesDePaisRequest">
+    <wsdl:part element="impl:getComunidadesDePais" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgenciasResponse">
+    <wsdl:part element="impl:getAgenciasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPoblacionesDeProvinciaResponse">
+    <wsdl:part element="impl:getPoblacionesDeProvinciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCallesPorPatronRequest">
+    <wsdl:part element="impl:getCallesPorPatron" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptoConTarifasDeContratoResponse">
+    <wsdl:part element="impl:getConceptoConTarifasDeContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDomiciliacionBancariaRequest">
+    <wsdl:part element="impl:cambiarDomiciliacionBancaria" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getComunidadesDePaisResponse">
+    <wsdl:part element="impl:getComunidadesDePaisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorNifRequest">
+    <wsdl:part element="impl:getTitularPorNif" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActuacionesResponse">
+    <wsdl:part element="impl:getActuacionesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProvinciaRequest">
+    <wsdl:part element="impl:getProvincia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProvinciasDeComunidadRequest">
+    <wsdl:part element="impl:getProvinciasDeComunidad" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularesRequest">
+    <wsdl:part element="impl:getTitulares" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomicilioResponse">
+    <wsdl:part element="impl:getDomicilioResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancoRequest">
+    <wsdl:part element="impl:getBanco" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumosParaGraficasResponse">
+    <wsdl:part element="impl:getConsumosParaGraficasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorDatosGeneralesRequest">
+    <wsdl:part element="impl:getContratosPorDatosGenerales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgenciasRequest">
+    <wsdl:part element="impl:getAgencias" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaisesResponse">
+    <wsdl:part element="impl:getPaisesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasRequest">
+    <wsdl:part element="impl:getFacturas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDireccionCorrespondenciaRequest">
+    <wsdl:part element="impl:cambiarDireccionCorrespondencia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptoConTarifasDeFacturaResponse">
+    <wsdl:part element="impl:getConceptoConTarifasDeFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLocalidadesDePoblacionRequest">
+    <wsdl:part element="impl:getLocalidadesDePoblacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifaDeAguaPorContratoResponse">
+    <wsdl:part element="impl:getTarifaDeAguaPorContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorContratoResponse">
+    <wsdl:part element="impl:getTitularPorContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCallesPorPatronResponse">
+    <wsdl:part element="impl:getCallesPorPatronResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUltimoMensajeResponse">
+    <wsdl:part element="impl:getUltimoMensajeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarUrlOficinaVirtualSociedadRequest">
+    <wsdl:part element="impl:cambiarUrlOficinaVirtualSociedad" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifaDeAguaPorContratoRequest">
+    <wsdl:part element="impl:getTarifaDeAguaPorContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancosPorExplotacionDescripcionResponse">
+    <wsdl:part element="impl:getBancosPorExplotacionDescripcionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoPorDatosGeneralesResponse">
+    <wsdl:part element="impl:getContratoPorDatosGeneralesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancosPorExplotacionDescripcionRequest">
+    <wsdl:part element="impl:getBancosPorExplotacionDescripcion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarUrlOficinaVirtualExplotacionRequest">
+    <wsdl:part element="impl:cambiarUrlOficinaVirtualExplotacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorNie_crnResponse">
+    <wsdl:part element="impl:getTitularPorNie_crnResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLecturasRequest">
+    <wsdl:part element="impl:getLecturas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptosResponse">
+    <wsdl:part element="impl:getConceptosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoRequest">
+    <wsdl:part element="impl:getContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorContratoRequest">
+    <wsdl:part element="impl:getTitularPorContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarUrlOficinaVirtualSociedadResponse">
+    <wsdl:part element="impl:cambiarUrlOficinaVirtualSociedadResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTitularPorNie_crnRequest">
+    <wsdl:part element="impl:getTitularPorNie_crn" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarTipoFacturaContratoRequest">
+    <wsdl:part element="impl:cambiarTipoFacturaContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturaResponse">
+    <wsdl:part element="impl:getFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNie_crnResponse">
+    <wsdl:part element="impl:getContratosPorNie_crnResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNifResponse">
+    <wsdl:part element="impl:getContratosPorNifResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNie_crnRequest">
+    <wsdl:part element="impl:getContratosPorNie_crn" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifasVigenteResponse">
+    <wsdl:part element="impl:getTarifasVigenteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUltimoMensajeRequest">
+    <wsdl:part element="impl:getUltimoMensaje" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProvinciaResponse">
+    <wsdl:part element="impl:getProvinciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLocalidadesDePoblacionResponse">
+    <wsdl:part element="impl:getLocalidadesDePoblacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarEmailNotificacionPersonaRequest">
+    <wsdl:part element="impl:cambiarEmailNotificacionPersona" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPoblacionesDeProvinciaRequest">
+    <wsdl:part element="impl:getPoblacionesDeProvincia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomiciliosContratadosRequest">
+    <wsdl:part element="impl:getDomiciliosContratados" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarMovilNotificacionContratoRequest">
+    <wsdl:part element="impl:cambiarMovilNotificacionContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBancoResponse">
+    <wsdl:part element="impl:getBancoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoResponse">
+    <wsdl:part element="impl:getContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPaisesRequest">
+    <wsdl:part element="impl:getPaises" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarTipoFacturaContratoResponse">
+    <wsdl:part element="impl:cambiarTipoFacturaContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getIdiomaExplotacionRequest">
+    <wsdl:part element="impl:getIdiomaExplotacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTarifasVigenteRequest">
+    <wsdl:part element="impl:getTarifasVigente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLecturasParaGraficasRequest">
+    <wsdl:part element="impl:getLecturasParaGraficas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomiciliosPendientesContratarResponse">
+    <wsdl:part element="impl:getDomiciliosPendientesContratarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasResponse">
+    <wsdl:part element="impl:getFacturasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConceptosRequest">
+    <wsdl:part element="impl:getConceptos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomicilioRequest">
+    <wsdl:part element="impl:getDomicilio" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumeroCuentaBancariaRequest">
+    <wsdl:part element="impl:getNumeroCuentaBancaria" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumosParaGraficasRequest">
+    <wsdl:part element="impl:getConsumosParaGraficas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarMovilNotificacionContratoResponse">
+    <wsdl:part element="impl:cambiarMovilNotificacionContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturaRequest">
+    <wsdl:part element="impl:getFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLecturasParaGraficasResponse">
+    <wsdl:part element="impl:getLecturasParaGraficasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InterfazOficinaVirtualClientesWSBean_SEI">
+    <wsdl:operation name="getConsumosParaGraficas">
+      <wsdl:input message="impl:getConsumosParaGraficasRequest" name="getConsumosParaGraficasRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getConsumosParaGraficasResponse" name="getConsumosParaGraficasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDomiciliacionBancaria">
+      <wsdl:input message="impl:cambiarDomiciliacionBancariaRequest" name="cambiarDomiciliacionBancariaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarDomiciliacionBancariaResponse" name="cambiarDomiciliacionBancariaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUltimoMensaje">
+      <wsdl:input message="impl:getUltimoMensajeRequest" name="getUltimoMensajeRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getUltimoMensajeResponse" name="getUltimoMensajeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifasVigente">
+      <wsdl:input message="impl:getTarifasVigenteRequest" name="getTarifasVigenteRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTarifasVigenteResponse" name="getTarifasVigenteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumos">
+      <wsdl:input message="impl:getConsumosRequest" name="getConsumosRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getConsumosResponse" name="getConsumosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocalidadesDePoblacion">
+      <wsdl:input message="impl:getLocalidadesDePoblacionRequest" name="getLocalidadesDePoblacionRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getLocalidadesDePoblacionResponse" name="getLocalidadesDePoblacionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCallesPorPatron">
+      <wsdl:input message="impl:getCallesPorPatronRequest" name="getCallesPorPatronRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getCallesPorPatronResponse" name="getCallesPorPatronResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorContrato">
+      <wsdl:input message="impl:getTitularPorContratoRequest" name="getTitularPorContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTitularPorContratoResponse" name="getTitularPorContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancoPorExplotacionCodigo">
+      <wsdl:input message="impl:getBancoPorExplotacionCodigoRequest" name="getBancoPorExplotacionCodigoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getBancoPorExplotacionCodigoResponse" name="getBancoPorExplotacionCodigoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLecturasParaGraficas">
+      <wsdl:input message="impl:getLecturasParaGraficasRequest" name="getLecturasParaGraficasRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getLecturasParaGraficasResponse" name="getLecturasParaGraficasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorNif">
+      <wsdl:input message="impl:getTitularPorNifRequest" name="getTitularPorNifRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTitularPorNifResponse" name="getTitularPorNifResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomiciliosContratados">
+      <wsdl:input message="impl:getDomiciliosContratadosRequest" name="getDomiciliosContratadosRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getDomiciliosContratadosResponse" name="getDomiciliosContratadosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifaDeAguaPorContrato">
+      <wsdl:input message="impl:getTarifaDeAguaPorContratoRequest" name="getTarifaDeAguaPorContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTarifaDeAguaPorContratoResponse" name="getTarifaDeAguaPorContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomicilio">
+      <wsdl:input message="impl:getDomicilioRequest" name="getDomicilioRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getDomicilioResponse" name="getDomicilioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNie_crn">
+      <wsdl:input message="impl:getContratosPorNie_crnRequest" name="getContratosPorNie_crnRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getContratosPorNie_crnResponse" name="getContratosPorNie_crnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvinciasDeComunidad">
+      <wsdl:input message="impl:getProvinciasDeComunidadRequest" name="getProvinciasDeComunidadRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getProvinciasDeComunidadResponse" name="getProvinciasDeComunidadResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptoConTarifasDeContrato">
+      <wsdl:input message="impl:getConceptoConTarifasDeContratoRequest" name="getConceptoConTarifasDeContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getConceptoConTarifasDeContratoResponse" name="getConceptoConTarifasDeContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvincia">
+      <wsdl:input message="impl:getProvinciaRequest" name="getProvinciaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getProvinciaResponse" name="getProvinciaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitulares">
+      <wsdl:input message="impl:getTitularesRequest" name="getTitularesRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTitularesResponse" name="getTitularesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPoblacionesDeProvincia">
+      <wsdl:input message="impl:getPoblacionesDeProvinciaRequest" name="getPoblacionesDeProvinciaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getPoblacionesDeProvinciaResponse" name="getPoblacionesDeProvinciaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNif">
+      <wsdl:input message="impl:getContratosPorNifRequest" name="getContratosPorNifRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getContratosPorNifResponse" name="getContratosPorNifResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptoConTarifasDeFactura">
+      <wsdl:input message="impl:getConceptoConTarifasDeFacturaRequest" name="getConceptoConTarifasDeFacturaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getConceptoConTarifasDeFacturaResponse" name="getConceptoConTarifasDeFacturaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorNie_crn">
+      <wsdl:input message="impl:getTitularPorNie_crnRequest" name="getTitularPorNie_crnRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getTitularPorNie_crnResponse" name="getTitularPorNie_crnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFactura">
+      <wsdl:input message="impl:getFacturaRequest" name="getFacturaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getFacturaResponse" name="getFacturaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIdiomaExplotacion">
+      <wsdl:input message="impl:getIdiomaExplotacionRequest" name="getIdiomaExplotacionRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getIdiomaExplotacionResponse" name="getIdiomaExplotacionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancosPorExplotacionDescripcion">
+      <wsdl:input message="impl:getBancosPorExplotacionDescripcionRequest" name="getBancosPorExplotacionDescripcionRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getBancosPorExplotacionDescripcionResponse" name="getBancosPorExplotacionDescripcionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptos">
+      <wsdl:input message="impl:getConceptosRequest" name="getConceptosRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getConceptosResponse" name="getConceptosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancosPorDescripcion">
+      <wsdl:input message="impl:getBancosPorDescripcionRequest" name="getBancosPorDescripcionRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getBancosPorDescripcionResponse" name="getBancosPorDescripcionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturas">
+      <wsdl:input message="impl:getFacturasRequest" name="getFacturasRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getFacturasResponse" name="getFacturasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaises">
+      <wsdl:input message="impl:getPaisesRequest" name="getPaisesRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getPaisesResponse" name="getPaisesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComunidadesDePais">
+      <wsdl:input message="impl:getComunidadesDePaisRequest" name="getComunidadesDePaisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getComunidadesDePaisResponse" name="getComunidadesDePaisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActuaciones">
+      <wsdl:input message="impl:getActuacionesRequest" name="getActuacionesRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getActuacionesResponse" name="getActuacionesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanco">
+      <wsdl:input message="impl:getBancoRequest" name="getBancoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getBancoResponse" name="getBancoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLecturas">
+      <wsdl:input message="impl:getLecturasRequest" name="getLecturasRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getLecturasResponse" name="getLecturasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencias">
+      <wsdl:input message="impl:getAgenciasRequest" name="getAgenciasRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getAgenciasResponse" name="getAgenciasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContrato">
+      <wsdl:input message="impl:getContratoRequest" name="getContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getContratoResponse" name="getContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumeroCuentaBancaria">
+      <wsdl:input message="impl:getNumeroCuentaBancariaRequest" name="getNumeroCuentaBancariaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getNumeroCuentaBancariaResponse" name="getNumeroCuentaBancariaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomiciliosPendientesContratar">
+      <wsdl:input message="impl:getDomiciliosPendientesContratarRequest" name="getDomiciliosPendientesContratarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getDomiciliosPendientesContratarResponse" name="getDomiciliosPendientesContratarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDireccionCorrespondencia">
+      <wsdl:input message="impl:cambiarDireccionCorrespondenciaRequest" name="cambiarDireccionCorrespondenciaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarDireccionCorrespondenciaResponse" name="cambiarDireccionCorrespondenciaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratoPorDatosGenerales">
+      <wsdl:input message="impl:getContratoPorDatosGeneralesRequest" name="getContratoPorDatosGeneralesRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getContratoPorDatosGeneralesResponse" name="getContratoPorDatosGeneralesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorDatosGenerales">
+      <wsdl:input message="impl:getContratosPorDatosGeneralesRequest" name="getContratosPorDatosGeneralesRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getContratosPorDatosGeneralesResponse" name="getContratosPorDatosGeneralesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEmailNotificacionPersona">
+      <wsdl:input message="impl:cambiarEmailNotificacionPersonaRequest" name="cambiarEmailNotificacionPersonaRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarEmailNotificacionPersonaResponse" name="cambiarEmailNotificacionPersonaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarTipoFacturaContrato">
+      <wsdl:input message="impl:cambiarTipoFacturaContratoRequest" name="cambiarTipoFacturaContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarTipoFacturaContratoResponse" name="cambiarTipoFacturaContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarUrlOficinaVirtualExplotacion">
+      <wsdl:input message="impl:cambiarUrlOficinaVirtualExplotacionRequest" name="cambiarUrlOficinaVirtualExplotacionRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarUrlOficinaVirtualExplotacionResponse" name="cambiarUrlOficinaVirtualExplotacionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarUrlOficinaVirtualSociedad">
+      <wsdl:input message="impl:cambiarUrlOficinaVirtualSociedadRequest" name="cambiarUrlOficinaVirtualSociedadRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarUrlOficinaVirtualSociedadResponse" name="cambiarUrlOficinaVirtualSociedadResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarMovilNotificacionContrato">
+      <wsdl:input message="impl:cambiarMovilNotificacionContratoRequest" name="cambiarMovilNotificacionContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarMovilNotificacionContratoResponse" name="cambiarMovilNotificacionContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarPersonaNotificacionContrato">
+      <wsdl:input message="impl:cambiarPersonaNotificacionContratoRequest" name="cambiarPersonaNotificacionContratoRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:cambiarPersonaNotificacionContratoResponse" name="cambiarPersonaNotificacionContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazOficinaVirtualClientesWSSoapBinding" type="impl:InterfazOficinaVirtualClientesWSBean_SEI">
+    <ns2:UsingAddressing xmlns:ns2="http://www.w3.org/2006/05/addressing/wsdl" wsdl:required="false"/>
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getConsumosParaGraficas">
+      <wsdlsoap:operation soapAction="getConsumosParaGraficas"/>
+      <wsdl:input name="getConsumosParaGraficasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConsumosParaGraficasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDomiciliacionBancaria">
+      <wsdlsoap:operation soapAction="cambiarDomiciliacionBancaria"/>
+      <wsdl:input name="cambiarDomiciliacionBancariaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarDomiciliacionBancariaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUltimoMensaje">
+      <wsdlsoap:operation soapAction="getUltimoMensaje"/>
+      <wsdl:input name="getUltimoMensajeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUltimoMensajeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifasVigente">
+      <wsdlsoap:operation soapAction="getTarifasVigente"/>
+      <wsdl:input name="getTarifasVigenteRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTarifasVigenteResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumos">
+      <wsdlsoap:operation soapAction="getConsumos"/>
+      <wsdl:input name="getConsumosRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConsumosResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocalidadesDePoblacion">
+      <wsdlsoap:operation soapAction="getLocalidadesDePoblacion"/>
+      <wsdl:input name="getLocalidadesDePoblacionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLocalidadesDePoblacionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCallesPorPatron">
+      <wsdlsoap:operation soapAction="getCallesPorPatron"/>
+      <wsdl:input name="getCallesPorPatronRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCallesPorPatronResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorContrato">
+      <wsdlsoap:operation soapAction="getTitularPorContrato"/>
+      <wsdl:input name="getTitularPorContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTitularPorContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancoPorExplotacionCodigo">
+      <wsdlsoap:operation soapAction="getBancoPorExplotacionCodigo"/>
+      <wsdl:input name="getBancoPorExplotacionCodigoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBancoPorExplotacionCodigoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLecturasParaGraficas">
+      <wsdlsoap:operation soapAction="getLecturasParaGraficas"/>
+      <wsdl:input name="getLecturasParaGraficasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLecturasParaGraficasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorNif">
+      <wsdlsoap:operation soapAction="getTitularPorNif"/>
+      <wsdl:input name="getTitularPorNifRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTitularPorNifResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomiciliosContratados">
+      <wsdlsoap:operation soapAction="getDomiciliosContratados"/>
+      <wsdl:input name="getDomiciliosContratadosRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomiciliosContratadosResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTarifaDeAguaPorContrato">
+      <wsdlsoap:operation soapAction="getTarifaDeAguaPorContrato"/>
+      <wsdl:input name="getTarifaDeAguaPorContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTarifaDeAguaPorContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomicilio">
+      <wsdlsoap:operation soapAction="getDomicilio"/>
+      <wsdl:input name="getDomicilioRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomicilioResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNie_crn">
+      <wsdlsoap:operation soapAction="getContratosPorNie_crn"/>
+      <wsdl:input name="getContratosPorNie_crnRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosPorNie_crnResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvinciasDeComunidad">
+      <wsdlsoap:operation soapAction="getProvinciasDeComunidad"/>
+      <wsdl:input name="getProvinciasDeComunidadRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProvinciasDeComunidadResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptoConTarifasDeContrato">
+      <wsdlsoap:operation soapAction="getConceptoConTarifasDeContrato"/>
+      <wsdl:input name="getConceptoConTarifasDeContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConceptoConTarifasDeContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvincia">
+      <wsdlsoap:operation soapAction="getProvincia"/>
+      <wsdl:input name="getProvinciaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProvinciaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitulares">
+      <wsdlsoap:operation soapAction="getTitulares"/>
+      <wsdl:input name="getTitularesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTitularesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPoblacionesDeProvincia">
+      <wsdlsoap:operation soapAction="getPoblacionesDeProvincia"/>
+      <wsdl:input name="getPoblacionesDeProvinciaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPoblacionesDeProvinciaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNif">
+      <wsdlsoap:operation soapAction="getContratosPorNif"/>
+      <wsdl:input name="getContratosPorNifRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosPorNifResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptoConTarifasDeFactura">
+      <wsdlsoap:operation soapAction="getConceptoConTarifasDeFactura"/>
+      <wsdl:input name="getConceptoConTarifasDeFacturaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConceptoConTarifasDeFacturaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitularPorNie_crn">
+      <wsdlsoap:operation soapAction="getTitularPorNie_crn"/>
+      <wsdl:input name="getTitularPorNie_crnRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTitularPorNie_crnResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFactura">
+      <wsdlsoap:operation soapAction="getFactura"/>
+      <wsdl:input name="getFacturaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIdiomaExplotacion">
+      <wsdlsoap:operation soapAction="getIdiomaExplotacion"/>
+      <wsdl:input name="getIdiomaExplotacionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getIdiomaExplotacionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancosPorExplotacionDescripcion">
+      <wsdlsoap:operation soapAction="getBancosPorExplotacionDescripcion"/>
+      <wsdl:input name="getBancosPorExplotacionDescripcionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBancosPorExplotacionDescripcionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConceptos">
+      <wsdlsoap:operation soapAction="getConceptos"/>
+      <wsdl:input name="getConceptosRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConceptosResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBancosPorDescripcion">
+      <wsdlsoap:operation soapAction="getBancosPorDescripcion"/>
+      <wsdl:input name="getBancosPorDescripcionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBancosPorDescripcionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturas">
+      <wsdlsoap:operation soapAction="getFacturas"/>
+      <wsdl:input name="getFacturasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaises">
+      <wsdlsoap:operation soapAction="getPaises"/>
+      <wsdl:input name="getPaisesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPaisesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComunidadesDePais">
+      <wsdlsoap:operation soapAction="getComunidadesDePais"/>
+      <wsdl:input name="getComunidadesDePaisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getComunidadesDePaisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActuaciones">
+      <wsdlsoap:operation soapAction="getActuaciones"/>
+      <wsdl:input name="getActuacionesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActuacionesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBanco">
+      <wsdlsoap:operation soapAction="getBanco"/>
+      <wsdl:input name="getBancoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBancoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLecturas">
+      <wsdlsoap:operation soapAction="getLecturas"/>
+      <wsdl:input name="getLecturasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLecturasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencias">
+      <wsdlsoap:operation soapAction="getAgencias"/>
+      <wsdl:input name="getAgenciasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAgenciasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContrato">
+      <wsdlsoap:operation soapAction="getContrato"/>
+      <wsdl:input name="getContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumeroCuentaBancaria">
+      <wsdlsoap:operation soapAction="getNumeroCuentaBancaria"/>
+      <wsdl:input name="getNumeroCuentaBancariaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumeroCuentaBancariaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomiciliosPendientesContratar">
+      <wsdlsoap:operation soapAction="getDomiciliosPendientesContratar"/>
+      <wsdl:input name="getDomiciliosPendientesContratarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomiciliosPendientesContratarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDireccionCorrespondencia">
+      <wsdlsoap:operation soapAction="cambiarDireccionCorrespondencia"/>
+      <wsdl:input name="cambiarDireccionCorrespondenciaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarDireccionCorrespondenciaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratoPorDatosGenerales">
+      <wsdlsoap:operation soapAction="getContratoPorDatosGenerales"/>
+      <wsdl:input name="getContratoPorDatosGeneralesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratoPorDatosGeneralesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorDatosGenerales">
+      <wsdlsoap:operation soapAction="getContratosPorDatosGenerales"/>
+      <wsdl:input name="getContratosPorDatosGeneralesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosPorDatosGeneralesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEmailNotificacionPersona">
+      <wsdlsoap:operation soapAction="cambiarEmailNotificacionPersona"/>
+      <wsdl:input name="cambiarEmailNotificacionPersonaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarEmailNotificacionPersonaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarTipoFacturaContrato">
+      <wsdlsoap:operation soapAction="cambiarTipoFacturaContrato"/>
+      <wsdl:input name="cambiarTipoFacturaContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarTipoFacturaContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarUrlOficinaVirtualExplotacion">
+      <wsdlsoap:operation soapAction="cambiarUrlOficinaVirtualExplotacion"/>
+      <wsdl:input name="cambiarUrlOficinaVirtualExplotacionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarUrlOficinaVirtualExplotacionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarUrlOficinaVirtualSociedad">
+      <wsdlsoap:operation soapAction="cambiarUrlOficinaVirtualSociedad"/>
+      <wsdl:input name="cambiarUrlOficinaVirtualSociedadRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarUrlOficinaVirtualSociedadResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarMovilNotificacionContrato">
+      <wsdlsoap:operation soapAction="cambiarMovilNotificacionContrato"/>
+      <wsdl:input name="cambiarMovilNotificacionContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarMovilNotificacionContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarPersonaNotificacionContrato">
+      <wsdlsoap:operation soapAction="cambiarPersonaNotificacionContrato"/>
+      <wsdl:input name="cambiarPersonaNotificacionContratoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarPersonaNotificacionContratoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazOficinaVirtualClientesWSService">
+    <wsdl:port binding="impl:InterfazOficinaVirtualClientesWSSoapBinding" name="InterfazOficinaVirtualClientesWS">
+      <wsdlsoap:address location="http://aquacis-cf.ceaqueretaro.gob.mx/Comercial/services/InterfazOficinaVirtualClientesWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

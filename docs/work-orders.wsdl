@@ -1,0 +1,987 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://interfazgenericaordenesservicio.occamcxf.occam.agbar.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.aqualogy.net/xf/ws" name="InterfazGenericaOrdenesServicioWSBeanSEIImplService" targetNamespace="http://interfazgenericaordenesservicio.occamcxf.occam.agbar.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.aqualogy.net/xf/ws" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.aqualogy.net/xf/ws">
+  <xs:element name="FaultInfo" type="tns:FaultInfo"/>
+  <xs:complexType name="FaultInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element name="type" type="tns:Type"/>
+      <xs:element name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PARAM_VALIDATION"/>
+      <xs:enumeration value="BUSINESS"/>
+      <xs:enumeration value="RUNTIME"/>
+      <xs:enumeration value="TIMEOUT"/>
+      <xs:enumeration value="PROCESSING"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceFault" nillable="true" type="tns:FaultInfo"/>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://interfazgenericaordenesservicio.occamcxf.occam.agbar.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://interfazgenericaordenesservicio.occamcxf.occam.agbar.com/">
+  <xs:element name="crearOrdenExterna">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codIdioma" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="ordenTrabajo" nillable="true" type="tns:OrdenTrabajoExternaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="crearOrdenExternaResponse" type="tns:crearOrdenExternaResponse"/>
+  <xs:element name="crearOrdenTrabajo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="ordenTrabajo" nillable="true" type="tns:OrdenTrabajoDTO"/>
+        <xs:element name="enCurso" nillable="true" type="xs:boolean"/>
+        <xs:element minOccurs="0" name="visitaOrden" nillable="true" type="tns:VisitaOrdenDTO"/>
+        <xs:element minOccurs="0" name="ordenRelacionada" nillable="true" type="tns:OrdenRelacionadaDTO"/>
+        <xs:element minOccurs="0" name="idGOT" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="crearOrdenTrabajoResponse" type="tns:crearOrdenTrabajoResponse"/>
+  <xs:element name="getCalibres">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="fechaDesde" nillable="true" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCalibresResponse" type="tns:getCalibresResponse"/>
+  <xs:element name="getDocumentoOrdenTrabajo" type="tns:GetDocumentoOrdenTrabajo"/>
+  <xs:element name="getDocumentoOrdenTrabajoResponse" type="tns:getDocumentoOrdenTrabajoResponse"/>
+  <xs:element name="getMarcasYModelos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="fechaDesde" nillable="true" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMarcasYModelosResponse" type="tns:getMarcasYModelosResponse"/>
+  <xs:element name="informarVisita">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="codOrden" nillable="true" type="xs:string"/>
+        <xs:element name="fechaVisita" nillable="true" type="xs:dateTime"/>
+        <xs:element name="resultado" nillable="true" type="xs:boolean"/>
+        <xs:element name="idOperario" nillable="true" type="xs:string"/>
+        <xs:element name="nombreOperario" nillable="true" type="xs:string"/>
+        <xs:element name="cifContratista" nillable="true" type="xs:string"/>
+        <xs:element name="nombreContratista" nillable="true" type="xs:string"/>
+        <xs:element name="codIncidencia" nillable="true" type="xs:short"/>
+        <xs:element name="descIncidencia" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="observaciones" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="aResponsable" nillable="true" type="tns:ContactoVisitaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleRefreshData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="otRequest" nillable="true" type="tns:OTRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleRefreshDataResponse" type="tns:multipleRefreshDataResponse"/>
+  <xs:element name="refreshData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="otRequest" nillable="true" type="tns:OTRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="refreshDataResponse" type="tns:refreshDataResponse"/>
+  <xs:element name="resolveOT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="otResolution" nillable="true" type="tns:OTResolution"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resultado" type="tns:resultadoDTO"/>
+  <xs:complexType name="getCalibresResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:CalibreDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalibreDTO">
+    <xs:sequence>
+      <xs:element name="calibmm" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="calibequpul" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="calibhstusu" nillable="true" type="xs:string"/>
+      <xs:element name="calibhsthora" nillable="true" type="xs:dateTime"/>
+      <xs:element name="calibbaja" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="calibcodspde" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdenTrabajoExternaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="datos" nillable="true" type="tns:OrdenExternaDTO"/>
+      <xs:element minOccurs="0" name="direccion" nillable="true" type="tns:DireccionOrdenExternaDTO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="resolucion" nillable="true" type="tns:OTResolutionElement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="equipo" nillable="true" type="tns:OTResolutionEquipment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="visita" nillable="true" type="tns:VisitaOrdenExternaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdenExternaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="explotacionSGO" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="fechaCreacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="idPtoServicio" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="numContrato" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="numContador" nillable="true" type="xs:string"/>
+      <xs:element name="idSGO" nillable="true" type="xs:string"/>
+      <xs:element name="tipoOrden" nillable="true" type="xs:short"/>
+      <xs:element name="motivoNoResolucion" nillable="true" type="xs:string"/>
+      <xs:element name="telelectura" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="suspensionLevel" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="geolocalization" nillable="true" type="tns:Geolocalization"/>
+      <xs:element minOccurs="0" name="motivoCambioContador" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Geolocalization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="longitude" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="latitude" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="coordinatesType" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="codificationType" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="captureDate" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DireccionOrdenExternaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPoblacion" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idLocalidad" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idCalle" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="numero" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="textoDireccion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTResolutionElement">
+    <xs:sequence>
+      <xs:element name="installedOrRetired" nillable="true" type="xs:boolean"/>
+      <xs:element name="meterDial" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="meterBrandID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterModel" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterGauge" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="serialNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="communicationModule" nillable="true" type="xs:string"/>
+      <xs:element name="manufacturedYear" nillable="true" type="xs:int"/>
+      <xs:element name="installationDate" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="emplacement" nillable="true" type="xs:string"/>
+      <xs:element name="key" nillable="true" type="xs:int"/>
+      <xs:element name="batteryRow" nillable="true" type="xs:int"/>
+      <xs:element name="batteryColumn" nillable="true" type="xs:int"/>
+      <xs:element name="dateReading" nillable="true" type="xs:dateTime"/>
+      <xs:element name="readingRegister" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="executorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="executorName" nillable="true" type="xs:string"/>
+      <xs:element name="valveRetention" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="meterInPlace" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="isSPDE" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="isIntegrated" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTResolutionEquipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="installedOrRetired" nillable="true" type="xs:boolean"/>
+      <xs:element name="equipmentType" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="initialIndexReading" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="dateInitialIndexReading" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="equipmentVHF" nillable="true" type="tns:EquipmentVHF"/>
+      <xs:element minOccurs="0" name="equipmentIMETER" nillable="true" type="tns:EquipmentIMETER"/>
+      <xs:element minOccurs="0" name="equipmentBusVHF" nillable="true" type="tns:EquipmentBusVHF"/>
+      <xs:element minOccurs="0" name="equipmentLoRaWAN" nillable="true" type="tns:EquipmentLoRaWAN"/>
+      <xs:element minOccurs="0" name="equipmentBusNBIOT" nillable="true" type="tns:EquipmentBusNBIOT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EquipmentVHF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vhfPreassembled" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="vhfNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="vhfEquipmentModel" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="vhfPulseWeight" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="vhfMeterPulseWeight" nillable="true" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EquipmentIMETER">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="iMeterNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iMeterOptions" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="iMeterEquipmentModel" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="iMeterPulseWeight" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EquipmentBusVHF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="busVHFumberSerie" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EquipmentLoRaWAN">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="loRaWANPreAssembled" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="loRaWANModelEmisor" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="loRaWANPulseWeight" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="loRaWANMeterPulseWeight" nillable="true" type="xs:float"/>
+      <xs:element minOccurs="0" name="loRaWANEquipmentBrand" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="loRaWANEquipmentModel" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="loRaWANAdditionalKey" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EquipmentBusNBIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="busNBIOTNumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VisitaOrdenExternaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaVisita" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="nifOperario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreOperario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreContratista" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="codIncidencia" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="observaciones" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="contactoVisita" nillable="true" type="tns:ContactoVisitaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactoVisitaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codVinculacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idDocFirma" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="personaVisita" nillable="true" type="tns:PersonaVisitaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonaVisitaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nif" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearOrdenExternaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:peticionOrdenExternaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="peticionOrdenExternaDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idOrden" type="xs:int"/>
+          <xs:element minOccurs="0" name="ordenCreada" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="genericoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:resultado"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoDTO">
+    <xs:sequence>
+      <xs:element name="codigoError" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcionError" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseWrapperInformarVisita">
+    <xs:sequence>
+      <xs:element name="return" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="operationalSiteID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="installationID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemOrigin" type="xs:string"/>
+      <xs:element name="otClassID" type="xs:int"/>
+      <xs:element minOccurs="0" name="otOriginID" type="xs:string"/>
+      <xs:element minOccurs="0" name="otGotID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="multipleRefreshDataResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:OTMass"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTMass">
+    <xs:sequence>
+      <xs:element name="ot" nillable="true" type="tns:OT"/>
+      <xs:element name="error" nillable="true" type="tns:error"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="otData" nillable="true" type="tns:OTData"/>
+      <xs:element minOccurs="0" name="clientData" nillable="true" type="tns:ClientData"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otElements" nillable="true" type="tns:OTElement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otReadings" nillable="true" type="tns:OTReading"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otCustomerUnpaidBills" nillable="true" type="tns:OTCustUnpaidBill"/>
+      <xs:element minOccurs="0" name="otCustomerDebt" nillable="true" type="tns:OTCustomerDebt"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otComments" nillable="true" type="tns:OTComment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="operationalSiteID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="installationID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemOrigin" nillable="true" type="xs:string"/>
+      <xs:element name="otClassID" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="otOriginID" nillable="true" type="xs:string"/>
+      <xs:element name="createDate" nillable="true" type="xs:dateTime"/>
+      <xs:element name="requestDate" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="otTypeID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetType" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetCode" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetName" nillable="true" type="xs:string"/>
+      <xs:element name="streetNumber" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="blockHouse" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ladder" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="floor" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="door" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="addressComplement" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="originMotiveDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerContract" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="element" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="classElement" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="elementComment" nillable="true" type="xs:string"/>
+      <xs:element name="key" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="emplacement" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="geographicalCriterion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="hydraulicCriterion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="readingArea" nillable="true" type="xs:string"/>
+      <xs:element name="remoteMeterReading" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="originalLotNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="completeAddress" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="duplicate" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="gate" nillable="true" type="xs:string"/>
+      <xs:element name="km" nillable="true" type="xs:decimal"/>
+      <xs:element name="supplyPointId" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="district" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="motiveCC" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemOriginCreationUser" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="geolocalization" nillable="true" type="tns:Geolocalization"/>
+      <xs:element minOccurs="0" name="suspensionLevel" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="debtType" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="replacementInvoice" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="remoteMeterReadingProposal" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="typeRemoteMeterProposal" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="typeRemoteMeter" nillable="true" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClientData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customerComments" nillable="true" type="xs:string"/>
+      <xs:element name="clientNotify" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="customerType" nillable="true" type="xs:string"/>
+      <xs:element name="customerCiteFrom" nillable="true" type="xs:dateTime"/>
+      <xs:element name="customerCiteUntil" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="contactName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="contactAddress" nillable="true" type="xs:string"/>
+      <xs:element name="contactTelephone1" nillable="true" type="xs:long"/>
+      <xs:element name="contactTelephone2" nillable="true" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="emplacement" nillable="true" type="xs:string"/>
+      <xs:element name="manufacturedYear" nillable="true" type="xs:int"/>
+      <xs:element name="key" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="classElement" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="classElementDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="originalElementIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="originalElementDescription" nillable="true" type="xs:string"/>
+      <xs:element name="meterDial" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="meterBrandID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterModel" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterGauge" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="serialNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="communicationModule" nillable="true" type="xs:string"/>
+      <xs:element name="installationDate" nillable="true" type="xs:dateTime"/>
+      <xs:element name="batteryRow" nillable="true" type="xs:int"/>
+      <xs:element name="batteryColumn" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="supplyConnectionID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="supplyConnectionMaterialCode" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="supplyConnectionMaterialDescription" nillable="true" type="xs:string"/>
+      <xs:element name="supplyConnectionLength" nillable="true" type="xs:decimal"/>
+      <xs:element name="valveRetention" nillable="true" type="xs:boolean"/>
+      <xs:element name="remoteMeterReadingInstalled" nillable="true" type="xs:boolean"/>
+      <xs:element name="estimatedMaxConsumption" nillable="true" type="xs:decimal"/>
+      <xs:element name="estimatedMinConsumption" nillable="true" type="xs:decimal"/>
+      <xs:element name="equipment" nillable="true" type="tns:OTEquipment"/>
+      <xs:element name="supplyType" nillable="true" type="xs:short"/>
+      <xs:element name="isIntegrated" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTEquipment">
+    <xs:sequence>
+      <xs:element name="typeEquipment" nillable="true" type="xs:int"/>
+      <xs:element name="installationDate" nillable="true" type="xs:dateTime"/>
+      <xs:element name="oTVHFTechnology" nillable="true" type="tns:OTVHFTechnology"/>
+      <xs:element name="oTIMeterTechnology" nillable="true" type="tns:OTIMeterTechnology"/>
+      <xs:element name="oTBusVHFTechnology" nillable="true" type="tns:OTBusVHFTechnology"/>
+      <xs:element name="oTLoRaWANTechnology" nillable="true" type="tns:OTLoRaWANTechnology"/>
+      <xs:element name="oTBusNBIOTTechnology" nillable="true" type="tns:OTBusNBIOTTechnology"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTVHFTechnology">
+    <xs:sequence>
+      <xs:element name="number" nillable="true" type="xs:string"/>
+      <xs:element name="pulseWeight" nillable="true" type="xs:int"/>
+      <xs:element name="model" nillable="true" type="xs:int"/>
+      <xs:element name="preAssembled" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="meterPulseWeight" nillable="true" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTIMeterTechnology">
+    <xs:sequence>
+      <xs:element name="number" nillable="true" type="xs:string"/>
+      <xs:element name="pulseWeight" nillable="true" type="xs:int"/>
+      <xs:element name="options" nillable="true" type="xs:int"/>
+      <xs:element name="model" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTBusVHFTechnology">
+    <xs:sequence>
+      <xs:element name="busVHFNumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTLoRaWANTechnology">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="preAssembled" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="modelEmisor" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="pulseWeight" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="meterPulseWeight" nillable="true" type="xs:float"/>
+      <xs:element minOccurs="0" name="equipmentBrand" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="equipmentModel" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="additionalKey" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTBusNBIOTTechnology">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="busNBIOTNumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTReading">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serialNumber" nillable="true" type="xs:string"/>
+      <xs:element name="dial" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="yearPeriod" nillable="true" type="xs:string"/>
+      <xs:element name="readingDate" nillable="true" type="xs:dateTime"/>
+      <xs:element name="readingRegister" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="classReading" nillable="true" type="xs:string"/>
+      <xs:element name="consumed" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="observationsReading" nillable="true" type="xs:string"/>
+      <xs:element name="isBilled" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTCustUnpaidBill">
+    <xs:sequence>
+      <xs:element name="reclaimed" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="statusBill" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="yearPeriod" nillable="true" type="xs:string"/>
+      <xs:element name="billImport" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTCustomerDebt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reclaimedBills" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="initialYearPeriodReclaimed" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="finalYearPeriodReclaimed" nillable="true" type="xs:string"/>
+      <xs:element name="customerTotalDebt" nillable="true" type="xs:decimal"/>
+      <xs:element name="amountReplacementSupply" nillable="true" type="xs:decimal"/>
+      <xs:element name="amountGivenToAccount" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTComment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateTimeComment" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="textComment" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idComment" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="creationUser" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoError" type="xs:string"/>
+      <xs:element name="descripcionError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="identificador" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdenTrabajoDTO">
+    <xs:sequence>
+      <xs:element name="tipoOrden" nillable="true" type="xs:short"/>
+      <xs:element name="motivoOrden" nillable="true" type="xs:short"/>
+      <xs:element name="fechaCreacionOrden" nillable="true" type="xs:dateTime"/>
+      <xs:element name="numContrato" nillable="true" type="xs:int"/>
+      <xs:element name="idPtoServicio" nillable="true" type="xs:int"/>
+      <xs:element name="fechaEstimdaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="observaciones" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoObsCambCont" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoReparacion" nillable="true" type="xs:string"/>
+      <xs:element name="anyoExpediente" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="numeroExpediente" nillable="true" type="xs:string"/>
+      <xs:element name="instalaValvulaPaso" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="geolocalization" nillable="true" type="tns:Geolocalization"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VisitaOrdenDTO">
+    <xs:sequence>
+      <xs:element name="fechaCita" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="idFranjaHoraria" nillable="true" type="xs:string"/>
+      <xs:element name="fechaVisita" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="idOperario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreOperario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="cifContratista" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreContratista" nillable="true" type="xs:string"/>
+      <xs:element name="idIncidenciaVisita" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="descIncidencia" nillable="true" type="xs:string"/>
+      <xs:element name="visitaRealizada" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="obsIncidenciaOtros" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="distrito" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="contactoVisitaOrden" nillable="true" type="tns:ContactoVisitaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdenRelacionadaDTO">
+    <xs:sequence>
+      <xs:element name="tipoRelacionOrden" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="codigoOrdenRelacionada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearOrdenTrabajoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetDocumentoOrdenTrabajo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ordenes" type="tns:arrayOfOrdenObservacionesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arrayOfOrdenObservacionesDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="orden" nillable="true" type="tns:ordenObservacionesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ordenObservacionesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codOrden" type="xs:string"/>
+      <xs:element minOccurs="0" name="observaciones" type="tns:arrayOfObservacionesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arrayOfObservacionesDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="observacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDocumentoOrdenTrabajoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:DocumentoImpresionPendienteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentoImpresionPendienteDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="pdf" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResultadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoError" type="xs:string"/>
+      <xs:element name="descripcionError" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTResolution">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="otResolutionData" nillable="true" type="tns:OTResolutionData"/>
+      <xs:element maxOccurs="unbounded" name="otResolutionElements" nillable="true" type="tns:OTResolutionElement"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="otResolutionEquipments" nillable="true" type="tns:OTResolutionEquipment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vistitComments" nillable="true" type="tns:VisitComment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OTResolutionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="operationalSiteID" type="xs:string"/>
+      <xs:element minOccurs="0" name="installationID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemOrigin" nillable="true" type="xs:string"/>
+      <xs:element name="otClass" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="otOrigin" nillable="true" type="xs:string"/>
+      <xs:element name="endDateOt" nillable="true" type="xs:dateTime"/>
+      <xs:element name="endLastTaskOt" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="finalSolution" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="nonExecutionMotive" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="solutionDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="executorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="executorName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorName" nillable="true" type="xs:string"/>
+      <xs:element name="transmitterInstalled" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="suspensionLevel" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="geolocalization" nillable="true" type="tns:Geolocalization"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VisitComment">
+    <xs:sequence>
+      <xs:element name="visitOrComment" nillable="true" type="xs:boolean"/>
+      <xs:element name="dateTimeVisitComment" nillable="true" type="xs:dateTime"/>
+      <xs:element name="failedVisit" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="observationType" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="textComment" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="executorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="executorName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorIdentifier" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyExecutorName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseWrapperResolveOT">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMarcasYModelosResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:MarcaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MarcaDTO">
+    <xs:sequence>
+      <xs:element name="marcid" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="marcdesc" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="marchstusu" nillable="true" type="xs:string"/>
+      <xs:element name="marchsthora" nillable="true" type="xs:dateTime"/>
+      <xs:element name="marcbaja" nillable="true" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codigosSPDE" nillable="true" type="tns:CodigoSPDEDTO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modelos" nillable="true" type="tns:ModeloDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CodigoSPDEDTO">
+    <xs:sequence>
+      <xs:element name="spdecodigo" nillable="true" type="xs:string"/>
+      <xs:element name="spdedesde" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="spdehasta" nillable="true" type="xs:short"/>
+      <xs:element minOccurs="0" name="spdeactivo" nillable="true" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="spdehstusu" nillable="true" type="xs:string"/>
+      <xs:element name="spdehsthora" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ModeloDTO">
+    <xs:sequence>
+      <xs:element name="modbaja" nillable="true" type="xs:boolean"/>
+      <xs:element name="modid" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="moddesc" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="modtipesf" nillable="true" type="xs:string"/>
+      <xs:element name="moddigit" nillable="true" type="xs:int"/>
+      <xs:element name="modtcnid" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="modtcndesc" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="modhstusu" nillable="true" type="xs:string"/>
+      <xs:element name="modhsthora" nillable="true" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codigosSPDE" nillable="true" type="tns:CodigoSPDEDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refreshDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:OT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AquaCISWSAplicationException" type="tns:AquaCISWSAplicationException"/>
+  <xs:complexType name="AquaCISWSAplicationException">
+    <xs:sequence>
+      <xs:element name="code" nillable="true" type="xs:string"/>
+      <xs:element name="message" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="variables" type="xs:string"/>
+      <xs:element name="level" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="responseWrapperInformarVisita" nillable="true" type="tns:responseWrapperInformarVisita"/>
+  <xs:element name="responseWrapperResolveOT" nillable="true" type="tns:responseWrapperResolveOT"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="crearOrdenExternaResponse">
+    <wsdl:part element="tns:crearOrdenExternaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="informarVisita">
+    <wsdl:part element="tns:informarVisita" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServiceException">
+    <wsdl:part element="ns1:ServiceFault" name="ServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenTrabajoResponse">
+    <wsdl:part element="tns:crearOrdenTrabajoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="multipleRefreshData">
+    <wsdl:part element="tns:multipleRefreshData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshDataResponse">
+    <wsdl:part element="tns:refreshDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoOrdenTrabajoResponse">
+    <wsdl:part element="tns:getDocumentoOrdenTrabajoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resolveOT">
+    <wsdl:part element="tns:resolveOT" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCalibres">
+    <wsdl:part element="tns:getCalibres" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AquaCISWSAplicationException">
+    <wsdl:part element="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="multipleRefreshDataResponse">
+    <wsdl:part element="tns:multipleRefreshDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenExterna">
+    <wsdl:part element="tns:crearOrdenExterna" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMarcasYModelosResponse">
+    <wsdl:part element="tns:getMarcasYModelosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCalibresResponse">
+    <wsdl:part element="tns:getCalibresResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="informarVisitaResponse">
+    <wsdl:part element="tns:responseWrapperInformarVisita" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenTrabajo">
+    <wsdl:part element="tns:crearOrdenTrabajo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoOrdenTrabajo">
+    <wsdl:part element="tns:getDocumentoOrdenTrabajo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMarcasYModelos">
+    <wsdl:part element="tns:getMarcasYModelos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resolveOTResponse">
+    <wsdl:part element="tns:responseWrapperResolveOT" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshData">
+    <wsdl:part element="tns:refreshData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InterfazGenericaOrdenesServicioWSBeanSEI">
+    <wsdl:operation name="getCalibres">
+      <wsdl:input message="tns:getCalibres" name="getCalibres">
+    </wsdl:input>
+      <wsdl:output message="tns:getCalibresResponse" name="getCalibresResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenExterna">
+      <wsdl:input message="tns:crearOrdenExterna" name="crearOrdenExterna">
+    </wsdl:input>
+      <wsdl:output message="tns:crearOrdenExternaResponse" name="crearOrdenExternaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="informarVisita">
+      <wsdl:input message="tns:informarVisita" name="informarVisita">
+    </wsdl:input>
+      <wsdl:output message="tns:informarVisitaResponse" name="informarVisitaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="multipleRefreshData">
+      <wsdl:input message="tns:multipleRefreshData" name="multipleRefreshData">
+    </wsdl:input>
+      <wsdl:output message="tns:multipleRefreshDataResponse" name="multipleRefreshDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenTrabajo">
+      <wsdl:input message="tns:crearOrdenTrabajo" name="crearOrdenTrabajo">
+    </wsdl:input>
+      <wsdl:output message="tns:crearOrdenTrabajoResponse" name="crearOrdenTrabajoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoOrdenTrabajo">
+      <wsdl:input message="tns:getDocumentoOrdenTrabajo" name="getDocumentoOrdenTrabajo">
+    </wsdl:input>
+      <wsdl:output message="tns:getDocumentoOrdenTrabajoResponse" name="getDocumentoOrdenTrabajoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resolveOT">
+      <wsdl:input message="tns:resolveOT" name="resolveOT">
+    </wsdl:input>
+      <wsdl:output message="tns:resolveOTResponse" name="resolveOTResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMarcasYModelos">
+      <wsdl:input message="tns:getMarcasYModelos" name="getMarcasYModelos">
+    </wsdl:input>
+      <wsdl:output message="tns:getMarcasYModelosResponse" name="getMarcasYModelosResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refreshData">
+      <wsdl:input message="tns:refreshData" name="refreshData">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshDataResponse" name="refreshDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazGenericaOrdenesServicioWSBeanSEIImplServiceSoapBinding" type="tns:InterfazGenericaOrdenesServicioWSBeanSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCalibres">
+      <soap:operation soapAction="getCalibres" style="document"/>
+      <wsdl:input name="getCalibres">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCalibresResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException">
+        <soap:fault name="AquaCISWSAplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenExterna">
+      <soap:operation soapAction="crearOrdenExterna" style="document"/>
+      <wsdl:input name="crearOrdenExterna">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crearOrdenExternaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException">
+        <soap:fault name="AquaCISWSAplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="informarVisita">
+      <soap:operation soapAction="informarVisita" style="document"/>
+      <wsdl:input name="informarVisita">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="informarVisitaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="multipleRefreshData">
+      <soap:operation soapAction="multipleRefreshData" style="document"/>
+      <wsdl:input name="multipleRefreshData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="multipleRefreshDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenTrabajo">
+      <soap:operation soapAction="crearOrdenTrabajo" style="document"/>
+      <wsdl:input name="crearOrdenTrabajo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crearOrdenTrabajoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException">
+        <soap:fault name="AquaCISWSAplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoOrdenTrabajo">
+      <soap:operation soapAction="getDocumentoOrdenTrabajo" style="document"/>
+      <wsdl:input name="getDocumentoOrdenTrabajo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDocumentoOrdenTrabajoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resolveOT">
+      <soap:operation soapAction="resolveOT" style="document"/>
+      <wsdl:input name="resolveOT">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resolveOTResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMarcasYModelos">
+      <soap:operation soapAction="getMarcasYModelos" style="document"/>
+      <wsdl:input name="getMarcasYModelos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMarcasYModelosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException">
+        <soap:fault name="AquaCISWSAplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refreshData">
+      <soap:operation soapAction="refreshData" style="document"/>
+      <wsdl:input name="refreshData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refreshDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazGenericaOrdenesServicioWSBeanSEIImplService">
+    <wsdl:port binding="tns:InterfazGenericaOrdenesServicioWSBeanSEIImplServiceSoapBinding" name="InterfazGenericaOrdenesServicioWSBeanSEIImplPort">
+      <soap:address location="http://aquacis-cf.ceaqueretaro.gob.mx/Comercial/services/InterfazGenericaOrdenesServicioWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,878 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://interfazgenericagestiondeuda.occamcxf.occam.agbar.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="InterfazGenericaGestionDeudaWSBeanSEIImplService" targetNamespace="http://interfazgenericagestiondeuda.occamcxf.occam.agbar.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://interfazgenericagestiondeuda.occamcxf.occam.agbar.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://interfazgenericagestiondeuda.occamcxf.occam.agbar.com/">
+  <xs:element name="avisarPago">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="documentoPago" nillable="true" type="xs:string"/>
+        <xs:element name="entidad" nillable="true" type="xs:int"/>
+        <xs:element name="importe" nillable="true" type="xs:decimal"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="avisarPagoResponse" type="tns:avisarPagoResponse"/>
+  <xs:element name="cancelarReferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="referencia" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelarReferenciaResponse" type="tns:cancelarReferenciaResponse"/>
+  <xs:element name="cobrarReferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="referencia" type="xs:string"/>
+        <xs:element minOccurs="0" name="importe" nillable="true" type="xs:decimal"/>
+        <xs:element name="datosCobro" type="tns:datosCobroDTO"/>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cobrarReferenciaFrmPago">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="referencia" type="xs:string"/>
+        <xs:element minOccurs="0" name="importe" nillable="true" type="xs:decimal"/>
+        <xs:element name="datosCobro" type="tns:datosCobroFrmPagoDTO"/>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cobrarReferenciaFrmPagoResponse" type="tns:cobrarReferenciaFrmPagoResponse"/>
+  <xs:element name="cobrarReferenciaResponse" type="tns:cobrarReferenciaResponse"/>
+  <xs:element name="getContratoPorContratoConDeuda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entrada" type="tns:entradaContratoPorContratoDeudaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratoPorContratoConDeudaResponse" type="tns:getContratoPorContratoConDeudaResponse"/>
+  <xs:element name="getContratosPorNifconDeuda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entrada" type="tns:entradaContratosPorNIFDeudaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratosPorNifconDeudaResponse" type="tns:getContratosPorNifconDeudaResponse"/>
+  <xs:element name="getDeuda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="tipoIdentificador" nillable="true" type="xs:string"/>
+        <xs:element name="valor" nillable="true" type="xs:string"/>
+        <xs:element name="explotacion" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDeudaContrato" type="tns:getDeudaContrato"/>
+  <xs:element name="getDeudaContratoBloqueoCobro" type="tns:getDeudaContratoBloqueoCobro"/>
+  <xs:element name="getDeudaContratoBloqueoCobroResponse" type="tns:getDeudaContratoBloqueoCobroResponse"/>
+  <xs:element name="getDeudaContratoResponse" type="tns:getDeudaContratoResponse"/>
+  <xs:element name="getDeudaResponse" type="tns:getDeudaResponse"/>
+  <xs:element name="getDeudaTotalConFacturas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="contrato" nillable="true" type="xs:int"/>
+        <xs:element minOccurs="0" name="referenciaCatastral" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="explotacion" nillable="true" type="xs:int"/>
+        <xs:element minOccurs="0" name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDeudaTotalConFacturasResponse" type="tns:getDeudaTotalConFacturasResponse"/>
+  <xs:element name="getDocumentoPago">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="contrato" nillable="true" type="xs:int"/>
+        <xs:element name="nif" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="docs" nillable="true" type="tns:documentosImpresionDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDocumentoPagoResponse" type="tns:getDocumentoPagoResponse"/>
+  <xs:element name="getDocumentoPagoXML" type="tns:getDocumentoPagoXML"/>
+  <xs:element name="getDocumentoPagoXMLResponse" type="tns:getDocumentoPagoXMLResponse"/>
+  <xs:element name="getImpagadosContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="contrato" nillable="true" type="xs:int"/>
+        <xs:element name="nif" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getImpagadosContratoResponse" type="tns:getImpagadosContratoResponse"/>
+  <xs:element name="resultado" type="tns:resultadoDTO"/>
+  <xs:complexType name="getDeudaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoGetDeuda"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoGetDeuda">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deuda" type="tns:deuda"/>
+          <xs:element minOccurs="0" name="reultado" type="tns:resultadoDTO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="genericoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:resultado"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deuda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ciclosAnteriores" type="xs:int"/>
+      <xs:element minOccurs="0" name="ciclosTotales" type="xs:int"/>
+      <xs:element minOccurs="0" name="cuentaCatastral" type="xs:string"/>
+      <xs:element minOccurs="0" name="deuda" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="deudaComision" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="deudaTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentoPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentoPagoAnterior" type="xs:string"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mensaje" nillable="true" type="tns:mensaje"/>
+      <xs:element minOccurs="0" name="nombreCliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="saldoAnterior" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="saldoAnteriorComision" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="saldoAnteriorTotal" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mensaje">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoMensaje" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcionMensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoDTO">
+    <xs:sequence>
+      <xs:element name="codigoError" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcionError" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entradaContratosPorNIFDeudaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+      <xs:element minOccurs="0" name="nif" type="xs:string"/>
+      <xs:element minOccurs="0" name="sociedadGestora" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getContratosPorNifconDeudaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoContratosPorNIFDeudaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoContratosPorNIFDeudaDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="avisos" nillable="true" type="tns:avisoDTO"/>
+          <xs:element minOccurs="0" name="codigoError" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contratos" nillable="true" type="tns:contratoDeudaDTO"/>
+          <xs:element minOccurs="0" name="descripcionError" type="xs:string"/>
+          <xs:element minOccurs="0" name="procesoImpagadoSN" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="avisoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoWarning" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcionWarning" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contratoDeudaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cliente" type="xs:string"/>
+      <xs:element minOccurs="0" name="contrato" type="xs:string"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="facturas" nillable="true" type="tns:facturasPendientesDTO"/>
+      <xs:element minOccurs="0" name="importe" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="localidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="nif" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="plazos" nillable="true" type="tns:plazosPagoPendientesDTO"/>
+      <xs:element minOccurs="0" name="procesoImpagadoSN" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="facturasPendientesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anyo" type="xs:short"/>
+      <xs:element minOccurs="0" name="ciclo" type="xs:int"/>
+      <xs:element minOccurs="0" name="cliente" type="xs:int"/>
+      <xs:element minOccurs="0" name="cobConj" type="xs:string"/>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="estado" type="xs:short"/>
+      <xs:element minOccurs="0" name="factura" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaCobro" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaEmision" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="firmada" type="xs:short"/>
+      <xs:element minOccurs="0" name="importe" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="importeTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="impuestos" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="origen" type="xs:short"/>
+      <xs:element minOccurs="0" name="otros" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="periodo" type="xs:string"/>
+      <xs:element minOccurs="0" name="procesoImpagadoSN" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="rafaga" type="xs:string"/>
+      <xs:element minOccurs="0" name="recargo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="referencia" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCobro" type="xs:string"/>
+      <xs:element minOccurs="0" name="URL" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="plazosPagoPendientesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaPrevista" type="xs:string"/>
+      <xs:element minOccurs="0" name="formaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="gestion" type="xs:int"/>
+      <xs:element minOccurs="0" name="idPlazo" type="xs:int"/>
+      <xs:element minOccurs="0" name="importe" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="avisarPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeudaTotalConFacturasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoGetDeudaConFacturas"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoGetDeudaConFacturas">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deudaTotalFacturas" type="tns:deudaTotalFacturas"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="deudaTotalFacturas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidadFacturas" type="xs:int"/>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="cuentaCatastral" type="xs:string"/>
+      <xs:element minOccurs="0" name="deudaTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:short"/>
+      <xs:element minOccurs="0" name="facturas" type="tns:facturasDeuda"/>
+      <xs:element minOccurs="0" name="nombreCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="facturasDeuda">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="factura" nillable="true" type="tns:datosFacturaDeuda"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datosFacturaDeuda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ciclo" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoEstado" type="xs:short"/>
+      <xs:element minOccurs="0" name="codigoTipoFactura" type="xs:short"/>
+      <xs:element minOccurs="0" name="estado" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="importeTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="numFactura" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenciaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoFactura" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeudaContratoBloqueoCobro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoIdentificador" type="xs:string"/>
+      <xs:element minOccurs="0" name="valor" type="xs:string"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeudaContratoBloqueoCobroResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoGetDeudaContratoBloqueo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoGetDeudaContratoBloqueo">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deudaContratoBloqueoCobro" type="tns:deudaContratoBloqueoCobro"/>
+          <xs:element minOccurs="0" name="reultado" type="tns:resultadoDTO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="deudaContratoBloqueoCobro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloquearCobro" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="cuentaCatastral" type="xs:string"/>
+      <xs:element minOccurs="0" name="deuda" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mensaje" nillable="true" type="tns:mensaje"/>
+      <xs:element minOccurs="0" name="nombreCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getImpagadosContratoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:impagadosContratoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="impagadosContratoDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="avisos" nillable="true" type="tns:avisoDTO"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="facturasPendientes" nillable="true" type="tns:facturasPendientesDTO"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="plazosPagoPendientes" nillable="true" type="tns:plazosPagoPendientesDTO"/>
+          <xs:element minOccurs="0" name="saldoCuentaDTO" type="tns:saldoCuentaDTO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="saldoCuentaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="saldoBloqueado" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="saldoCompensar" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="saldoDisponible" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="saldoTotal" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entradaContratoPorContratoDeudaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+      <xs:element minOccurs="0" name="sociedad" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getContratoPorContratoConDeudaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoContratoPorContratoDeudaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoContratoPorContratoDeudaDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="aviso" type="tns:avisoDTO"/>
+          <xs:element minOccurs="0" name="codigoError" type="xs:int"/>
+          <xs:element minOccurs="0" name="contrato" type="tns:contratoDeudaDTO"/>
+          <xs:element minOccurs="0" name="descripcionError" type="xs:string"/>
+          <xs:element minOccurs="0" name="procesoImpagadoSN" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="documentosImpresionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="facturasPendientes" nillable="true" type="tns:facturasPendientesDTO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="plazosPagoPendientes" nillable="true" type="tns:plazosPagoPendientesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDocumentoPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoDeudaPdteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentoDeudaPdteDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pdf" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="rafagaPago" type="xs:string"/>
+          <xs:element minOccurs="0" name="referencia" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getDocumentoPagoXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="nif" type="xs:string"/>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+      <xs:element minOccurs="0" name="docs" type="tns:documentosImpresionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDocumentoPagoXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoXMLDeudaPdteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentoXMLDeudaPdteDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="rafagaPago" type="xs:string"/>
+          <xs:element minOccurs="0" name="referencia" type="xs:string"/>
+          <xs:element minOccurs="0" name="XML" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getDeudaContrato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoIdentificador" type="xs:string"/>
+      <xs:element minOccurs="0" name="valor" type="xs:string"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDeudaContratoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoGetDeudaContrato"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoGetDeudaContrato">
+    <xs:complexContent>
+      <xs:extension base="tns:genericoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deudaContrato" type="tns:deudaContrato"/>
+          <xs:element minOccurs="0" name="reultado" type="tns:resultadoDTO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="deudaContrato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cuentaCatastral" type="xs:string"/>
+      <xs:element minOccurs="0" name="deuda" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="direccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="explotacion" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mensaje" nillable="true" type="tns:mensaje"/>
+      <xs:element minOccurs="0" name="nombreCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelarReferenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datosCobroDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="banco" type="xs:short"/>
+      <xs:element minOccurs="0" name="cajero" type="xs:string"/>
+      <xs:element minOccurs="0" name="comercio" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="nif" type="xs:string"/>
+      <xs:element minOccurs="0" name="tarjeta" type="xs:string"/>
+      <xs:element minOccurs="0" name="terminal" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticket" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cobrarReferenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datosCobroFrmPagoDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:datosCobroDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="efectivoTarjeta" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="cobrarReferenciaFrmPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AquaCISWebServiceException" type="tns:AquaCISWebServiceException"/>
+  <xs:complexType name="AquaCISWebServiceException">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDeudaTotalConFacturas">
+    <wsdl:part element="tns:getDeudaTotalConFacturas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImpagadosContratoResponse">
+    <wsdl:part element="tns:getImpagadosContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaContratoBloqueoCobro">
+    <wsdl:part element="tns:getDeudaContratoBloqueoCobro" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNifconDeudaResponse">
+    <wsdl:part element="tns:getContratosPorNifconDeudaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImpagadosContrato">
+    <wsdl:part element="tns:getImpagadosContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaContratoResponse">
+    <wsdl:part element="tns:getDeudaContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoPorContratoConDeuda">
+    <wsdl:part element="tns:getContratoPorContratoConDeuda" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaResponse">
+    <wsdl:part element="tns:getDeudaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="avisarPagoResponse">
+    <wsdl:part element="tns:avisarPagoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaTotalConFacturasResponse">
+    <wsdl:part element="tns:getDeudaTotalConFacturasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoPagoXML">
+    <wsdl:part element="tns:getDocumentoPagoXML" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarReferencia">
+    <wsdl:part element="tns:cancelarReferencia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoPorContratoConDeudaResponse">
+    <wsdl:part element="tns:getContratoPorContratoConDeudaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cobrarReferencia">
+    <wsdl:part element="tns:cobrarReferencia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarReferenciaResponse">
+    <wsdl:part element="tns:cancelarReferenciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeuda">
+    <wsdl:part element="tns:getDeuda" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosPorNifconDeuda">
+    <wsdl:part element="tns:getContratosPorNifconDeuda" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="avisarPago">
+    <wsdl:part element="tns:avisarPago" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AquaCISWebServiceException">
+    <wsdl:part element="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoPago">
+    <wsdl:part element="tns:getDocumentoPago" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cobrarReferenciaResponse">
+    <wsdl:part element="tns:cobrarReferenciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaContratoBloqueoCobroResponse">
+    <wsdl:part element="tns:getDeudaContratoBloqueoCobroResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeudaContrato">
+    <wsdl:part element="tns:getDeudaContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoPagoXMLResponse">
+    <wsdl:part element="tns:getDocumentoPagoXMLResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDocumentoPagoResponse">
+    <wsdl:part element="tns:getDocumentoPagoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cobrarReferenciaFrmPagoResponse">
+    <wsdl:part element="tns:cobrarReferenciaFrmPagoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cobrarReferenciaFrmPago">
+    <wsdl:part element="tns:cobrarReferenciaFrmPago" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InterfazGenericaGestionDeudaWSBeanSEI">
+    <wsdl:operation name="getDeuda">
+      <wsdl:input message="tns:getDeuda" name="getDeuda">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeudaResponse" name="getDeudaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNifconDeuda">
+      <wsdl:input message="tns:getContratosPorNifconDeuda" name="getContratosPorNifconDeuda">
+    </wsdl:input>
+      <wsdl:output message="tns:getContratosPorNifconDeudaResponse" name="getContratosPorNifconDeudaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="avisarPago">
+      <wsdl:input message="tns:avisarPago" name="avisarPago">
+    </wsdl:input>
+      <wsdl:output message="tns:avisarPagoResponse" name="avisarPagoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaTotalConFacturas">
+      <wsdl:input message="tns:getDeudaTotalConFacturas" name="getDeudaTotalConFacturas">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeudaTotalConFacturasResponse" name="getDeudaTotalConFacturasResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaContratoBloqueoCobro">
+      <wsdl:input message="tns:getDeudaContratoBloqueoCobro" name="getDeudaContratoBloqueoCobro">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeudaContratoBloqueoCobroResponse" name="getDeudaContratoBloqueoCobroResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getImpagadosContrato">
+      <wsdl:input message="tns:getImpagadosContrato" name="getImpagadosContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getImpagadosContratoResponse" name="getImpagadosContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratoPorContratoConDeuda">
+      <wsdl:input message="tns:getContratoPorContratoConDeuda" name="getContratoPorContratoConDeuda">
+    </wsdl:input>
+      <wsdl:output message="tns:getContratoPorContratoConDeudaResponse" name="getContratoPorContratoConDeudaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoPago">
+      <wsdl:input message="tns:getDocumentoPago" name="getDocumentoPago">
+    </wsdl:input>
+      <wsdl:output message="tns:getDocumentoPagoResponse" name="getDocumentoPagoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoPagoXML">
+      <wsdl:input message="tns:getDocumentoPagoXML" name="getDocumentoPagoXML">
+    </wsdl:input>
+      <wsdl:output message="tns:getDocumentoPagoXMLResponse" name="getDocumentoPagoXMLResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaContrato">
+      <wsdl:input message="tns:getDeudaContrato" name="getDeudaContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeudaContratoResponse" name="getDeudaContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarReferencia">
+      <wsdl:input message="tns:cancelarReferencia" name="cancelarReferencia">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelarReferenciaResponse" name="cancelarReferenciaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cobrarReferencia">
+      <wsdl:input message="tns:cobrarReferencia" name="cobrarReferencia">
+    </wsdl:input>
+      <wsdl:output message="tns:cobrarReferenciaResponse" name="cobrarReferenciaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cobrarReferenciaFrmPago">
+      <wsdl:input message="tns:cobrarReferenciaFrmPago" name="cobrarReferenciaFrmPago">
+    </wsdl:input>
+      <wsdl:output message="tns:cobrarReferenciaFrmPagoResponse" name="cobrarReferenciaFrmPagoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWebServiceException" name="AquaCISWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazGenericaGestionDeudaWSBeanSEIImplServiceSoapBinding" type="tns:InterfazGenericaGestionDeudaWSBeanSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDeuda">
+      <soap:operation soapAction="getDeuda" style="document"/>
+      <wsdl:input name="getDeuda">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeudaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosPorNifconDeuda">
+      <soap:operation soapAction="getContratosPorNifconDeuda" style="document"/>
+      <wsdl:input name="getContratosPorNifconDeuda">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosPorNifconDeudaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="avisarPago">
+      <soap:operation soapAction="avisarPago" style="document"/>
+      <wsdl:input name="avisarPago">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="avisarPagoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaTotalConFacturas">
+      <soap:operation soapAction="getDeudaTotalConFacturas" style="document"/>
+      <wsdl:input name="getDeudaTotalConFacturas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeudaTotalConFacturasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaContratoBloqueoCobro">
+      <soap:operation soapAction="getDeudaContratoBloqueoCobro" style="document"/>
+      <wsdl:input name="getDeudaContratoBloqueoCobro">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeudaContratoBloqueoCobroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getImpagadosContrato">
+      <soap:operation soapAction="getImpagadosContrato" style="document"/>
+      <wsdl:input name="getImpagadosContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getImpagadosContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratoPorContratoConDeuda">
+      <soap:operation soapAction="getContratoPorContratoConDeuda" style="document"/>
+      <wsdl:input name="getContratoPorContratoConDeuda">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratoPorContratoConDeudaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoPago">
+      <soap:operation soapAction="getDocumentoPago" style="document"/>
+      <wsdl:input name="getDocumentoPago">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDocumentoPagoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentoPagoXML">
+      <soap:operation soapAction="getDocumentoPagoXML" style="document"/>
+      <wsdl:input name="getDocumentoPagoXML">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDocumentoPagoXMLResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeudaContrato">
+      <soap:operation soapAction="getDeudaContrato" style="document"/>
+      <wsdl:input name="getDeudaContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeudaContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarReferencia">
+      <soap:operation soapAction="cancelarReferencia" style="document"/>
+      <wsdl:input name="cancelarReferencia">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelarReferenciaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cobrarReferencia">
+      <soap:operation soapAction="cobrarReferencia" style="document"/>
+      <wsdl:input name="cobrarReferencia">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cobrarReferenciaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cobrarReferenciaFrmPago">
+      <soap:operation soapAction="cobrarReferenciaFrmPago" style="document"/>
+      <wsdl:input name="cobrarReferenciaFrmPago">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cobrarReferenciaFrmPagoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWebServiceException">
+        <soap:fault name="AquaCISWebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazGenericaGestionDeudaWSBeanSEIImplService">
+    <wsdl:port binding="tns:InterfazGenericaGestionDeudaWSBeanSEIImplServiceSoapBinding" name="InterfazGenericaGestionDeudaWSBeanSEIImplPort">
+      <soap:address location="http://aquacis-cf.ceaqueretaro.gob.mx/Comercial/services/InterfazGenericaGestionDeudaWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

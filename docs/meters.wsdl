@@ -1,0 +1,1130 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://interfazgenericacontadores.occamcxf.occam.agbar.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="InterfazGenericaContadoresWSBeanSEIImplService" targetNamespace="http://interfazgenericacontadores.occamcxf.occam.agbar.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://interfazgenericacontadores.occamcxf.occam.agbar.com/" xmlns:ns1="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://interfazgenericacontadores.occamcxf.occam.agbar.com/">
+  <xs:import namespace="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com"/>
+  <xs:element name="actualizarContador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="serialNumber" nillable="true" type="xs:string"/>
+        <xs:element name="contadorDTO" nillable="true" type="tns:actualizarContadorDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="actualizarContadorResponse" type="tns:actualizarContadorResponse"/>
+  <xs:element name="getCambiosContadorDeContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idContrato" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCambiosContadorDeContratoResponse" type="tns:getCambiosContadorDeContratoResponse"/>
+  <xs:element name="getContador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="serialNumber" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContadorResponse" type="tns:getContadorResponse"/>
+  <xs:element name="getPuntoServicioPorContador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="listaNumSerieContador" nillable="true" type="xs:string"/>
+        <xs:element name="usuario" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="opciones" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPuntoServicioPorContadorResponse" type="tns:getPuntoServicioPorContadorResponse"/>
+  <xs:complexType name="getContadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoContadorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contador" type="tns:contadorDTO"/>
+      <xs:element minOccurs="0" name="resultado" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contadorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anoFabricacion" type="xs:short"/>
+      <xs:element minOccurs="0" name="averiado" type="xs:string"/>
+      <xs:element minOccurs="0" name="calibre" type="xs:short"/>
+      <xs:element minOccurs="0" name="esfera" type="xs:short"/>
+      <xs:element minOccurs="0" name="estadoContador" type="xs:short"/>
+      <xs:element minOccurs="0" name="fechaInstalacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRetirada" type="xs:string"/>
+      <xs:element minOccurs="0" name="idContador" type="xs:int"/>
+      <xs:element minOccurs="0" name="idPuntoServicio" type="xs:int"/>
+      <xs:element minOccurs="0" name="idSegundaEsfera" type="xs:int"/>
+      <xs:element minOccurs="0" name="marca" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelo" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroSerie" type="xs:string"/>
+      <xs:element minOccurs="0" name="propiedadCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mensajes" nillable="true" type="tns:mensajeError"/>
+      <xs:element minOccurs="0" name="resultado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mensajeError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoError" type="xs:string"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCambiosContadorDeContratoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cambiosContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cambiosContadorDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cambiosContador" nillable="true" type="tns:cambioContadorDTO"/>
+      <xs:element minOccurs="0" name="resultado" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cambioContadorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="calibre" type="xs:int"/>
+      <xs:element minOccurs="0" name="contador" type="xs:string"/>
+      <xs:element minOccurs="0" name="contratista" type="xs:string"/>
+      <xs:element minOccurs="0" name="contrato" type="xs:int"/>
+      <xs:element minOccurs="0" name="direccionPuntoServicio" type="xs:string"/>
+      <xs:element minOccurs="0" name="emplazamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="externo" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaCambioContador" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaInstalContador" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="horaCambioContador" type="xs:string"/>
+      <xs:element minOccurs="0" name="localidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="observacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefonoContrato" type="xs:string"/>
+      <xs:element minOccurs="0" name="zona" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPuntoServicioPorContadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getPuntoServicioPorContadorReturn" type="tns:ListaPuntosServicioContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListaPuntosServicioContadorDTO">
+    <xs:sequence>
+      <xs:element name="puntosServicioContadorDTO" nillable="true" type="tns:ArrayOfPuntosServicioContadorDTO"/>
+      <xs:element name="resultado" nillable="true" type="ns1:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPuntosServicioContadorDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PuntosServicioContadorDTO" nillable="true" type="tns:PuntosServicioContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PuntosServicioContadorDTO">
+    <xs:sequence>
+      <xs:element name="numSerieContador" nillable="true" type="xs:string"/>
+      <xs:element name="puntoServicioDTO" nillable="true" type="tns:ArrayOfPuntoServicioDTO"/>
+      <xs:element name="codigoResultado" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPuntoServicioDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PuntoServicioDTO" nillable="true" type="tns:PuntoServicioDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PuntoServicioDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="direccionPS" nillable="true" type="tns:DireccionPSDTO"/>
+      <xs:element name="descEstructuraTecnica" nillable="true" type="xs:string"/>
+      <xs:element name="codigoExplotacion" nillable="true" type="xs:string"/>
+      <xs:element name="descExplotacion" nillable="true" type="xs:string"/>
+      <xs:element name="codigoZona" nillable="true" type="xs:string"/>
+      <xs:element name="codigoLibreta" nillable="true" type="xs:short"/>
+      <xs:element name="descEmplazamiento" nillable="true" type="xs:string"/>
+      <xs:element name="codigoRecorrido" nillable="true" type="xs:long"/>
+      <xs:element name="tipoSuministro" nillable="true" type="xs:string"/>
+      <xs:element name="obsAlLector" nillable="true" type="xs:string"/>
+      <xs:element name="idEstadoPuntoServicio" nillable="true" type="xs:short"/>
+      <xs:element name="estadoPuntoServicio" nillable="true" type="xs:string"/>
+      <xs:element name="formaDeSuministro" nillable="true" type="xs:string"/>
+      <xs:element name="servicio" nillable="true" type="xs:int"/>
+      <xs:element name="filaBateria" nillable="true" type="xs:short"/>
+      <xs:element name="columnaBateria" nillable="true" type="xs:short"/>
+      <xs:element name="contadorComunitario" nillable="true" type="xs:string"/>
+      <xs:element name="cortePosible" nillable="true" type="xs:string"/>
+      <xs:element name="procesoContratacion" nillable="true" type="xs:int"/>
+      <xs:element name="llaves" nillable="true" type="xs:short"/>
+      <xs:element name="tipoPuntoservicio" nillable="true" type="xs:string"/>
+      <xs:element name="desHabitado" nillable="true" type="xs:string"/>
+      <xs:element name="numBocasIncendio" nillable="true" type="xs:short"/>
+      <xs:element name="numMangueras" nillable="true" type="xs:short"/>
+      <xs:element name="fechaCorte" nillable="true" type="xs:string"/>
+      <xs:element name="calibreAlternativo" nillable="true" type="xs:short"/>
+      <xs:element name="motivoBaja" nillable="true" type="xs:string"/>
+      <xs:element name="licencia2AOcupacion" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLic2AOcupacion" nillable="true" type="xs:string"/>
+      <xs:element name="refCatastral" nillable="true" type="xs:string"/>
+      <xs:element name="snCortadoPorDeuda" nillable="true" type="xs:string"/>
+      <xs:element name="snCortadoPorVencimientoContrato" nillable="true" type="xs:string"/>
+      <xs:element name="snCortadoPeticionManual" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCreacion" nillable="true" type="xs:string"/>
+      <xs:element name="idSector" nillable="true" type="xs:short"/>
+      <xs:element name="descSector" nillable="true" type="xs:string"/>
+      <xs:element name="idSubSector" nillable="true" type="xs:int"/>
+      <xs:element name="descSubSector" nillable="true" type="xs:string"/>
+      <xs:element name="puntoEstrategico" nillable="true" type="xs:string"/>
+      <xs:element name="observaciones" nillable="true" type="tns:ArrayOfObservacionesDTO"/>
+      <xs:element name="contratos" nillable="true" type="tns:ArrayOfContratoAcometidaDTO"/>
+      <xs:element name="contadores" nillable="true" type="tns:ArrayOfContadoresDTO"/>
+      <xs:element name="lecturas" nillable="true" type="tns:ArrayOfLecturasDTO"/>
+      <xs:element name="ordenes" nillable="true" type="tns:ArrayOfOrdenesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DireccionPSDTO">
+    <xs:sequence>
+      <xs:element name="dirTexto" nillable="true" type="xs:string"/>
+      <xs:element name="idCalle" nillable="true" type="xs:int"/>
+      <xs:element name="finca" nillable="true" type="xs:int"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="complementoFinca" nillable="true" type="xs:string"/>
+      <xs:element name="poblacion" nillable="true" type="xs:string"/>
+      <xs:element name="codigoPostal" nillable="true" type="xs:string"/>
+      <xs:element name="coordenadaX" nillable="true" type="xs:string"/>
+      <xs:element name="coordenadaY" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfObservacionesDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ObservacionesDTO" nillable="true" type="tns:ObservacionesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObservacionesDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="fecha" nillable="true" type="xs:string"/>
+      <xs:element name="textObservacion" nillable="true" type="xs:string"/>
+      <xs:element name="usuario" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfContratoAcometidaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContratoAcometidaDTO" nillable="true" type="tns:ContratoAcometidaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContratoAcometidaDTO">
+    <xs:sequence>
+      <xs:element name="cnttnum" nillable="true" type="xs:int"/>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="dirtexto" nillable="true" type="xs:string"/>
+      <xs:element name="cnttestadoId" nillable="true" type="xs:short"/>
+      <xs:element name="cnttestado" nillable="true" type="xs:string"/>
+      <xs:element name="fechaAltaPoliza" nillable="true" type="xs:string"/>
+      <xs:element name="fechaBajaPoliza" nillable="true" type="xs:string"/>
+      <xs:element name="idUso" nillable="true" type="xs:int"/>
+      <xs:element name="descUso" nillable="true" type="xs:string"/>
+      <xs:element name="idPeriodicidad" nillable="true" type="xs:int"/>
+      <xs:element name="descPeriodicidad" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfContadoresDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContadoresDTO" nillable="true" type="tns:ContadoresDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContadoresDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="idMarca" nillable="true" type="xs:short"/>
+      <xs:element name="idModelo" nillable="true" type="xs:short"/>
+      <xs:element name="marca" nillable="true" type="xs:string"/>
+      <xs:element name="modelo" nillable="true" type="xs:string"/>
+      <xs:element name="calibre" nillable="true" type="xs:short"/>
+      <xs:element name="numeroSerie" nillable="true" type="xs:string"/>
+      <xs:element name="fechaInstalacionContador" nillable="true" type="xs:string"/>
+      <xs:element name="fechaBajaContador" nillable="true" type="xs:string"/>
+      <xs:element name="contEstadoId" nillable="true" type="xs:short"/>
+      <xs:element name="estadoContador" nillable="true" type="xs:string"/>
+      <xs:element name="annoFabricacion" nillable="true" type="xs:short"/>
+      <xs:element name="propiedadDeCliente" nillable="true" type="xs:string"/>
+      <xs:element name="tienePrecintoSuspension" nillable="true" type="xs:string"/>
+      <xs:element name="fechaPrecintoSuspension" nillable="true" type="xs:string"/>
+      <xs:element name="fechaDesprecintoSuspension" nillable="true" type="xs:string"/>
+      <xs:element name="tienePrecintoSeguridad" nillable="true" type="xs:string"/>
+      <xs:element name="snTelelectura" nillable="true" type="xs:string"/>
+      <xs:element name="moduloComunicacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfLecturasDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="LecturasDTO" nillable="true" type="tns:LecturasDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LecturasDTO">
+    <xs:sequence>
+      <xs:element name="periodo" nillable="true" type="xs:string"/>
+      <xs:element name="periodicidad" nillable="true" type="xs:string"/>
+      <xs:element name="contrato" nillable="true" type="xs:int"/>
+      <xs:element name="esfera" nillable="true" type="xs:short"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="lectura" nillable="true" type="xs:int"/>
+      <xs:element name="consumo" nillable="true" type="xs:int"/>
+      <xs:element name="origen" nillable="true" type="xs:string"/>
+      <xs:element name="observacion" nillable="true" type="xs:string"/>
+      <xs:element name="estado" nillable="true" type="xs:string"/>
+      <xs:element name="dias" nillable="true" type="xs:int"/>
+      <xs:element name="ajusteEstimado" nillable="true" type="xs:int"/>
+      <xs:element name="ajuste" nillable="true" type="xs:int"/>
+      <xs:element name="saldoBolsa" nillable="true" type="xs:int"/>
+      <xs:element name="otrosAjustes" nillable="true" type="xs:int"/>
+      <xs:element name="snCartel" nillable="true" type="xs:string"/>
+      <xs:element name="metodoEst" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfOrdenesDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="OrdenesDTO" nillable="true" type="tns:OrdenesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdenesDTO">
+    <xs:sequence>
+      <xs:element name="fecha" nillable="true" type="xs:string"/>
+      <xs:element name="estado" nillable="true" type="xs:string"/>
+      <xs:element name="tipo" nillable="true" type="xs:string"/>
+      <xs:element name="motivoCreacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarContadorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anoFabricacion" type="xs:short"/>
+      <xs:element minOccurs="0" name="calibre" type="xs:short"/>
+      <xs:element minOccurs="0" name="marca" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelo" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroSerie" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarContadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" targetNamespace="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" version="1.0">
+<xs:complexType name="ResultadoDTO">
+    <xs:sequence>
+      <xs:element name="codigoError" type="xs:int"/>
+      <xs:element name="descripcionError" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idFactura" nillable="true" type="xs:int"/>
+      <xs:element name="numeroCliente" nillable="true" type="xs:string"/>
+      <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEmision" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="importeEuros" nillable="true" type="xs:decimal"/>
+      <xs:element name="tipoCobro" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCobro" nillable="true" type="xs:dateTime"/>
+      <xs:element name="periodo" nillable="true" type="xs:string"/>
+      <xs:element name="firmada" nillable="true" type="xs:short"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element name="rafaga" nillable="true" type="xs:string"/>
+      <xs:element name="impuestos" nillable="true" type="xs:decimal"/>
+      <xs:element name="fechaVencimiento" nillable="true" type="xs:dateTime"/>
+      <xs:element name="anyo" nillable="true" type="xs:int"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="docArchivado" nillable="true" type="xs:boolean"/>
+      <xs:element name="incluidaPlanPago" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOf_xsd_nillable_int">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="int" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOf_xsd_nillable_string">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ListaMotivosCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element name="listaMotivos" nillable="true" type="tns:ArrayOfMotivoCreacionOrdenDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfMotivoCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MotivoCreacionOrdenDTO" nillable="true" type="tns:MotivoCreacionOrdenDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="MotivoCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element name="idMotivo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="manual" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfTipoOrdenDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoOrdenDTO" nillable="true" type="tns:TipoOrdenDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TipoOrdenDTO">
+    <xs:sequence>
+      <xs:element name="idTipo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentacionDTO">
+    <xs:sequence>
+      <xs:element name="documentos" nillable="true" type="tns:ArrayOf_xsd_nillable_string"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DireccionDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="tipo" nillable="true" type="xs:short"/>
+      <xs:element name="idCalle" nillable="true" type="xs:int"/>
+      <xs:element name="parImpar" nillable="true" type="xs:short"/>
+      <xs:element name="numeroDesde" nillable="true" type="xs:int"/>
+      <xs:element name="finca" nillable="true" type="xs:int"/>
+      <xs:element name="complementoFinca" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="complemento" nillable="true" type="xs:string"/>
+      <xs:element name="texto" nillable="true" type="xs:string"/>
+      <xs:element name="codigoPostal" nillable="true" type="xs:string"/>
+      <xs:element name="idLocalidad" nillable="true" type="xs:int"/>
+      <xs:element name="nombreLocalidad" nillable="true" type="xs:string"/>
+      <xs:element name="idPoblacion" nillable="true" type="xs:int"/>
+      <xs:element name="nombrePoblacion" nillable="true" type="xs:string"/>
+      <xs:element name="idProvincia" nillable="true" type="xs:short"/>
+      <xs:element name="nombreProvincia" nillable="true" type="xs:string"/>
+      <xs:element name="idComunidad" nillable="true" type="xs:short"/>
+      <xs:element name="nombreComunidad" nillable="true" type="xs:string"/>
+      <xs:element name="idPais" nillable="true" type="xs:int"/>
+      <xs:element name="nombrePais" nillable="true" type="xs:string"/>
+      <xs:element name="codigoInternacionalPais" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfVariableDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="VariableDTO" nillable="true" type="tns:VariableDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="VariableDTO">
+    <xs:sequence>
+      <xs:element name="idVariable" nillable="true" type="xs:int"/>
+      <xs:element name="descTipoVariable" nillable="true" type="xs:string"/>
+      <xs:element name="tipoDato" nillable="true" type="xs:short"/>
+      <xs:element name="decimales" nillable="true" type="xs:short"/>
+      <xs:element name="origen" nillable="true" type="xs:short"/>
+      <xs:element name="valor" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DatosPagoDTO">
+    <xs:sequence>
+      <xs:element name="formaPago" nillable="true" type="xs:string"/>
+      <xs:element name="direccionFacturacion" nillable="true" type="xs:string"/>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ListaTiposOrdenDTO">
+    <xs:sequence>
+      <xs:element name="listaTipos" nillable="true" type="tns:ArrayOfTipoOrdenDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoContratoAltaDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="tipoContrato" nillable="true" type="xs:string"/>
+      <xs:element name="datosInmueble" nillable="true" type="xs:string"/>
+      <xs:element name="fechaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEscritura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaFinObra" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DesglosesDTO">
+    <xs:sequence>
+      <xs:element name="desglose" nillable="true" type="tns:ArrayOfDesgloseDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDesgloseDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DesgloseDTO" nillable="true" type="tns:DesgloseDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DesgloseDTO">
+    <xs:sequence>
+      <xs:element name="importe" nillable="true" type="xs:decimal"/>
+      <xs:element name="concepto" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentoDTO">
+    <xs:sequence>
+      <xs:element name="tipo" nillable="true" type="xs:int"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="identificador" nillable="true" type="xs:string"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfHistoricoSuministroDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="HistoricoSuministroDTO" nillable="true" type="tns:HistoricoSuministroDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoSuministroDTO">
+    <xs:sequence>
+      <xs:element name="idCicloContrato" nillable="true" type="xs:int"/>
+      <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="descExplotacion" nillable="true" type="xs:string"/>
+      <xs:element name="idPuntoServicio" nillable="true" type="xs:int"/>
+      <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      <xs:element name="numeroCiclo" nillable="true" type="xs:short"/>
+      <xs:element name="tipoCiclo" nillable="true" type="xs:short"/>
+      <xs:element name="estadoCicloContrato" nillable="true" type="xs:short"/>
+      <xs:element name="codigoZona" nillable="true" type="xs:string"/>
+      <xs:element name="año" nillable="true" type="xs:short"/>
+      <xs:element name="idPeriodicidad" nillable="true" type="xs:short"/>
+      <xs:element name="descPeriodicidad" nillable="true" type="xs:string"/>
+      <xs:element name="periodo" nillable="true" type="xs:short"/>
+      <xs:element name="cicloPeriodicoIncompleto" nillable="true" type="xs:boolean"/>
+      <xs:element name="esfera" nillable="true" type="xs:short"/>
+      <xs:element name="idOrigen" nillable="true" type="xs:string"/>
+      <xs:element name="descOrigen" nillable="true" type="xs:string"/>
+      <xs:element name="idObservacion" nillable="true" type="xs:string"/>
+      <xs:element name="descObservacion" nillable="true" type="xs:string"/>
+      <xs:element name="tipoCalculoConsumoObs" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:dateTime"/>
+      <xs:element name="lectura" nillable="true" type="xs:int"/>
+      <xs:element name="consumo" nillable="true" type="xs:int"/>
+      <xs:element name="contadorAveriado" nillable="true" type="xs:boolean"/>
+      <xs:element name="ajuste" nillable="true" type="xs:int"/>
+      <xs:element name="idModoEstimacion" nillable="true" type="xs:short"/>
+      <xs:element name="descModoEstimacion" nillable="true" type="xs:string"/>
+      <xs:element name="idVerificacion" nillable="true" type="xs:short"/>
+      <xs:element name="descVerificacion" nillable="true" type="xs:string"/>
+      <xs:element name="idSesionVerificacion" nillable="true" type="xs:int"/>
+      <xs:element name="ajusteConsumoPorEstimacion" nillable="true" type="xs:int"/>
+      <xs:element name="consumoAcumuladoBolsaEst" nillable="true" type="xs:int"/>
+      <xs:element name="otrosAjustes" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="RegistrarContactoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idContacto" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ActuacionDTO">
+    <xs:sequence>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="motivo" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfActuacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActuacionDTO" nillable="true" type="tns:ActuacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PuntoSuministroDTO">
+    <xs:sequence>
+      <xs:element name="provincia" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="calle" nillable="true" type="xs:string"/>
+      <xs:element name="numero" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="edificio" nillable="true" type="xs:string"/>
+      <xs:element name="listaDeContadores" nillable="true" type="tns:ArrayOfContratoContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfContratoContadorDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContratoContadorDTO" nillable="true" type="tns:ContratoContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratoContadorDTO">
+    <xs:sequence>
+      <xs:element name="numeroSerie" nillable="true" type="xs:string"/>
+      <xs:element name="estadoContador" nillable="true" type="xs:short"/>
+      <xs:element name="fechaInstalacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaBaja" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FacturaDTO" nillable="true" type="tns:FacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasIdDTO">
+    <xs:sequence>
+      <xs:element name="numFactura" nillable="true" type="xs:string"/>
+      <xs:element name="idFactura" nillable="true" type="xs:int"/>
+      <xs:element name="estado" nillable="true" type="xs:int"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonaDireccionDTO">
+    <xs:sequence>
+      <xs:element name="numeroDireccion" nillable="true" type="xs:short"/>
+      <xs:element name="defecto" nillable="true" type="xs:boolean"/>
+      <xs:element name="idSesion" nillable="true" type="xs:int"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="alaAtencion" nillable="true" type="xs:string"/>
+      <xs:element name="direccion" nillable="true" type="tns:DireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenesServicioDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="ordenesServicios" nillable="true" type="tns:ArrayOfOrdenesServiciosDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfOrdenesServiciosDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="OrdenesServiciosDTO" nillable="true" type="tns:OrdenesServiciosDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenesServiciosDTO">
+    <xs:sequence>
+      <xs:element name="numOrden" nillable="true" type="xs:int"/>
+      <xs:element name="estado" nillable="true" type="xs:int"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDocumentoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentoDTO" nillable="true" type="tns:DocumentoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfPersonaDireccionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PersonaDireccionDTO" nillable="true" type="tns:PersonaDireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ObservacionDTO">
+    <xs:sequence>
+      <xs:element name="idObservacion" nillable="true" type="xs:int"/>
+      <xs:element name="indice" nillable="true" type="xs:short"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+      <xs:element name="texto" nillable="true" type="xs:string"/>
+      <xs:element name="idUsuario" nillable="true" type="xs:string"/>
+      <xs:element name="nombreUsuario" nillable="true" type="xs:string"/>
+      <xs:element name="idTipoObs" nillable="true" type="xs:short"/>
+      <xs:element name="descTipoObs" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="BajaSuministroDTO">
+    <xs:sequence>
+      <xs:element name="contrato" nillable="true" type="xs:string"/>
+      <xs:element name="lecturaContador" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="horaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="telefonoContacto" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDomiciliacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DomiciliacionDTO" nillable="true" type="tns:DomiciliacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DomiciliacionDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturas" nillable="true" type="tns:ArrayOfFacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfHistoricoTiposFacturaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="HistoricoTiposFacturaDTO" nillable="true" type="tns:HistoricoTiposFacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoTiposFacturaDTO">
+    <xs:sequence>
+      <xs:element name="fechaModificacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="codigoAccion" nillable="true" type="xs:string"/>
+      <xs:element name="codigoTipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="codigoCanalModificacion" nillable="true" type="xs:string"/>
+      <xs:element name="usuarioModificacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturasIdDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FacturasIdDTO" nillable="true" type="tns:FacturasIdDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfObservacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ObservacionDTO" nillable="true" type="tns:ObservacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoConsumoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="consumos" nillable="true" type="tns:ArrayOfHistoricoSuministroDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DatosPersonalesDTO">
+    <xs:sequence>
+      <xs:element name="titular" nillable="true" type="xs:string"/>
+      <xs:element name="cifNif" nillable="true" type="xs:string"/>
+      <xs:element name="telefono1" nillable="true" type="xs:string"/>
+      <xs:element name="telefono2" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+      <xs:element name="permitePublicidad" nillable="true" type="xs:short"/>
+      <xs:element name="clausulaRobinson" nillable="true" type="xs:boolean"/>
+      <xs:element name="servicioFacturaOnline" nillable="true" type="xs:boolean"/>
+      <xs:element name="dirCorrespondencia" nillable="true" type="xs:string"/>
+      <xs:element name="canalNotificacion" nillable="true" type="xs:string"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratosDTO">
+    <xs:sequence>
+      <xs:element name="contratos" nillable="true" type="tns:ArrayOfContratoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfContratoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContratoDTO" nillable="true" type="tns:ContratoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratoDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="idPuntoServicio" nillable="true" type="xs:int"/>
+      <xs:element name="cliente" nillable="true" type="tns:ClienteDTO"/>
+      <xs:element name="idTipoContratacion" nillable="true" type="xs:short"/>
+      <xs:element name="contratoFormal" nillable="true" type="xs:boolean"/>
+      <xs:element name="origenContador" nillable="true" type="xs:short"/>
+      <xs:element name="estadoContrato" nillable="true" type="xs:short"/>
+      <xs:element name="fechaCaducidad" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fecPresentacionDoc" nillable="true" type="xs:dateTime"/>
+      <xs:element name="segnasDeCobro" nillable="true" type="tns:SegnasDeCobroDTO"/>
+      <xs:element name="idProcesoCambioSegnas" nillable="true" type="xs:int"/>
+      <xs:element name="direccionFacturacion" nillable="true" type="tns:PersonaDireccionDTO"/>
+      <xs:element name="direccionCorreo" nillable="true" type="tns:PersonaDireccionDTO"/>
+      <xs:element name="clientePropietarioInquilino" nillable="true" type="xs:string"/>
+      <xs:element name="propietario" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="inquilino" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="codigoUso" nillable="true" type="xs:short"/>
+      <xs:element name="descUso" nillable="true" type="xs:string"/>
+      <xs:element name="tipoUso" nillable="true" type="xs:short"/>
+      <xs:element name="idActividad" nillable="true" type="xs:short"/>
+      <xs:element name="descActividad" nillable="true" type="xs:string"/>
+      <xs:element name="idGrupoActividad" nillable="true" type="xs:short"/>
+      <xs:element name="descGrupoActividad" nillable="true" type="xs:string"/>
+      <xs:element name="idActividadSectorial" nillable="true" type="xs:short"/>
+      <xs:element name="descActividadSectorial" nillable="true" type="xs:string"/>
+      <xs:element name="idCategoriaContrato" nillable="true" type="xs:short"/>
+      <xs:element name="descCategoriaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idAgrupacionContratos" nillable="true" type="xs:short"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="tienePlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="renovarAutoPlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="historicoTiposFactura" nillable="true" type="tns:ArrayOfHistoricoTiposFacturaDTO"/>
+      <xs:element name="numCopiasFactura" nillable="true" type="xs:short"/>
+      <xs:element name="exentoFacturar" nillable="true" type="xs:boolean"/>
+      <xs:element name="repasarFacturas" nillable="true" type="xs:boolean"/>
+      <xs:element name="diasCalculoFechaVto" nillable="true" type="xs:short"/>
+      <xs:element name="umbralExencionIVA" nillable="true" type="xs:float"/>
+      <xs:element name="inspeccionarSiempre" nillable="true" type="xs:boolean"/>
+      <xs:element name="estimarCerrado" nillable="true" type="xs:boolean"/>
+      <xs:element name="cortePosible" nillable="true" type="xs:boolean"/>
+      <xs:element name="idTipoGestionDeuda" nillable="true" type="xs:short"/>
+      <xs:element name="descTipoGestionDeuda" nillable="true" type="xs:string"/>
+      <xs:element name="idProcesoReclamacion" nillable="true" type="xs:int"/>
+      <xs:element name="documentoHabitabilidad" nillable="true" type="xs:string"/>
+      <xs:element name="fechaDocHabitabilidad" nillable="true" type="xs:dateTime"/>
+      <xs:element name="boletin" nillable="true" type="xs:string"/>
+      <xs:element name="fechaBoletin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="permitePublicidad" nillable="true" type="xs:short"/>
+      <xs:element name="personaCnaePrsID" nillable="true" type="xs:int"/>
+      <xs:element name="personaCnaeCodigo" nillable="true" type="xs:int"/>
+      <xs:element name="originadoPorDeteccionFraude" nillable="true" type="xs:boolean"/>
+      <xs:element name="refAnterior" nillable="true" type="xs:string"/>
+      <xs:element name="refExterna" nillable="true" type="xs:string"/>
+      <xs:element name="diasCalculoLimitePago" nillable="true" type="xs:short"/>
+      <xs:element name="notificacionMail" nillable="true" type="xs:boolean"/>
+      <xs:element name="email1" nillable="true" type="xs:string"/>
+      <xs:element name="email1Att" nillable="true" type="xs:string"/>
+      <xs:element name="email2" nillable="true" type="xs:string"/>
+      <xs:element name="email2Att" nillable="true" type="xs:string"/>
+      <xs:element name="notificacionSMS" nillable="true" type="xs:boolean"/>
+      <xs:element name="snReclamarPorCaducidad" nillable="true" type="xs:boolean"/>
+      <xs:element name="idProcesoReclamacionContratosProv" nillable="true" type="xs:int"/>
+      <xs:element name="snApareceListaRobinson" nillable="true" type="xs:boolean"/>
+      <xs:element name="variables" nillable="true" type="tns:ArrayOfVariableDTO"/>
+      <xs:element name="observaciones" nillable="true" type="tns:ArrayOfObservacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ClienteDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="tipoCliente" nillable="true" type="xs:string"/>
+      <xs:element name="persona" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="usuarioWeb" nillable="true" type="xs:string"/>
+      <xs:element name="passwordWeb" nillable="true" type="xs:string"/>
+      <xs:element name="numConexionesWeb" nillable="true" type="xs:int"/>
+      <xs:element name="ultimaConexionWeb" nillable="true" type="xs:dateTime"/>
+      <xs:element name="cambiarPassword" nillable="true" type="xs:boolean"/>
+      <xs:element name="listaContratos" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonaDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+      <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="telefono2" nillable="true" type="xs:string"/>
+      <xs:element name="telefono3" nillable="true" type="xs:string"/>
+      <xs:element name="nif" nillable="true" type="xs:string"/>
+      <xs:element name="esJubilado" nillable="true" type="xs:boolean"/>
+      <xs:element name="juridica" nillable="true" type="xs:boolean"/>
+      <xs:element name="claveWeb" nillable="true" type="xs:string"/>
+      <xs:element name="codExtranjero" nillable="true" type="xs:string"/>
+      <xs:element name="usuario" nillable="true" type="xs:string"/>
+      <xs:element name="telefono4" nillable="true" type="xs:string"/>
+      <xs:element name="fax" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCreacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="idOficina" nillable="true" type="xs:short"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+      <xs:element name="nombreCompleto" nillable="true" type="xs:string"/>
+      <xs:element name="direcciones" nillable="true" type="tns:ArrayOfPersonaDireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="SegnasDeCobroDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="activa" nillable="true" type="xs:boolean"/>
+      <xs:element name="numeroDeCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="digitoDeControl" nillable="true" type="xs:string"/>
+      <xs:element name="agencia" nillable="true" type="xs:short"/>
+      <xs:element name="banco" nillable="true" type="xs:short"/>
+      <xs:element name="canalCobroId" nillable="true" type="xs:string"/>
+      <xs:element name="canalCobroDesc" nillable="true" type="xs:string"/>
+      <xs:element name="canalCobroBancario" nillable="true" type="xs:boolean"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonasDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="personas" nillable="true" type="tns:ArrayOfPersonaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfPersonaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PersonaDTO" nillable="true" type="tns:PersonaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoContratoDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="tipoContrato" nillable="true" type="xs:string"/>
+      <xs:element name="datosInmueble" nillable="true" type="xs:string"/>
+      <xs:element name="motivoCambioTitular" nillable="true" type="xs:string"/>
+      <xs:element name="numeroContador" nillable="true" type="xs:string"/>
+      <xs:element name="lecturaContador" nillable="true" type="xs:string"/>
+      <xs:element name="telefonoContacto" nillable="true" type="xs:string"/>
+      <xs:element name="fechaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEscritura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaFinObra" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="horaVisitaLectura" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="GenericoContratoDTO">
+    <xs:sequence>
+      <xs:element name="contrato" nillable="true" type="tns:DetalleContratoDTO"/>
+      <xs:element name="puntoSuministro" nillable="true" type="tns:PuntoSuministroDTO"/>
+      <xs:element name="datosPersonales" nillable="true" type="tns:DatosPersonalesDTO"/>
+      <xs:element name="datosPago" nillable="true" type="tns:DatosPagoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DetalleContratoDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="explotacion" nillable="true" type="xs:string"/>
+      <xs:element name="tipoUso" nillable="true" type="xs:short"/>
+      <xs:element name="descUso" nillable="true" type="xs:string"/>
+      <xs:element name="numeroContador" nillable="true" type="xs:string"/>
+      <xs:element name="titular" nillable="true" type="xs:string"/>
+      <xs:element name="telelectura" nillable="true" type="xs:boolean"/>
+      <xs:element name="tipoEnvioFacturaDetalle" nillable="true" type="tns:TipoEnvioFacturaDetalleDTO"/>
+      <xs:element name="hubDetalle" nillable="true" type="tns:HubDetalleDTO"/>
+      <xs:element name="fechaAlta" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaBaja" nillable="true" type="xs:dateTime"/>
+      <xs:element name="tienePlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="renovarAutoPlanPago" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TipoEnvioFacturaDetalleDTO">
+    <xs:sequence>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="tipoEnvio" nillable="true" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HubDetalleDTO">
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="SolicitanteDTO">
+    <xs:sequence>
+      <xs:element name="numeroDocumentoSolicitante" nillable="true" type="xs:string"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+      <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+      <xs:element name="razonSocial" nillable="true" type="xs:string"/>
+      <xs:element name="direccionPostal" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="fax" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoTitularDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:SolicitanteDTO">
+        <xs:sequence>
+          <xs:element name="mismoSolicitante" nillable="true" type="xs:boolean"/>
+          <xs:element name="tipoCliente" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="ActuacionesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="actuaciones" nillable="true" type="tns:ArrayOfActuacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaIdDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturasId" nillable="true" type="tns:ArrayOfFacturasIdDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentosDTO">
+    <xs:sequence>
+      <xs:element name="documentos" nillable="true" type="tns:ArrayOfDocumentoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoDomiciliacionesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="consumos" nillable="true" type="tns:ArrayOfDomiciliacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenServicioDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idOrdenServicio" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PuntoAcometidaDTO">
+    <xs:sequence>
+      <xs:element name="provincia" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="calle" nillable="true" type="xs:string"/>
+      <xs:element name="numero" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="edificio" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PdfFacturaDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="pdf" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="IDPersonaContratoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idPersona" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="actualizarContadorResponse">
+    <wsdl:part element="tns:actualizarContadorResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPuntoServicioPorContadorResponse">
+    <wsdl:part element="tns:getPuntoServicioPorContadorResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContadorResponse">
+    <wsdl:part element="tns:getContadorResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContador">
+    <wsdl:part element="tns:getContador" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCambiosContadorDeContrato">
+    <wsdl:part element="tns:getCambiosContadorDeContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPuntoServicioPorContador">
+    <wsdl:part element="tns:getPuntoServicioPorContador" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="actualizarContador">
+    <wsdl:part element="tns:actualizarContador" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCambiosContadorDeContratoResponse">
+    <wsdl:part element="tns:getCambiosContadorDeContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InterfazGenericaContadoresWSBeanSEI">
+    <wsdl:operation name="getContador">
+      <wsdl:input message="tns:getContador" name="getContador">
+    </wsdl:input>
+      <wsdl:output message="tns:getContadorResponse" name="getContadorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCambiosContadorDeContrato">
+      <wsdl:input message="tns:getCambiosContadorDeContrato" name="getCambiosContadorDeContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getCambiosContadorDeContratoResponse" name="getCambiosContadorDeContratoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPuntoServicioPorContador">
+      <wsdl:input message="tns:getPuntoServicioPorContador" name="getPuntoServicioPorContador">
+    </wsdl:input>
+      <wsdl:output message="tns:getPuntoServicioPorContadorResponse" name="getPuntoServicioPorContadorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarContador">
+      <wsdl:input message="tns:actualizarContador" name="actualizarContador">
+    </wsdl:input>
+      <wsdl:output message="tns:actualizarContadorResponse" name="actualizarContadorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazGenericaContadoresWSBeanSEIImplServiceSoapBinding" type="tns:InterfazGenericaContadoresWSBeanSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getContador">
+      <soap:operation soapAction="getContador" style="document"/>
+      <wsdl:input name="getContador">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContadorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCambiosContadorDeContrato">
+      <soap:operation soapAction="getCambiosContadorDeContrato" style="document"/>
+      <wsdl:input name="getCambiosContadorDeContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCambiosContadorDeContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPuntoServicioPorContador">
+      <soap:operation soapAction="getPuntoServicioPorContador" style="document"/>
+      <wsdl:input name="getPuntoServicioPorContador">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPuntoServicioPorContadorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarContador">
+      <soap:operation soapAction="actualizarContador" style="document"/>
+      <wsdl:input name="actualizarContador">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="actualizarContadorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazGenericaContadoresWSBeanSEIImplService">
+    <wsdl:port binding="tns:InterfazGenericaContadoresWSBeanSEIImplServiceSoapBinding" name="InterfazGenericaContadoresWSBeanSEIImplPort">
+      <soap:address location="http://aquacis-cf.ceaqueretaro.gob.mx/Comercial/services/InterfazGenericaContadoresWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

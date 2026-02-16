@@ -1,0 +1,3208 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://occamWS.ejb.negocio.occam.agbar.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="InterfazGenericaContratacionWSService" targetNamespace="http://occamWS.ejb.negocio.occam.agbar.com">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://occamWS.ejb.negocio.occam.agbar.com" xmlns:ns1="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://occamWS.ejb.negocio.occam.agbar.com">
+  <xs:import namespace="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com"/>
+  <xs:element name="AquaCISWSAplicationException" type="tns:AquaCISWSAplicationException"/>
+  <xs:element name="cambiarDomicilioNotificaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="direccion" nillable="true" type="ns1:DireccionNotificacionDTO"/>
+        <xs:element name="poblacion" nillable="true" type="xs:int"/>
+        <xs:element name="provincia" nillable="true" type="xs:int"/>
+        <xs:element name="codigoPostal" nillable="true" type="xs:string"/>
+        <xs:element name="comunidad" nillable="true" type="xs:int"/>
+        <xs:element name="localidad" nillable="true" type="xs:int"/>
+        <xs:element name="tlf" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cambiarDomicilioNotificacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cambiarDomicilioNotificacionesReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cambiarSenasCobroBancarias">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="canalCobro" nillable="true" type="xs:string"/>
+        <xs:element name="codBanco" nillable="true" type="xs:short"/>
+        <xs:element name="codAgencia" nillable="true" type="xs:short"/>
+        <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+        <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+        <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+        <xs:element name="senyasTitular" nillable="true" type="xs:boolean"/>
+        <xs:element name="nifCuenta" nillable="true" type="xs:string"/>
+        <xs:element name="nombre" nillable="true" type="xs:string"/>
+        <xs:element name="apellido1" nillable="true" type="xs:string"/>
+        <xs:element name="apellido2" nillable="true" type="xs:string"/>
+        <xs:element name="tipoPersona" nillable="true" type="xs:short"/>
+        <xs:element name="viaComunicacion" nillable="true" type="xs:string"/>
+        <xs:element name="idSolicitante" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cambiarSenasCobroBancariasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cambiarSenasCobroBancariasReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDetalleContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDetalleContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaDetalleContratoReturn" nillable="true" type="tns:ArrayOf_tns2_nillable_GenericoContratoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDocumentacionContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDocumentacionContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaDocumentacionContratoReturn" nillable="true" type="ns1:DocumentosDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDocumentacionTramite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="codigoTramite" nillable="true" type="xs:string"/>
+        <xs:element name="puntoSuministro" nillable="true" type="ns1:PuntoSuministroDTO"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaDocumentacionTramiteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaDocumentacionTramiteReturn" nillable="true" type="ns1:DocumentacionDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoActuacionesContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoActuacionesContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaHistoricoActuacionesContratoReturn" nillable="true" type="ns1:ActuacionesDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoConsumoContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoConsumoContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaHistoricoConsumoContratoReturn" nillable="true" type="ns1:HistoricoConsumoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoDomiciliacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaHistoricoDomiciliacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaHistoricoDomiciliacionReturn" nillable="true" type="ns1:HistoricoDomiciliacionesDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaLiquidacionTramite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="codigoTramite" nillable="true" type="xs:string"/>
+        <xs:element name="lectura" nillable="true" type="xs:int"/>
+        <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultaLiquidacionTramiteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultaLiquidacionTramiteReturn" nillable="true" type="ns1:DesglosesDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countFacturasContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countFacturasContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="countFacturasContratoReturn" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="crearOrdenServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="tipoOrden" nillable="true" type="xs:short"/>
+        <xs:element name="motivoOrden" nillable="true" type="xs:short"/>
+        <xs:element name="login" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="crearOrdenServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="crearOrdenServicioReturn" nillable="true" type="ns1:OrdenServicioDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="esPSContratable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="puntoSum" nillable="true" type="ns1:PuntoSuministroDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="esPSContratableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="esPSContratableReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="esTitular">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="documento" nillable="true" type="xs:string"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="esTitularResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="esTitularReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCierresByIdsContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="contrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCierresByIdsContratoResponse" type="tns:getCierresByIdsContratoResponse"/>
+  <xs:element name="getClienteListByExplotacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="nombre" nillable="true" type="xs:string"/>
+        <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+        <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+        <xs:element name="numeroDocumento" nillable="true" type="xs:string"/>
+        <xs:element name="codExtranjero" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClienteListByExplotacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getClienteListByExplotacionReturn" nillable="true" type="ns1:PersonasDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getConsumos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+        <xs:element name="periodos" nillable="true" type="xs:string"/>
+        <xs:element name="numPer" nillable="true" type="xs:int"/>
+        <xs:element name="ejercicio_str" nillable="true" type="xs:string"/>
+        <xs:element name="periodo_str" nillable="true" type="xs:string"/>
+        <xs:element name="periodicidad_str" nillable="true" type="xs:string"/>
+        <xs:element name="tipoCiclo_str" nillable="true" type="xs:string"/>
+        <xs:element name="estadoCiclo_str" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="opciones" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getConsumosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getConsumosReturn" nillable="true" type="tns:ArrayOf_tns2_nillable_HistoricoSuministroDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="opciones" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getContratoReturn" nillable="true" type="ns1:ContratoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="actividad" nillable="true" type="xs:short"/>
+        <xs:element name="actividadSectorial" nillable="true" type="xs:short"/>
+        <xs:element name="uso" nillable="true" type="xs:short"/>
+        <xs:element name="cnaeDesde" nillable="true" type="xs:int"/>
+        <xs:element name="cnaeHasta" nillable="true" type="xs:int"/>
+        <xs:element name="estados" nillable="true" type="tns:ArrayOf_xsd_nillable_string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratosByNumFactNumContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numFactura" nillable="true" type="xs:string"/>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratosByNumFactNumContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getContratosByNumFactNumContratoReturn" nillable="true" type="ns1:ContratoIVRDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContratosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getContratosReturn" nillable="true" type="ns1:ContratosDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getExplotacionesUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="usuario" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getExplotacionesUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getExplotacionesUsuarioReturn" nillable="true" type="ns1:ExplotacionesDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturaE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numFactura" nillable="true" type="xs:string"/>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturaEResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getFacturaEReturn" nillable="true" type="ns1:XmlFacturaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroCliente" nillable="true" type="xs:int"/>
+        <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasContratoReferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="fechaInicio" nillable="true" type="xs:string"/>
+        <xs:element name="fechaFin" nillable="true" type="xs:string"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasContratoReferenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getFacturasContratoReferenciaReturn" nillable="true" type="ns1:FacturasReferenciaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getFacturasContratoReturn" nillable="true" type="ns1:FacturasDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasPorCondiciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idPersona" nillable="true" type="xs:int"/>
+        <xs:element maxOccurs="unbounded" name="numContratos" nillable="true" type="xs:int"/>
+        <xs:element maxOccurs="unbounded" name="nifs" nillable="true" type="xs:string"/>
+        <xs:element name="fechaDesde" nillable="true" type="xs:string"/>
+        <xs:element name="fechaHasta" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+        <xs:element name="vinculados" nillable="true" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacturasPorCondicionesResponse" type="tns:getFacturasPorCondicionesResponse"/>
+  <xs:element name="getFacturasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getFacturasReturn" nillable="true" type="ns1:FacturasDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getIDPersonaContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getIDPersonaContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getIDPersonaContratoReturn" nillable="true" type="ns1:IDPersonaContratoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getImpresionesLocalesPendientes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idPersona" nillable="true" type="xs:int"/>
+        <xs:element name="estado" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getImpresionesLocalesPendientesResponse" type="tns:getImpresionesLocalesPendientesResponse"/>
+  <xs:element name="getMotivosOrden">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="tipoOrden" nillable="true" type="xs:short"/>
+        <xs:element name="login" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMotivosOrdenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getMotivosOrdenReturn" nillable="true" type="ns1:ListaMotivosCreacionOrdenDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPDFImpresionLocalPendiente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idPersona" nillable="true" type="xs:int"/>
+        <xs:element name="codTrabajo" nillable="true" type="xs:int"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPDFImpresionLocalPendienteResponse" type="tns:getPDFImpresionLocalPendienteResponse"/>
+  <xs:element name="getPdfDocumentoFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="documentoFactura" nillable="true" type="xs:int"/>
+        <xs:element name="origenFacturacion" nillable="true" type="xs:short"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPdfDocumentoFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getPdfDocumentoFacturaReturn" nillable="true" type="ns1:PdfFacturaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPdfFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numFactura" nillable="true" type="xs:string"/>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPdfFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getPdfFacturaReturn" nillable="true" type="ns1:PdfFacturaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPdfMandato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+        <xs:element name="numContrato" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPdfMandatoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getPdfMandatoReturn" nillable="true" type="ns1:PdfReferenciaMandatoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPersonaList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nombre" nillable="true" type="xs:string"/>
+        <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+        <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+        <xs:element name="numeroDocumento" nillable="true" type="xs:string"/>
+        <xs:element name="codExtranjero" nillable="true" type="xs:string"/>
+        <xs:element name="telefono" nillable="true" type="xs:long"/>
+        <xs:element name="registroPagina" nillable="true" type="xs:int"/>
+        <xs:element name="pagina" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPersonaListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getPersonaListReturn" nillable="true" type="ns1:PersonasDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getTiposOrden">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="login" nillable="true" type="xs:string"/>
+        <xs:element name="idioma" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getTiposOrdenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getTiposOrdenReturn" nillable="true" type="ns1:ListaTiposOrdenDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getValidacionVerFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idDocumentoFactura" nillable="true" type="xs:int"/>
+        <xs:element name="token" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getValidacionVerFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="getValidacionVerFacturaReturn" nillable="true" type="ns1:PdfFacturaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperaFacturasByIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idFacturas" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="registroInicial" nillable="true" type="xs:int"/>
+        <xs:element name="registroTotal" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperaFacturasByIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="recuperaFacturasByIdsReturn" nillable="true" type="ns1:FacturaIdDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperaOrdenesServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="idOrdenes" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperaOrdenesServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="recuperaOrdenesServicioReturn" nillable="true" type="ns1:OrdenesServicioDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="registrarContactoManual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="motivo" nillable="true" type="xs:int"/>
+        <xs:element name="via" nillable="true" type="xs:string"/>
+        <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+        <xs:element name="idCliente" nillable="true" type="xs:int"/>
+        <xs:element name="idPersonaCto" nillable="true" type="xs:int"/>
+        <xs:element name="idContrato" nillable="true" type="xs:int"/>
+        <xs:element name="esEntrada" nillable="true" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="registrarContactoManualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="registrarContactoManualReturn" nillable="true" type="ns1:RegistrarContactoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudAcometida">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="puntoAcometida" nillable="true" type="ns1:PuntoAcometidaDTO"/>
+        <xs:element name="solicitante" nillable="true" type="ns1:SolicitanteDTO"/>
+        <xs:element name="abonado" nillable="true" type="ns1:NuevoTitularDTO"/>
+        <xs:element name="contrato" nillable="true" type="ns1:NuevoContratoAltaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudAcometidaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudAcometidaReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudActivacionFacturaOnline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="facturaOnline" nillable="true" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudActivacionFacturaOnlineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudActivacionFacturaOnlineReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudAltaServiAlerta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="contrato" nillable="true" type="xs:int"/>
+        <xs:element name="telefonoMovil" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudAltaServiAlertaResponse" type="tns:solicitudAltaServiAlertaResponse"/>
+  <xs:element name="solicitudAltaSuministro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="puntoSuministro" nillable="true" type="ns1:PuntoSuministroDTO"/>
+        <xs:element name="solicitante" nillable="true" type="ns1:SolicitanteDTO"/>
+        <xs:element name="nuevoTitular" nillable="true" type="ns1:NuevoTitularDTO"/>
+        <xs:element name="nuevoContratoAlta" nillable="true" type="ns1:NuevoContratoAltaDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudAltaSuministroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudAltaSuministroReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudBajaSuministro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="bajaSuministro" nillable="true" type="ns1:BajaSuministroDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudBajaSuministroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudBajaSuministroReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioDomiciliacionBancaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="banco" nillable="true" type="xs:string"/>
+        <xs:element name="sucursal" nillable="true" type="xs:string"/>
+        <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+        <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+        <xs:element name="nifCuenta" nillable="true" type="xs:string"/>
+        <xs:element name="nombre" nillable="true" type="xs:string"/>
+        <xs:element name="apellido1" nillable="true" type="xs:string"/>
+        <xs:element name="apellido2" nillable="true" type="xs:string"/>
+        <xs:element name="tipoPersona" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioDomiciliacionBancariaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudCambioDomiciliacionBancariaReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioDomicilioNotificaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="direccion" nillable="true" type="xs:string"/>
+        <xs:element name="poblacion" nillable="true" type="xs:int"/>
+        <xs:element name="provincia" nillable="true" type="xs:int"/>
+        <xs:element name="codigoPostal" nillable="true" type="xs:string"/>
+        <xs:element name="comunidad" nillable="true" type="xs:int"/>
+        <xs:element name="localidad" nillable="true" type="xs:int"/>
+        <xs:element name="tlf" nillable="true" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioDomicilioNotificacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudCambioDomicilioNotificacionesReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioTitularContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="solicitante" nillable="true" type="ns1:SolicitanteDTO"/>
+        <xs:element name="nuevoTitular" nillable="true" type="ns1:NuevoTitularDTO"/>
+        <xs:element name="nuevoContrato" nillable="true" type="ns1:NuevoContratoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudCambioTitularContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudCambioTitularContratoReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudFacturaEnQuejaActiva">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudFacturaEnQuejaActivaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudFacturaEnQuejaActivaReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudFacturasMasiva" type="tns:solicitudFacturasMasiva"/>
+  <xs:element name="solicitudFacturasMasivaResponse" type="tns:solicitudFacturasMasivaResponse"/>
+  <xs:element name="solicitudIntroduccionLectura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="lecturaContador1" nillable="true" type="xs:int"/>
+        <xs:element name="lecturaContador2" nillable="true" type="xs:int"/>
+        <xs:element name="fechaActual" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudIntroduccionLecturaIVR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="lecturaContador1" nillable="true" type="xs:int"/>
+        <xs:element name="lecturaContador2" nillable="true" type="xs:int"/>
+        <xs:element name="fechaActual" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudIntroduccionLecturaIVRResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudIntroduccionLecturaIVRReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudIntroduccionLecturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudIntroduccionLecturaReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudModificacionDatosPersonales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numeroContrato" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+        <xs:element name="nombre" nillable="true" type="xs:string"/>
+        <xs:element name="apellido1" nillable="true" type="xs:string"/>
+        <xs:element name="apellido2" nillable="true" type="xs:string"/>
+        <xs:element name="razonSocial" nillable="true" type="xs:string"/>
+        <xs:element name="email" nillable="true" type="xs:string"/>
+        <xs:element name="telefono1" nillable="true" type="xs:long"/>
+        <xs:element name="telefono2" nillable="true" type="xs:long"/>
+        <xs:element name="idiomaFacturas" nillable="true" type="xs:string"/>
+        <xs:element name="servicioNotificaciones" nillable="true" type="xs:string"/>
+        <xs:element name="nombreUsuarioOV" nillable="true" type="xs:string"/>
+        <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+        <xs:element name="vinculado" nillable="true" type="xs:boolean"/>
+        <xs:element name="adminFincas" nillable="true" type="xs:boolean"/>
+        <xs:element name="entorno" nillable="true" type="xs:string"/>
+        <xs:element name="tipoTramite" nillable="true" type="xs:string"/>
+        <xs:element name="idUsuarioOV" nillable="true" type="xs:int"/>
+        <xs:element name="idSociedadOV" nillable="true" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudModificacionDatosPersonalesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudModificacionDatosPersonalesReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudModificacionServiAlertaMasiva">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="contratos" nillable="true" type="xs:int"/>
+        <xs:element name="telefonoMovil" nillable="true" type="xs:string"/>
+        <xs:element name="esAlta" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudModificacionServiAlertaMasivaResponse" type="tns:solicitudModificacionServiAlertaMasivaResponse"/>
+  <xs:element name="solicitudSubrogacionContrato">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="explotacion" nillable="true" type="xs:short"/>
+        <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+        <xs:element name="numeroContador" nillable="true" type="xs:int"/>
+        <xs:element name="lecturaContador" nillable="true" type="xs:int"/>
+        <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+        <xs:element name="fechaVisita" nillable="true" type="xs:string"/>
+        <xs:element name="horaVisita" nillable="true" type="xs:string"/>
+        <xs:element name="telefonoContacto" nillable="true" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="solicitudSubrogacionContratoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudSubrogacionContratoReturn" nillable="true" type="ns1:ResultadoDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOf_tns2_nillable_GenericoContratoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="GenericoContratoDTO" nillable="true" type="ns1:GenericoContratoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AquaCISWSAplicationException">
+    <xs:sequence>
+      <xs:element name="message" nillable="true" type="xs:string"/>
+      <xs:element name="level" nillable="true" type="xs:string"/>
+      <xs:element name="variables" nillable="true" type="tns:ArrayOf_xsd_nillable_string"/>
+      <xs:element name="code" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOf_xsd_nillable_string">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOf_xsd_nillable_int">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="int" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPDFImpresionLocalPendienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:DocumentoImpresionPendienteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFacturasPorCondicionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:FacturasResponseDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudModificacionServiAlertaMasivaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudAltaServiAlertaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getImpresionesLocalesPendientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:ImpresionesPendientesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCierresByIdsContratoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:CortesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudFacturasMasiva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPersona" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="idContratos" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nifs" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaDesde" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaHasta" type="xs:string"/>
+      <xs:element minOccurs="0" name="descripcionTrabajo" type="xs:string"/>
+      <xs:element minOccurs="0" name="idioma" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="vinculados" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudFacturasMasivaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOf_tns2_nillable_HistoricoSuministroDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="HistoricoSuministroDTO" nillable="true" type="ns1:HistoricoSuministroDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" targetNamespace="http://InterfazGenericaContratacion.DTOs.occamWS.ejb.negocio.occam.agbar.com" version="1.0">
+<xs:complexType name="GenericoContratoDTO">
+    <xs:sequence>
+      <xs:element name="contrato" nillable="true" type="tns:DetalleContratoDTO"/>
+      <xs:element name="puntoSuministro" nillable="true" type="tns:PuntoSuministroDTO"/>
+      <xs:element name="datosPersonales" nillable="true" type="tns:DatosPersonalesDTO"/>
+      <xs:element name="datosPago" nillable="true" type="tns:DatosPagoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DetalleContratoDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="explotacion" nillable="true" type="xs:string"/>
+      <xs:element name="tipoUso" nillable="true" type="xs:short"/>
+      <xs:element name="descUso" nillable="true" type="xs:string"/>
+      <xs:element name="numeroContador" nillable="true" type="xs:string"/>
+      <xs:element name="titular" nillable="true" type="xs:string"/>
+      <xs:element name="telelectura" nillable="true" type="xs:boolean"/>
+      <xs:element name="tipoEnvioFacturaDetalle" nillable="true" type="tns:TipoEnvioFacturaDetalleDTO"/>
+      <xs:element name="hubDetalle" nillable="true" type="tns:HubDetalleDTO"/>
+      <xs:element name="fechaAlta" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaBaja" nillable="true" type="xs:dateTime"/>
+      <xs:element name="tienePlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="renovarAutoPlanPago" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TipoEnvioFacturaDetalleDTO">
+    <xs:sequence>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="tipoEnvio" nillable="true" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HubDetalleDTO">
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PuntoSuministroDTO">
+    <xs:sequence>
+      <xs:element name="provincia" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="calle" nillable="true" type="xs:string"/>
+      <xs:element name="numero" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="edificio" nillable="true" type="xs:string"/>
+      <xs:element name="listaDeContadores" nillable="true" type="tns:ArrayOfContratoContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfContratoContadorDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContratoContadorDTO" nillable="true" type="tns:ContratoContadorDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratoContadorDTO">
+    <xs:sequence>
+      <xs:element name="numeroSerie" nillable="true" type="xs:string"/>
+      <xs:element name="estadoContador" nillable="true" type="xs:short"/>
+      <xs:element name="fechaInstalacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaBaja" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DatosPersonalesDTO">
+    <xs:sequence>
+      <xs:element name="titular" nillable="true" type="xs:string"/>
+      <xs:element name="cifNif" nillable="true" type="xs:string"/>
+      <xs:element name="telefono1" nillable="true" type="xs:string"/>
+      <xs:element name="telefono2" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+      <xs:element name="permitePublicidad" nillable="true" type="xs:short"/>
+      <xs:element name="clausulaRobinson" nillable="true" type="xs:boolean"/>
+      <xs:element name="servicioFacturaOnline" nillable="true" type="xs:boolean"/>
+      <xs:element name="dirCorrespondencia" nillable="true" type="xs:string"/>
+      <xs:element name="canalNotificacion" nillable="true" type="xs:string"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DatosPagoDTO">
+    <xs:sequence>
+      <xs:element name="formaPago" nillable="true" type="xs:string"/>
+      <xs:element name="direccionFacturacion" nillable="true" type="xs:string"/>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ResultadoDTO">
+    <xs:sequence>
+      <xs:element name="codigoError" type="xs:int"/>
+      <xs:element name="descripcionError" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturas" nillable="true" type="tns:ArrayOfFacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FacturaDTO" nillable="true" type="tns:FacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idFactura" nillable="true" type="xs:int"/>
+      <xs:element name="numeroCliente" nillable="true" type="xs:string"/>
+      <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEmision" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="importeEuros" nillable="true" type="xs:decimal"/>
+      <xs:element name="tipoCobro" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCobro" nillable="true" type="xs:dateTime"/>
+      <xs:element name="periodo" nillable="true" type="xs:string"/>
+      <xs:element name="firmada" nillable="true" type="xs:short"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element name="rafaga" nillable="true" type="xs:string"/>
+      <xs:element name="impuestos" nillable="true" type="xs:decimal"/>
+      <xs:element name="fechaVencimiento" nillable="true" type="xs:dateTime"/>
+      <xs:element name="anyo" nillable="true" type="xs:int"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="docArchivado" nillable="true" type="xs:boolean"/>
+      <xs:element name="incluidaPlanPago" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentoImpresionPendienteDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="pdf" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ActuacionesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="actuaciones" nillable="true" type="tns:ArrayOfActuacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfActuacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ActuacionDTO" nillable="true" type="tns:ActuacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ActuacionDTO">
+    <xs:sequence>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="motivo" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasResponseDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturas" nillable="true" type="tns:ArrayOfFacturaResponseDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturaResponseDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="facturaDTO" nillable="true" type="tns:FacturaResponseDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaResponseDTO">
+    <xs:sequence>
+      <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+      <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idCliente" nillable="true" type="xs:string"/>
+      <xs:element name="nif" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEmision" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="importe" nillable="true" type="xs:decimal"/>
+      <xs:element name="impuestos" nillable="true" type="xs:decimal"/>
+      <xs:element name="consumo" nillable="true" type="xs:int"/>
+      <xs:element name="tipoCobro" nillable="true" type="xs:string"/>
+      <xs:element name="periodo" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCobro" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaVencimiento" nillable="true" type="xs:dateTime"/>
+      <xs:element name="anyo" nillable="true" type="xs:int"/>
+      <xs:element name="firmada" nillable="true" type="xs:short"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element name="rafaga" nillable="true" type="xs:string"/>
+      <xs:element name="idDocumentoFactura" nillable="true" type="xs:int"/>
+      <xs:element name="docArchivado" nillable="true" type="xs:boolean"/>
+      <xs:element name="incluidaPlanPago" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ImpresionesPendientesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="trabajosPendientes" nillable="true" type="tns:ArrayOfTrabajoPendienteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfTrabajoPendienteDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TrabajoPendienteDTO" nillable="true" type="tns:TrabajosPendientesDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TrabajosPendientesDTO">
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" type="xs:int"/>
+      <xs:element name="tipoTrabajo" nillable="true" type="xs:int"/>
+      <xs:element name="descripcionTrabajo" nillable="true" type="xs:string"/>
+      <xs:element name="estado" nillable="true" type="xs:int"/>
+      <xs:element name="fechaImpresion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaPeticion" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasReferenciaDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturas" nillable="true" type="tns:ArrayOfFacturaReferenciaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturaReferenciaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FacturaReferenciaDTO" nillable="true" type="tns:FacturaReferenciaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaReferenciaDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idFactura" nillable="true" type="xs:int"/>
+      <xs:element name="numeroCliente" nillable="true" type="xs:string"/>
+      <xs:element name="numeroFactura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEmision" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="importeEuros" nillable="true" type="xs:decimal"/>
+      <xs:element name="tipoCobro" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCobro" nillable="true" type="xs:dateTime"/>
+      <xs:element name="periodo" nillable="true" type="xs:string"/>
+      <xs:element name="firmada" nillable="true" type="xs:short"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element name="rafaga" nillable="true" type="xs:string"/>
+      <xs:element name="impuestos" nillable="true" type="xs:decimal"/>
+      <xs:element name="fechaVencimiento" nillable="true" type="xs:dateTime"/>
+      <xs:element name="anyo" nillable="true" type="xs:int"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="docArchivado" nillable="true" type="xs:boolean"/>
+      <xs:element name="incluidaPlanPago" nillable="true" type="xs:boolean"/>
+      <xs:element name="origenFto" nillable="true" type="xs:string"/>
+      <xs:element name="motivoFto" nillable="true" type="xs:string"/>
+      <xs:element name="rafagaDeuda" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentosDTO">
+    <xs:sequence>
+      <xs:element name="documentos" nillable="true" type="tns:ArrayOfDocumentoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDocumentoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentoDTO" nillable="true" type="tns:DocumentoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentoDTO">
+    <xs:sequence>
+      <xs:element name="tipo" nillable="true" type="xs:int"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="identificador" nillable="true" type="xs:string"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PdfFacturaDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="pdf" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PdfReferenciaMandatoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="pdf" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DireccionNotificacionDTO">
+    <xs:sequence>
+      <xs:element name="calle" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="numero" nillable="true" type="xs:string"/>
+      <xs:element name="edificio" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="CortesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="cortes" nillable="true" type="tns:ArrayOfCorteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfCorteDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="CorteDTO" nillable="true" type="tns:CorteDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="CorteDTO">
+    <xs:sequence>
+      <xs:element name="explotacion" nillable="true" type="xs:short"/>
+      <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      <xs:element name="identificadorCierre" nillable="true" type="xs:int"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="tipo" nillable="true" type="xs:short"/>
+      <xs:element name="estado" nillable="true" type="xs:short"/>
+      <xs:element name="fechaInicioCierre" nillable="true" type="xs:string"/>
+      <xs:element name="fechaFinCierre" nillable="true" type="xs:string"/>
+      <xs:element name="fechaRealCierre" nillable="true" type="xs:string"/>
+      <xs:element name="motivoDesconexion" nillable="true" type="xs:string"/>
+      <xs:element name="responsableAprobacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratosDTO">
+    <xs:sequence>
+      <xs:element name="contratos" nillable="true" type="tns:ArrayOfContratoDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfContratoDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ContratoDTO" nillable="true" type="tns:ContratoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratoDTO">
+    <xs:sequence>
+      <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="idPuntoServicio" nillable="true" type="xs:int"/>
+      <xs:element name="cliente" nillable="true" type="tns:ClienteDTO"/>
+      <xs:element name="idTipoContratacion" nillable="true" type="xs:short"/>
+      <xs:element name="contratoFormal" nillable="true" type="xs:boolean"/>
+      <xs:element name="origenContador" nillable="true" type="xs:short"/>
+      <xs:element name="estadoContrato" nillable="true" type="xs:short"/>
+      <xs:element name="fechaCaducidad" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fecPresentacionDoc" nillable="true" type="xs:dateTime"/>
+      <xs:element name="segnasDeCobro" nillable="true" type="tns:SegnasDeCobroDTO"/>
+      <xs:element name="idProcesoCambioSegnas" nillable="true" type="xs:int"/>
+      <xs:element name="direccionFacturacion" nillable="true" type="tns:PersonaDireccionDTO"/>
+      <xs:element name="direccionCorreo" nillable="true" type="tns:PersonaDireccionDTO"/>
+      <xs:element name="clientePropietarioInquilino" nillable="true" type="xs:string"/>
+      <xs:element name="propietario" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="inquilino" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="codigoUso" nillable="true" type="xs:short"/>
+      <xs:element name="descUso" nillable="true" type="xs:string"/>
+      <xs:element name="tipoUso" nillable="true" type="xs:short"/>
+      <xs:element name="idActividad" nillable="true" type="xs:short"/>
+      <xs:element name="descActividad" nillable="true" type="xs:string"/>
+      <xs:element name="idGrupoActividad" nillable="true" type="xs:short"/>
+      <xs:element name="descGrupoActividad" nillable="true" type="xs:string"/>
+      <xs:element name="idActividadSectorial" nillable="true" type="xs:short"/>
+      <xs:element name="descActividadSectorial" nillable="true" type="xs:string"/>
+      <xs:element name="idCategoriaContrato" nillable="true" type="xs:short"/>
+      <xs:element name="descCategoriaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="idAgrupacionContratos" nillable="true" type="xs:short"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+      <xs:element name="tipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="tienePlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="renovarAutoPlanPago" nillable="true" type="xs:string"/>
+      <xs:element name="historicoTiposFactura" nillable="true" type="tns:ArrayOfHistoricoTiposFacturaDTO"/>
+      <xs:element name="numCopiasFactura" nillable="true" type="xs:short"/>
+      <xs:element name="exentoFacturar" nillable="true" type="xs:boolean"/>
+      <xs:element name="repasarFacturas" nillable="true" type="xs:boolean"/>
+      <xs:element name="diasCalculoFechaVto" nillable="true" type="xs:short"/>
+      <xs:element name="umbralExencionIVA" nillable="true" type="xs:float"/>
+      <xs:element name="inspeccionarSiempre" nillable="true" type="xs:boolean"/>
+      <xs:element name="estimarCerrado" nillable="true" type="xs:boolean"/>
+      <xs:element name="cortePosible" nillable="true" type="xs:boolean"/>
+      <xs:element name="idTipoGestionDeuda" nillable="true" type="xs:short"/>
+      <xs:element name="descTipoGestionDeuda" nillable="true" type="xs:string"/>
+      <xs:element name="idProcesoReclamacion" nillable="true" type="xs:int"/>
+      <xs:element name="documentoHabitabilidad" nillable="true" type="xs:string"/>
+      <xs:element name="fechaDocHabitabilidad" nillable="true" type="xs:dateTime"/>
+      <xs:element name="boletin" nillable="true" type="xs:string"/>
+      <xs:element name="fechaBoletin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="permitePublicidad" nillable="true" type="xs:short"/>
+      <xs:element name="personaCnaePrsID" nillable="true" type="xs:int"/>
+      <xs:element name="personaCnaeCodigo" nillable="true" type="xs:int"/>
+      <xs:element name="originadoPorDeteccionFraude" nillable="true" type="xs:boolean"/>
+      <xs:element name="refAnterior" nillable="true" type="xs:string"/>
+      <xs:element name="refExterna" nillable="true" type="xs:string"/>
+      <xs:element name="diasCalculoLimitePago" nillable="true" type="xs:short"/>
+      <xs:element name="notificacionMail" nillable="true" type="xs:boolean"/>
+      <xs:element name="email1" nillable="true" type="xs:string"/>
+      <xs:element name="email1Att" nillable="true" type="xs:string"/>
+      <xs:element name="email2" nillable="true" type="xs:string"/>
+      <xs:element name="email2Att" nillable="true" type="xs:string"/>
+      <xs:element name="notificacionSMS" nillable="true" type="xs:boolean"/>
+      <xs:element name="snReclamarPorCaducidad" nillable="true" type="xs:boolean"/>
+      <xs:element name="idProcesoReclamacionContratosProv" nillable="true" type="xs:int"/>
+      <xs:element name="snApareceListaRobinson" nillable="true" type="xs:boolean"/>
+      <xs:element name="variables" nillable="true" type="tns:ArrayOfVariableDTO"/>
+      <xs:element name="observaciones" nillable="true" type="tns:ArrayOfObservacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ClienteDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="tipoCliente" nillable="true" type="xs:string"/>
+      <xs:element name="persona" nillable="true" type="tns:PersonaDTO"/>
+      <xs:element name="usuarioWeb" nillable="true" type="xs:string"/>
+      <xs:element name="passwordWeb" nillable="true" type="xs:string"/>
+      <xs:element name="numConexionesWeb" nillable="true" type="xs:int"/>
+      <xs:element name="ultimaConexionWeb" nillable="true" type="xs:dateTime"/>
+      <xs:element name="cambiarPassword" nillable="true" type="xs:boolean"/>
+      <xs:element name="listaContratos" nillable="true" type="tns:ArrayOf_xsd_nillable_int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonaDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+      <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="telefono2" nillable="true" type="xs:string"/>
+      <xs:element name="telefono3" nillable="true" type="xs:string"/>
+      <xs:element name="nif" nillable="true" type="xs:string"/>
+      <xs:element name="esJubilado" nillable="true" type="xs:boolean"/>
+      <xs:element name="juridica" nillable="true" type="xs:boolean"/>
+      <xs:element name="claveWeb" nillable="true" type="xs:string"/>
+      <xs:element name="codExtranjero" nillable="true" type="xs:string"/>
+      <xs:element name="usuario" nillable="true" type="xs:string"/>
+      <xs:element name="telefono4" nillable="true" type="xs:string"/>
+      <xs:element name="fax" nillable="true" type="xs:string"/>
+      <xs:element name="fechaCreacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="idOficina" nillable="true" type="xs:short"/>
+      <xs:element name="idioma" nillable="true" type="xs:string"/>
+      <xs:element name="nombreCompleto" nillable="true" type="xs:string"/>
+      <xs:element name="direcciones" nillable="true" type="tns:ArrayOfPersonaDireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfPersonaDireccionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PersonaDireccionDTO" nillable="true" type="tns:PersonaDireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonaDireccionDTO">
+    <xs:sequence>
+      <xs:element name="numeroDireccion" nillable="true" type="xs:short"/>
+      <xs:element name="defecto" nillable="true" type="xs:boolean"/>
+      <xs:element name="idSesion" nillable="true" type="xs:int"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="alaAtencion" nillable="true" type="xs:string"/>
+      <xs:element name="direccion" nillable="true" type="tns:DireccionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DireccionDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="tipo" nillable="true" type="xs:short"/>
+      <xs:element name="idCalle" nillable="true" type="xs:int"/>
+      <xs:element name="parImpar" nillable="true" type="xs:short"/>
+      <xs:element name="numeroDesde" nillable="true" type="xs:int"/>
+      <xs:element name="finca" nillable="true" type="xs:int"/>
+      <xs:element name="complementoFinca" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="complemento" nillable="true" type="xs:string"/>
+      <xs:element name="texto" nillable="true" type="xs:string"/>
+      <xs:element name="codigoPostal" nillable="true" type="xs:string"/>
+      <xs:element name="idLocalidad" nillable="true" type="xs:int"/>
+      <xs:element name="nombreLocalidad" nillable="true" type="xs:string"/>
+      <xs:element name="idPoblacion" nillable="true" type="xs:int"/>
+      <xs:element name="nombrePoblacion" nillable="true" type="xs:string"/>
+      <xs:element name="idProvincia" nillable="true" type="xs:short"/>
+      <xs:element name="nombreProvincia" nillable="true" type="xs:string"/>
+      <xs:element name="idComunidad" nillable="true" type="xs:short"/>
+      <xs:element name="nombreComunidad" nillable="true" type="xs:string"/>
+      <xs:element name="idPais" nillable="true" type="xs:int"/>
+      <xs:element name="nombrePais" nillable="true" type="xs:string"/>
+      <xs:element name="codigoInternacionalPais" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOf_xsd_nillable_int">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="int" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="SegnasDeCobroDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:int"/>
+      <xs:element name="activa" nillable="true" type="xs:boolean"/>
+      <xs:element name="numeroDeCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="digitoDeControl" nillable="true" type="xs:string"/>
+      <xs:element name="agencia" nillable="true" type="xs:short"/>
+      <xs:element name="banco" nillable="true" type="xs:short"/>
+      <xs:element name="canalCobroId" nillable="true" type="xs:string"/>
+      <xs:element name="canalCobroDesc" nillable="true" type="xs:string"/>
+      <xs:element name="canalCobroBancario" nillable="true" type="xs:boolean"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfHistoricoTiposFacturaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="HistoricoTiposFacturaDTO" nillable="true" type="tns:HistoricoTiposFacturaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoTiposFacturaDTO">
+    <xs:sequence>
+      <xs:element name="fechaModificacion" nillable="true" type="xs:dateTime"/>
+      <xs:element name="codigoAccion" nillable="true" type="xs:string"/>
+      <xs:element name="codigoTipoFactura" nillable="true" type="xs:short"/>
+      <xs:element name="codigoCanalModificacion" nillable="true" type="xs:string"/>
+      <xs:element name="usuarioModificacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfVariableDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="VariableDTO" nillable="true" type="tns:VariableDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="VariableDTO">
+    <xs:sequence>
+      <xs:element name="idVariable" nillable="true" type="xs:int"/>
+      <xs:element name="descTipoVariable" nillable="true" type="xs:string"/>
+      <xs:element name="tipoDato" nillable="true" type="xs:short"/>
+      <xs:element name="decimales" nillable="true" type="xs:short"/>
+      <xs:element name="origen" nillable="true" type="xs:short"/>
+      <xs:element name="valor" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfObservacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ObservacionDTO" nillable="true" type="tns:ObservacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ObservacionDTO">
+    <xs:sequence>
+      <xs:element name="idObservacion" nillable="true" type="xs:int"/>
+      <xs:element name="indice" nillable="true" type="xs:short"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+      <xs:element name="texto" nillable="true" type="xs:string"/>
+      <xs:element name="idUsuario" nillable="true" type="xs:string"/>
+      <xs:element name="nombreUsuario" nillable="true" type="xs:string"/>
+      <xs:element name="idTipoObs" nillable="true" type="xs:short"/>
+      <xs:element name="descTipoObs" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ListaTiposOrdenDTO">
+    <xs:sequence>
+      <xs:element name="listaTipos" nillable="true" type="tns:ArrayOfTipoOrdenDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfTipoOrdenDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoOrdenDTO" nillable="true" type="tns:TipoOrdenDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TipoOrdenDTO">
+    <xs:sequence>
+      <xs:element name="idTipo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ContratoIVRDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="numContrato" type="xs:int"/>
+      <xs:element name="dosEsferas" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturaIdDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="facturasId" nillable="true" type="tns:ArrayOfFacturasIdDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfFacturasIdDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="FacturasIdDTO" nillable="true" type="tns:FacturasIdDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FacturasIdDTO">
+    <xs:sequence>
+      <xs:element name="numFactura" nillable="true" type="xs:string"/>
+      <xs:element name="idFactura" nillable="true" type="xs:int"/>
+      <xs:element name="estado" nillable="true" type="xs:int"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DesglosesDTO">
+    <xs:sequence>
+      <xs:element name="desglose" nillable="true" type="tns:ArrayOfDesgloseDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDesgloseDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DesgloseDTO" nillable="true" type="tns:DesgloseDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DesgloseDTO">
+    <xs:sequence>
+      <xs:element name="importe" nillable="true" type="xs:decimal"/>
+      <xs:element name="concepto" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="XmlFacturaDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="xml" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ListaMotivosCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element name="listaMotivos" nillable="true" type="tns:ArrayOfMotivoCreacionOrdenDTO"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfMotivoCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="MotivoCreacionOrdenDTO" nillable="true" type="tns:MotivoCreacionOrdenDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="MotivoCreacionOrdenDTO">
+    <xs:sequence>
+      <xs:element name="idMotivo" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+      <xs:element name="manual" nillable="true" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoSuministroDTO">
+    <xs:sequence>
+      <xs:element name="idCicloContrato" nillable="true" type="xs:int"/>
+      <xs:element name="idExplotacion" nillable="true" type="xs:short"/>
+      <xs:element name="descExplotacion" nillable="true" type="xs:string"/>
+      <xs:element name="idPuntoServicio" nillable="true" type="xs:int"/>
+      <xs:element name="numeroContrato" nillable="true" type="xs:int"/>
+      <xs:element name="numeroCiclo" nillable="true" type="xs:short"/>
+      <xs:element name="tipoCiclo" nillable="true" type="xs:short"/>
+      <xs:element name="estadoCicloContrato" nillable="true" type="xs:short"/>
+      <xs:element name="codigoZona" nillable="true" type="xs:string"/>
+      <xs:element name="año" nillable="true" type="xs:short"/>
+      <xs:element name="idPeriodicidad" nillable="true" type="xs:short"/>
+      <xs:element name="descPeriodicidad" nillable="true" type="xs:string"/>
+      <xs:element name="periodo" nillable="true" type="xs:short"/>
+      <xs:element name="cicloPeriodicoIncompleto" nillable="true" type="xs:boolean"/>
+      <xs:element name="esfera" nillable="true" type="xs:short"/>
+      <xs:element name="idOrigen" nillable="true" type="xs:string"/>
+      <xs:element name="descOrigen" nillable="true" type="xs:string"/>
+      <xs:element name="idObservacion" nillable="true" type="xs:string"/>
+      <xs:element name="descObservacion" nillable="true" type="xs:string"/>
+      <xs:element name="tipoCalculoConsumoObs" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:dateTime"/>
+      <xs:element name="lectura" nillable="true" type="xs:int"/>
+      <xs:element name="consumo" nillable="true" type="xs:int"/>
+      <xs:element name="contadorAveriado" nillable="true" type="xs:boolean"/>
+      <xs:element name="ajuste" nillable="true" type="xs:int"/>
+      <xs:element name="idModoEstimacion" nillable="true" type="xs:short"/>
+      <xs:element name="descModoEstimacion" nillable="true" type="xs:string"/>
+      <xs:element name="idVerificacion" nillable="true" type="xs:short"/>
+      <xs:element name="descVerificacion" nillable="true" type="xs:string"/>
+      <xs:element name="idSesionVerificacion" nillable="true" type="xs:int"/>
+      <xs:element name="ajusteConsumoPorEstimacion" nillable="true" type="xs:int"/>
+      <xs:element name="consumoAcumuladoBolsaEst" nillable="true" type="xs:int"/>
+      <xs:element name="otrosAjustes" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenesServicioDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="ordenesServicios" nillable="true" type="tns:ArrayOfOrdenesServiciosDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfOrdenesServiciosDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="OrdenesServiciosDTO" nillable="true" type="tns:OrdenesServiciosDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenesServiciosDTO">
+    <xs:sequence>
+      <xs:element name="numOrden" nillable="true" type="xs:int"/>
+      <xs:element name="estado" nillable="true" type="xs:int"/>
+      <xs:element name="fecha" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoConsumoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="consumos" nillable="true" type="tns:ArrayOfHistoricoSuministroDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfHistoricoSuministroDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="HistoricoSuministroDTO" nillable="true" type="tns:HistoricoSuministroDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="OrdenServicioDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idOrdenServicio" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ExplotacionesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="explotaciones" nillable="true" type="tns:ArrayOfExplotacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfExplotacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ExplotacionDTO" nillable="true" type="tns:ExplotacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ExplotacionDTO">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:short"/>
+      <xs:element name="descripcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="HistoricoDomiciliacionesDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="consumos" nillable="true" type="tns:ArrayOfDomiciliacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDomiciliacionDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="DomiciliacionDTO" nillable="true" type="tns:DomiciliacionDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DomiciliacionDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="fechaInicio" nillable="true" type="xs:dateTime"/>
+      <xs:element name="fechaFin" nillable="true" type="xs:dateTime"/>
+      <xs:element name="codigoInternacional" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaIBAN" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaFormateada" nillable="true" type="xs:string"/>
+      <xs:element name="cuentaProtegida" nillable="true" type="xs:string"/>
+      <xs:element name="idTitularSegna" nillable="true" type="xs:int"/>
+      <xs:element name="nombreTitularSegna" nillable="true" type="xs:string"/>
+      <xs:element name="referenciaMandato" nillable="true" type="xs:int"/>
+      <xs:element name="referenciaFirmada" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="RegistrarContactoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idContacto" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="PersonasDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="personas" nillable="true" type="tns:ArrayOfPersonaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfPersonaDTO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PersonaDTO" nillable="true" type="tns:PersonaDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DocumentacionDTO">
+    <xs:sequence>
+      <xs:element name="documentos" nillable="true" type="tns:ArrayOf_xsd_nillable_string"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOf_xsd_nillable_string">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="IDPersonaContratoDTO">
+    <xs:sequence>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="idPersona" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoContratoAltaDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="tipoContrato" nillable="true" type="xs:string"/>
+      <xs:element name="datosInmueble" nillable="true" type="xs:string"/>
+      <xs:element name="fechaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEscritura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaFinObra" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="BajaSuministroDTO">
+    <xs:sequence>
+      <xs:element name="contrato" nillable="true" type="xs:string"/>
+      <xs:element name="lecturaContador" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="horaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="telefonoContacto" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoContratoDTO">
+    <xs:sequence>
+      <xs:element name="banco" nillable="true" type="xs:string"/>
+      <xs:element name="sucursal" nillable="true" type="xs:string"/>
+      <xs:element name="digitoControl" nillable="true" type="xs:string"/>
+      <xs:element name="numeroCuenta" nillable="true" type="xs:string"/>
+      <xs:element name="tipoContrato" nillable="true" type="xs:string"/>
+      <xs:element name="datosInmueble" nillable="true" type="xs:string"/>
+      <xs:element name="motivoCambioTitular" nillable="true" type="xs:string"/>
+      <xs:element name="numeroContador" nillable="true" type="xs:string"/>
+      <xs:element name="lecturaContador" nillable="true" type="xs:string"/>
+      <xs:element name="telefonoContacto" nillable="true" type="xs:string"/>
+      <xs:element name="fechaContrato" nillable="true" type="xs:string"/>
+      <xs:element name="fechaEscritura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaFinObra" nillable="true" type="xs:string"/>
+      <xs:element name="fechaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="fechaVisitaLectura" nillable="true" type="xs:string"/>
+      <xs:element name="horaVisitaLectura" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="SolicitanteDTO">
+    <xs:sequence>
+      <xs:element name="numeroDocumentoSolicitante" nillable="true" type="xs:string"/>
+      <xs:element name="resultado" nillable="true" type="tns:ResultadoDTO"/>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="primerApellido" nillable="true" type="xs:string"/>
+      <xs:element name="segundoApellido" nillable="true" type="xs:string"/>
+      <xs:element name="razonSocial" nillable="true" type="xs:string"/>
+      <xs:element name="direccionPostal" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="telefono" nillable="true" type="xs:string"/>
+      <xs:element name="fax" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="NuevoTitularDTO">
+    <xs:complexContent>
+      <xs:extension base="tns:SolicitanteDTO">
+        <xs:sequence>
+          <xs:element name="mismoSolicitante" nillable="true" type="xs:boolean"/>
+          <xs:element name="tipoCliente" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="PuntoAcometidaDTO">
+    <xs:sequence>
+      <xs:element name="provincia" nillable="true" type="xs:string"/>
+      <xs:element name="municipio" nillable="true" type="xs:string"/>
+      <xs:element name="calle" nillable="true" type="xs:string"/>
+      <xs:element name="numero" nillable="true" type="xs:string"/>
+      <xs:element name="bloque" nillable="true" type="xs:string"/>
+      <xs:element name="escalera" nillable="true" type="xs:string"/>
+      <xs:element name="planta" nillable="true" type="xs:string"/>
+      <xs:element name="puerta" nillable="true" type="xs:string"/>
+      <xs:element name="edificio" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="solicitudCambioDomiciliacionBancaria">
+    <wsdl:part element="tns:solicitudCambioDomiciliacionBancaria" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumosResponse">
+    <wsdl:part element="tns:getConsumosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudCambioDomiciliacionBancariaResponse">
+    <wsdl:part element="tns:solicitudCambioDomiciliacionBancariaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasContrato">
+    <wsdl:part element="tns:getFacturasContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPDFImpresionLocalPendiente">
+    <wsdl:part element="tns:getPDFImpresionLocalPendiente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AquaCISWSAplicationException_Exception">
+    <wsdl:part element="tns:AquaCISWSAplicationException" name="AquaCISWSAplicationException_Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoActuacionesContrato">
+    <wsdl:part element="tns:consultaHistoricoActuacionesContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasPorCondiciones">
+    <wsdl:part element="tns:getFacturasPorCondiciones" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudModificacionServiAlertaMasiva">
+    <wsdl:part element="tns:solicitudModificacionServiAlertaMasiva" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudIntroduccionLecturaIVR">
+    <wsdl:part element="tns:solicitudIntroduccionLecturaIVR" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCierresByIdsContratoResponse">
+    <wsdl:part element="tns:getCierresByIdsContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudFacturaEnQuejaActiva">
+    <wsdl:part element="tns:solicitudFacturaEnQuejaActiva" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarSenasCobroBancariasResponse">
+    <wsdl:part element="tns:cambiarSenasCobroBancariasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudAltaServiAlerta">
+    <wsdl:part element="tns:solicitudAltaServiAlerta" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImpresionesLocalesPendientes">
+    <wsdl:part element="tns:getImpresionesLocalesPendientes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudModificacionDatosPersonales">
+    <wsdl:part element="tns:solicitudModificacionDatosPersonales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfMandato">
+    <wsdl:part element="tns:getPdfMandato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDomicilioNotificaciones">
+    <wsdl:part element="tns:cambiarDomicilioNotificaciones" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCierresByIdsContrato">
+    <wsdl:part element="tns:getCierresByIdsContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosByNumFactNumContratoResponse">
+    <wsdl:part element="tns:getContratosByNumFactNumContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getValidacionVerFacturaResponse">
+    <wsdl:part element="tns:getValidacionVerFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasPorCondicionesResponse">
+    <wsdl:part element="tns:getFacturasPorCondicionesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTiposOrden">
+    <wsdl:part element="tns:getTiposOrden" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosByNumFactNumContrato">
+    <wsdl:part element="tns:getContratosByNumFactNumContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudModificacionDatosPersonalesResponse">
+    <wsdl:part element="tns:solicitudModificacionDatosPersonalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperaFacturasByIds">
+    <wsdl:part element="tns:recuperaFacturasByIds" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countFacturasContratoResponse">
+    <wsdl:part element="tns:countFacturasContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudFacturasMasivaResponse">
+    <wsdl:part element="tns:solicitudFacturasMasivaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudIntroduccionLecturaIVRResponse">
+    <wsdl:part element="tns:solicitudIntroduccionLecturaIVRResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudCambioDomicilioNotificacionesResponse">
+    <wsdl:part element="tns:solicitudCambioDomicilioNotificacionesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturaE">
+    <wsdl:part element="tns:getFacturaE" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getIDPersonaContratoResponse">
+    <wsdl:part element="tns:getIDPersonaContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudFacturaEnQuejaActivaResponse">
+    <wsdl:part element="tns:solicitudFacturaEnQuejaActivaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoConsumoContratoResponse">
+    <wsdl:part element="tns:consultaHistoricoConsumoContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMotivosOrden">
+    <wsdl:part element="tns:getMotivosOrden" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfDocumentoFactura">
+    <wsdl:part element="tns:getPdfDocumentoFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudFacturasMasiva">
+    <wsdl:part element="tns:solicitudFacturasMasiva" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasContratoResponse">
+    <wsdl:part element="tns:getFacturasContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturas">
+    <wsdl:part element="tns:getFacturas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperaOrdenesServicio">
+    <wsdl:part element="tns:recuperaOrdenesServicio" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoConsumoContrato">
+    <wsdl:part element="tns:consultaHistoricoConsumoContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenServicio">
+    <wsdl:part element="tns:crearOrdenServicio" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExplotacionesUsuario">
+    <wsdl:part element="tns:getExplotacionesUsuario" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDocumentacionContratoResponse">
+    <wsdl:part element="tns:consultaDocumentacionContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoDomiciliacion">
+    <wsdl:part element="tns:consultaHistoricoDomiciliacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonaListResponse">
+    <wsdl:part element="tns:getPersonaListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getIDPersonaContrato">
+    <wsdl:part element="tns:getIDPersonaContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDetalleContrato">
+    <wsdl:part element="tns:consultaDetalleContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPDFImpresionLocalPendienteResponse">
+    <wsdl:part element="tns:getPDFImpresionLocalPendienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDetalleContratoResponse">
+    <wsdl:part element="tns:consultaDetalleContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crearOrdenServicioResponse">
+    <wsdl:part element="tns:crearOrdenServicioResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countFacturasContrato">
+    <wsdl:part element="tns:countFacturasContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudActivacionFacturaOnline">
+    <wsdl:part element="tns:solicitudActivacionFacturaOnline" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoDomiciliacionResponse">
+    <wsdl:part element="tns:consultaHistoricoDomiciliacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudCambioDomicilioNotificaciones">
+    <wsdl:part element="tns:solicitudCambioDomicilioNotificaciones" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfDocumentoFacturaResponse">
+    <wsdl:part element="tns:getPdfDocumentoFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMotivosOrdenResponse">
+    <wsdl:part element="tns:getMotivosOrdenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarContactoManualResponse">
+    <wsdl:part element="tns:registrarContactoManualResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratosResponse">
+    <wsdl:part element="tns:getContratosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasContratoReferencia">
+    <wsdl:part element="tns:getFacturasContratoReferencia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esTitular">
+    <wsdl:part element="tns:esTitular" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarSenasCobroBancarias">
+    <wsdl:part element="tns:cambiarSenasCobroBancarias" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esPSContratable">
+    <wsdl:part element="tns:esPSContratable" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDocumentacionContrato">
+    <wsdl:part element="tns:consultaDocumentacionContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfFactura">
+    <wsdl:part element="tns:getPdfFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfFacturaResponse">
+    <wsdl:part element="tns:getPdfFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudIntroduccionLectura">
+    <wsdl:part element="tns:solicitudIntroduccionLectura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImpresionesLocalesPendientesResponse">
+    <wsdl:part element="tns:getImpresionesLocalesPendientesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratos">
+    <wsdl:part element="tns:getContratos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperaOrdenesServicioResponse">
+    <wsdl:part element="tns:recuperaOrdenesServicioResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudIntroduccionLecturaResponse">
+    <wsdl:part element="tns:solicitudIntroduccionLecturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudModificacionServiAlertaMasivaResponse">
+    <wsdl:part element="tns:solicitudModificacionServiAlertaMasivaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaHistoricoActuacionesContratoResponse">
+    <wsdl:part element="tns:consultaHistoricoActuacionesContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaLiquidacionTramite">
+    <wsdl:part element="tns:consultaLiquidacionTramite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudActivacionFacturaOnlineResponse">
+    <wsdl:part element="tns:solicitudActivacionFacturaOnlineResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="solicitudAltaServiAlertaResponse">
+    <wsdl:part element="tns:solicitudAltaServiAlertaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esTitularResponse">
+    <wsdl:part element="tns:esTitularResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperaFacturasByIdsResponse">
+    <wsdl:part element="tns:recuperaFacturasByIdsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaLiquidacionTramiteResponse">
+    <wsdl:part element="tns:consultaLiquidacionTramiteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPdfMandatoResponse">
+    <wsdl:part element="tns:getPdfMandatoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContrato">
+    <wsdl:part element="tns:getContrato" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esPSContratableResponse">
+    <wsdl:part element="tns:esPSContratableResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConsumos">
+    <wsdl:part element="tns:getConsumos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDocumentacionTramiteResponse">
+    <wsdl:part element="tns:consultaDocumentacionTramiteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContratoResponse">
+    <wsdl:part element="tns:getContratoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTiposOrdenResponse">
+    <wsdl:part element="tns:getTiposOrdenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasContratoReferenciaResponse">
+    <wsdl:part element="tns:getFacturasContratoReferenciaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarContactoManual">
+    <wsdl:part element="tns:registrarContactoManual" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cambiarDomicilioNotificacionesResponse">
+    <wsdl:part element="tns:cambiarDomicilioNotificacionesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonaList">
+    <wsdl:part element="tns:getPersonaList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClienteListByExplotacion">
+    <wsdl:part element="tns:getClienteListByExplotacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaDocumentacionTramite">
+    <wsdl:part element="tns:consultaDocumentacionTramite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturasResponse">
+    <wsdl:part element="tns:getFacturasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExplotacionesUsuarioResponse">
+    <wsdl:part element="tns:getExplotacionesUsuarioResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClienteListByExplotacionResponse">
+    <wsdl:part element="tns:getClienteListByExplotacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFacturaEResponse">
+    <wsdl:part element="tns:getFacturaEResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getValidacionVerFactura">
+    <wsdl:part element="tns:getValidacionVerFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InterfazGenericaContratacionWSBean_SEI">
+    <wsdl:operation name="consultaDetalleContrato">
+      <wsdl:input message="tns:consultaDetalleContrato" name="consultaDetalleContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaDetalleContratoResponse" name="consultaDetalleContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudCambioDomiciliacionBancaria">
+      <wsdl:input message="tns:solicitudCambioDomiciliacionBancaria" name="solicitudCambioDomiciliacionBancaria">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudCambioDomiciliacionBancariaResponse" name="solicitudCambioDomiciliacionBancariaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countFacturasContrato">
+      <wsdl:input message="tns:countFacturasContrato" name="countFacturasContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:countFacturasContratoResponse" name="countFacturasContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasContrato">
+      <wsdl:input message="tns:getFacturasContrato" name="getFacturasContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getFacturasContratoResponse" name="getFacturasContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPDFImpresionLocalPendiente">
+      <wsdl:input message="tns:getPDFImpresionLocalPendiente" name="getPDFImpresionLocalPendiente">
+    </wsdl:input>
+      <wsdl:output message="tns:getPDFImpresionLocalPendienteResponse" name="getPDFImpresionLocalPendienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudActivacionFacturaOnline">
+      <wsdl:input message="tns:solicitudActivacionFacturaOnline" name="solicitudActivacionFacturaOnline">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudActivacionFacturaOnlineResponse" name="solicitudActivacionFacturaOnlineResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudCambioDomicilioNotificaciones">
+      <wsdl:input message="tns:solicitudCambioDomicilioNotificaciones" name="solicitudCambioDomicilioNotificaciones">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudCambioDomicilioNotificacionesResponse" name="solicitudCambioDomicilioNotificacionesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoActuacionesContrato">
+      <wsdl:input message="tns:consultaHistoricoActuacionesContrato" name="consultaHistoricoActuacionesContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaHistoricoActuacionesContratoResponse" name="consultaHistoricoActuacionesContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasPorCondiciones">
+      <wsdl:input message="tns:getFacturasPorCondiciones" name="getFacturasPorCondiciones">
+    </wsdl:input>
+      <wsdl:output message="tns:getFacturasPorCondicionesResponse" name="getFacturasPorCondicionesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudModificacionServiAlertaMasiva">
+      <wsdl:input message="tns:solicitudModificacionServiAlertaMasiva" name="solicitudModificacionServiAlertaMasiva">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudModificacionServiAlertaMasivaResponse" name="solicitudModificacionServiAlertaMasivaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudIntroduccionLecturaIVR">
+      <wsdl:input message="tns:solicitudIntroduccionLecturaIVR" name="solicitudIntroduccionLecturaIVR">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudIntroduccionLecturaIVRResponse" name="solicitudIntroduccionLecturaIVRResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudFacturaEnQuejaActiva">
+      <wsdl:input message="tns:solicitudFacturaEnQuejaActiva" name="solicitudFacturaEnQuejaActiva">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudFacturaEnQuejaActivaResponse" name="solicitudFacturaEnQuejaActivaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudAltaServiAlerta">
+      <wsdl:input message="tns:solicitudAltaServiAlerta" name="solicitudAltaServiAlerta">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudAltaServiAlertaResponse" name="solicitudAltaServiAlertaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getImpresionesLocalesPendientes">
+      <wsdl:input message="tns:getImpresionesLocalesPendientes" name="getImpresionesLocalesPendientes">
+    </wsdl:input>
+      <wsdl:output message="tns:getImpresionesLocalesPendientesResponse" name="getImpresionesLocalesPendientesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasContratoReferencia">
+      <wsdl:input message="tns:getFacturasContratoReferencia" name="getFacturasContratoReferencia">
+    </wsdl:input>
+      <wsdl:output message="tns:getFacturasContratoReferenciaResponse" name="getFacturasContratoReferenciaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="esTitular">
+      <wsdl:input message="tns:esTitular" name="esTitular">
+    </wsdl:input>
+      <wsdl:output message="tns:esTitularResponse" name="esTitularResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarSenasCobroBancarias">
+      <wsdl:input message="tns:cambiarSenasCobroBancarias" name="cambiarSenasCobroBancarias">
+    </wsdl:input>
+      <wsdl:output message="tns:cambiarSenasCobroBancariasResponse" name="cambiarSenasCobroBancariasResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="esPSContratable">
+      <wsdl:input message="tns:esPSContratable" name="esPSContratable">
+    </wsdl:input>
+      <wsdl:output message="tns:esPSContratableResponse" name="esPSContratableResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaDocumentacionContrato">
+      <wsdl:input message="tns:consultaDocumentacionContrato" name="consultaDocumentacionContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaDocumentacionContratoResponse" name="consultaDocumentacionContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfFactura">
+      <wsdl:input message="tns:getPdfFactura" name="getPdfFactura">
+    </wsdl:input>
+      <wsdl:output message="tns:getPdfFacturaResponse" name="getPdfFacturaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudModificacionDatosPersonales">
+      <wsdl:input message="tns:solicitudModificacionDatosPersonales" name="solicitudModificacionDatosPersonales">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudModificacionDatosPersonalesResponse" name="solicitudModificacionDatosPersonalesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfMandato">
+      <wsdl:input message="tns:getPdfMandato" name="getPdfMandato">
+    </wsdl:input>
+      <wsdl:output message="tns:getPdfMandatoResponse" name="getPdfMandatoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDomicilioNotificaciones">
+      <wsdl:input message="tns:cambiarDomicilioNotificaciones" name="cambiarDomicilioNotificaciones">
+    </wsdl:input>
+      <wsdl:output message="tns:cambiarDomicilioNotificacionesResponse" name="cambiarDomicilioNotificacionesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCierresByIdsContrato">
+      <wsdl:input message="tns:getCierresByIdsContrato" name="getCierresByIdsContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getCierresByIdsContratoResponse" name="getCierresByIdsContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudIntroduccionLectura">
+      <wsdl:input message="tns:solicitudIntroduccionLectura" name="solicitudIntroduccionLectura">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudIntroduccionLecturaResponse" name="solicitudIntroduccionLecturaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratos">
+      <wsdl:input message="tns:getContratos" name="getContratos">
+    </wsdl:input>
+      <wsdl:output message="tns:getContratosResponse" name="getContratosResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTiposOrden">
+      <wsdl:input message="tns:getTiposOrden" name="getTiposOrden">
+    </wsdl:input>
+      <wsdl:output message="tns:getTiposOrdenResponse" name="getTiposOrdenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosByNumFactNumContrato">
+      <wsdl:input message="tns:getContratosByNumFactNumContrato" name="getContratosByNumFactNumContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getContratosByNumFactNumContratoResponse" name="getContratosByNumFactNumContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recuperaFacturasByIds">
+      <wsdl:input message="tns:recuperaFacturasByIds" name="recuperaFacturasByIds">
+    </wsdl:input>
+      <wsdl:output message="tns:recuperaFacturasByIdsResponse" name="recuperaFacturasByIdsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaLiquidacionTramite">
+      <wsdl:input message="tns:consultaLiquidacionTramite" name="consultaLiquidacionTramite">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaLiquidacionTramiteResponse" name="consultaLiquidacionTramiteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturaE">
+      <wsdl:input message="tns:getFacturaE" name="getFacturaE">
+    </wsdl:input>
+      <wsdl:output message="tns:getFacturaEResponse" name="getFacturaEResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMotivosOrden">
+      <wsdl:input message="tns:getMotivosOrden" name="getMotivosOrden">
+    </wsdl:input>
+      <wsdl:output message="tns:getMotivosOrdenResponse" name="getMotivosOrdenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContrato">
+      <wsdl:input message="tns:getContrato" name="getContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getContratoResponse" name="getContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfDocumentoFactura">
+      <wsdl:input message="tns:getPdfDocumentoFactura" name="getPdfDocumentoFactura">
+    </wsdl:input>
+      <wsdl:output message="tns:getPdfDocumentoFacturaResponse" name="getPdfDocumentoFacturaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudFacturasMasiva">
+      <wsdl:input message="tns:solicitudFacturasMasiva" name="solicitudFacturasMasiva">
+    </wsdl:input>
+      <wsdl:output message="tns:solicitudFacturasMasivaResponse" name="solicitudFacturasMasivaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumos">
+      <wsdl:input message="tns:getConsumos" name="getConsumos">
+    </wsdl:input>
+      <wsdl:output message="tns:getConsumosResponse" name="getConsumosResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturas">
+      <wsdl:input message="tns:getFacturas" name="getFacturas">
+    </wsdl:input>
+      <wsdl:output message="tns:getFacturasResponse" name="getFacturasResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recuperaOrdenesServicio">
+      <wsdl:input message="tns:recuperaOrdenesServicio" name="recuperaOrdenesServicio">
+    </wsdl:input>
+      <wsdl:output message="tns:recuperaOrdenesServicioResponse" name="recuperaOrdenesServicioResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoConsumoContrato">
+      <wsdl:input message="tns:consultaHistoricoConsumoContrato" name="consultaHistoricoConsumoContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaHistoricoConsumoContratoResponse" name="consultaHistoricoConsumoContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenServicio">
+      <wsdl:input message="tns:crearOrdenServicio" name="crearOrdenServicio">
+    </wsdl:input>
+      <wsdl:output message="tns:crearOrdenServicioResponse" name="crearOrdenServicioResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getExplotacionesUsuario">
+      <wsdl:input message="tns:getExplotacionesUsuario" name="getExplotacionesUsuario">
+    </wsdl:input>
+      <wsdl:output message="tns:getExplotacionesUsuarioResponse" name="getExplotacionesUsuarioResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoDomiciliacion">
+      <wsdl:input message="tns:consultaHistoricoDomiciliacion" name="consultaHistoricoDomiciliacion">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaHistoricoDomiciliacionResponse" name="consultaHistoricoDomiciliacionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registrarContactoManual">
+      <wsdl:input message="tns:registrarContactoManual" name="registrarContactoManual">
+    </wsdl:input>
+      <wsdl:output message="tns:registrarContactoManualResponse" name="registrarContactoManualResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonaList">
+      <wsdl:input message="tns:getPersonaList" name="getPersonaList">
+    </wsdl:input>
+      <wsdl:output message="tns:getPersonaListResponse" name="getPersonaListResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getClienteListByExplotacion">
+      <wsdl:input message="tns:getClienteListByExplotacion" name="getClienteListByExplotacion">
+    </wsdl:input>
+      <wsdl:output message="tns:getClienteListByExplotacionResponse" name="getClienteListByExplotacionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaDocumentacionTramite">
+      <wsdl:input message="tns:consultaDocumentacionTramite" name="consultaDocumentacionTramite">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaDocumentacionTramiteResponse" name="consultaDocumentacionTramiteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getIDPersonaContrato">
+      <wsdl:input message="tns:getIDPersonaContrato" name="getIDPersonaContrato">
+    </wsdl:input>
+      <wsdl:output message="tns:getIDPersonaContratoResponse" name="getIDPersonaContratoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getValidacionVerFactura">
+      <wsdl:input message="tns:getValidacionVerFactura" name="getValidacionVerFactura">
+    </wsdl:input>
+      <wsdl:output message="tns:getValidacionVerFacturaResponse" name="getValidacionVerFacturaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AquaCISWSAplicationException_Exception" name="AquaCISWSAplicationException_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazGenericaContratacionWSServiceSoapBinding" type="tns:InterfazGenericaContratacionWSBean_SEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="consultaDetalleContrato">
+      <soap:operation soapAction="consultaDetalleContrato" style="document"/>
+      <wsdl:input name="consultaDetalleContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaDetalleContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudCambioDomiciliacionBancaria">
+      <soap:operation soapAction="solicitudCambioDomiciliacionBancaria" style="document"/>
+      <wsdl:input name="solicitudCambioDomiciliacionBancaria">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudCambioDomiciliacionBancariaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countFacturasContrato">
+      <soap:operation soapAction="countFacturasContrato" style="document"/>
+      <wsdl:input name="countFacturasContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countFacturasContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasContrato">
+      <soap:operation soapAction="getFacturasContrato" style="document"/>
+      <wsdl:input name="getFacturasContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturasContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPDFImpresionLocalPendiente">
+      <soap:operation soapAction="getPDFImpresionLocalPendiente" style="document"/>
+      <wsdl:input name="getPDFImpresionLocalPendiente">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPDFImpresionLocalPendienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudActivacionFacturaOnline">
+      <soap:operation soapAction="solicitudActivacionFacturaOnline" style="document"/>
+      <wsdl:input name="solicitudActivacionFacturaOnline">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudActivacionFacturaOnlineResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudCambioDomicilioNotificaciones">
+      <soap:operation soapAction="solicitudCambioDomicilioNotificaciones" style="document"/>
+      <wsdl:input name="solicitudCambioDomicilioNotificaciones">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudCambioDomicilioNotificacionesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoActuacionesContrato">
+      <soap:operation soapAction="consultaHistoricoActuacionesContrato" style="document"/>
+      <wsdl:input name="consultaHistoricoActuacionesContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaHistoricoActuacionesContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasPorCondiciones">
+      <soap:operation soapAction="getFacturasPorCondiciones" style="document"/>
+      <wsdl:input name="getFacturasPorCondiciones">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturasPorCondicionesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudModificacionServiAlertaMasiva">
+      <soap:operation soapAction="solicitudModificacionServiAlertaMasiva" style="document"/>
+      <wsdl:input name="solicitudModificacionServiAlertaMasiva">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudModificacionServiAlertaMasivaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudIntroduccionLecturaIVR">
+      <soap:operation soapAction="solicitudIntroduccionLecturaIVR" style="document"/>
+      <wsdl:input name="solicitudIntroduccionLecturaIVR">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudIntroduccionLecturaIVRResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudFacturaEnQuejaActiva">
+      <soap:operation soapAction="solicitudFacturaEnQuejaActiva" style="document"/>
+      <wsdl:input name="solicitudFacturaEnQuejaActiva">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudFacturaEnQuejaActivaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturasContratoReferencia">
+      <soap:operation soapAction="getFacturasContratoReferencia" style="document"/>
+      <wsdl:input name="getFacturasContratoReferencia">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturasContratoReferenciaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getImpresionesLocalesPendientes">
+      <soap:operation soapAction="getImpresionesLocalesPendientes" style="document"/>
+      <wsdl:input name="getImpresionesLocalesPendientes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getImpresionesLocalesPendientesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudAltaServiAlerta">
+      <soap:operation soapAction="solicitudAltaServiAlerta" style="document"/>
+      <wsdl:input name="solicitudAltaServiAlerta">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudAltaServiAlertaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="esTitular">
+      <soap:operation soapAction="esTitular" style="document"/>
+      <wsdl:input name="esTitular">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="esTitularResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarSenasCobroBancarias">
+      <soap:operation soapAction="cambiarSenasCobroBancarias" style="document"/>
+      <wsdl:input name="cambiarSenasCobroBancarias">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarSenasCobroBancariasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="esPSContratable">
+      <soap:operation soapAction="esPSContratable" style="document"/>
+      <wsdl:input name="esPSContratable">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="esPSContratableResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfFactura">
+      <soap:operation soapAction="getPdfFactura" style="document"/>
+      <wsdl:input name="getPdfFactura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPdfFacturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaDocumentacionContrato">
+      <soap:operation soapAction="consultaDocumentacionContrato" style="document"/>
+      <wsdl:input name="consultaDocumentacionContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaDocumentacionContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudModificacionDatosPersonales">
+      <soap:operation soapAction="solicitudModificacionDatosPersonales" style="document"/>
+      <wsdl:input name="solicitudModificacionDatosPersonales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudModificacionDatosPersonalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfMandato">
+      <soap:operation soapAction="getPdfMandato" style="document"/>
+      <wsdl:input name="getPdfMandato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPdfMandatoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarDomicilioNotificaciones">
+      <soap:operation soapAction="cambiarDomicilioNotificaciones" style="document"/>
+      <wsdl:input name="cambiarDomicilioNotificaciones">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cambiarDomicilioNotificacionesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCierresByIdsContrato">
+      <soap:operation soapAction="getCierresByIdsContrato" style="document"/>
+      <wsdl:input name="getCierresByIdsContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCierresByIdsContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudIntroduccionLectura">
+      <soap:operation soapAction="solicitudIntroduccionLectura" style="document"/>
+      <wsdl:input name="solicitudIntroduccionLectura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudIntroduccionLecturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratos">
+      <soap:operation soapAction="getContratos" style="document"/>
+      <wsdl:input name="getContratos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTiposOrden">
+      <soap:operation soapAction="getTiposOrden" style="document"/>
+      <wsdl:input name="getTiposOrden">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTiposOrdenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContratosByNumFactNumContrato">
+      <soap:operation soapAction="getContratosByNumFactNumContrato" style="document"/>
+      <wsdl:input name="getContratosByNumFactNumContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratosByNumFactNumContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recuperaFacturasByIds">
+      <soap:operation soapAction="recuperaFacturasByIds" style="document"/>
+      <wsdl:input name="recuperaFacturasByIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="recuperaFacturasByIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaLiquidacionTramite">
+      <soap:operation soapAction="consultaLiquidacionTramite" style="document"/>
+      <wsdl:input name="consultaLiquidacionTramite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaLiquidacionTramiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturaE">
+      <soap:operation soapAction="getFacturaE" style="document"/>
+      <wsdl:input name="getFacturaE">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturaEResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMotivosOrden">
+      <soap:operation soapAction="getMotivosOrden" style="document"/>
+      <wsdl:input name="getMotivosOrden">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMotivosOrdenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContrato">
+      <soap:operation soapAction="getContrato" style="document"/>
+      <wsdl:input name="getContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPdfDocumentoFactura">
+      <soap:operation soapAction="getPdfFactura" style="document"/>
+      <wsdl:input name="getPdfDocumentoFactura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPdfDocumentoFacturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="solicitudFacturasMasiva">
+      <soap:operation soapAction="solicitudFacturasMasiva" style="document"/>
+      <wsdl:input name="solicitudFacturasMasiva">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="solicitudFacturasMasivaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumos">
+      <soap:operation soapAction="getConsumos" style="document"/>
+      <wsdl:input name="getConsumos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConsumosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFacturas">
+      <soap:operation soapAction="getFacturas" style="document"/>
+      <wsdl:input name="getFacturas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFacturasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recuperaOrdenesServicio">
+      <soap:operation soapAction="recuperaOrdenesServicio" style="document"/>
+      <wsdl:input name="recuperaOrdenesServicio">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="recuperaOrdenesServicioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoConsumoContrato">
+      <soap:operation soapAction="consultaHistoricoConsumoContrato" style="document"/>
+      <wsdl:input name="consultaHistoricoConsumoContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaHistoricoConsumoContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crearOrdenServicio">
+      <soap:operation soapAction="crearOrdenServicio" style="document"/>
+      <wsdl:input name="crearOrdenServicio">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crearOrdenServicioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getExplotacionesUsuario">
+      <soap:operation soapAction="getExplotacionesUsuario" style="document"/>
+      <wsdl:input name="getExplotacionesUsuario">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getExplotacionesUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaHistoricoDomiciliacion">
+      <soap:operation soapAction="consultaHistoricoDomiciliacion" style="document"/>
+      <wsdl:input name="consultaHistoricoDomiciliacion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaHistoricoDomiciliacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registrarContactoManual">
+      <soap:operation soapAction="registrarContactoManual" style="document"/>
+      <wsdl:input name="registrarContactoManual">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registrarContactoManualResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonaList">
+      <soap:operation soapAction="getPersonaList" style="document"/>
+      <wsdl:input name="getPersonaList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonaListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getClienteListByExplotacion">
+      <soap:operation soapAction="getClienteListByExplotacion" style="document"/>
+      <wsdl:input name="getClienteListByExplotacion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClienteListByExplotacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaDocumentacionTramite">
+      <soap:operation soapAction="consultaDocumentacionTramite" style="document"/>
+      <wsdl:input name="consultaDocumentacionTramite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaDocumentacionTramiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getIDPersonaContrato">
+      <soap:operation soapAction="getIDPersonaContrato" style="document"/>
+      <wsdl:input name="getIDPersonaContrato">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getIDPersonaContratoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getValidacionVerFactura">
+      <soap:operation soapAction="getValidacionVerFactura" style="document"/>
+      <wsdl:input name="getValidacionVerFactura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getValidacionVerFacturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AquaCISWSAplicationException_Exception">
+        <soap:fault name="AquaCISWSAplicationException_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazGenericaContratacionWSService">
+    <wsdl:port binding="tns:InterfazGenericaContratacionWSServiceSoapBinding" name="InterfazGenericaContratacionWS">
+      <soap:address location="http://aquacis-cf.ceaqueretaro.gob.mx/Comercial/services/InterfazGenericaContratacionWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
