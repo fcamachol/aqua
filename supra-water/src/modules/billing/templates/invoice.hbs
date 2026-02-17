@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recibo {{invoiceNumber}}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid #0054a6;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .header-left { flex: 1; }
+    .header-left h1 {
+      font-size: 16px;
+      color: #0054a6;
+      margin-bottom: 4px;
+    }
+    .header-left .subtitle {
+      font-size: 9px;
+      color: #666;
+    }
+    .header-right {
+      text-align: right;
+    }
+    .header-right .invoice-number {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0054a6;
+    }
+    .header-right .invoice-date {
+      font-size: 9px;
+      color: #666;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 8px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      background: #888;
+      margin-top: 4px;
+    }
+    .badge-pendiente { background: #e6a817; }
+    .badge-cobrada { background: #28a745; }
+    .badge-impagada { background: #dc3545; }
+    .badge-provisional { background: #6c757d; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .info-box {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    .info-box h3 {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: #0054a6;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+    .info-label {
+      color: #666;
+      font-size: 9px;
+    }
+    .info-value {
+      font-weight: 600;
+      font-size: 9px;
+    }
+
+    .consumption-bar {
+      background: #f0f4f8;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .consumption-item {
+      text-align: center;
+    }
+    .consumption-item .value {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0054a6;
+    }
+    .consumption-item .label {
+      font-size: 8px;
+      color: #666;
+      text-transform: uppercase;
+    }
+    .consumption-arrow {
+      font-size: 20px;
+      color: #ccc;
+    }
+
+    table.line-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+    table.line-items thead th {
+      background: #0054a6;
+      color: #fff;
+      font-size: 8px;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      text-align: left;
+      letter-spacing: 0.3px;
+    }
+    table.line-items thead th:nth-child(n+3) {
+      text-align: right;
+    }
+    table.line-items tbody td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #eee;
+      font-size: 9px;
+    }
+    table.line-items tbody td:nth-child(n+3) {
+      text-align: right;
+      font-family: 'Courier New', monospace;
+    }
+    table.line-items tbody tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .totals {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+    .totals-box {
+      width: 250px;
+      border: 2px solid #0054a6;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 10px;
+      font-size: 9px;
+    }
+    .totals-row.grand-total {
+      background: #0054a6;
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+    .totals-row .amount {
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+    }
+
+    .payment-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .payment-box {
+      border: 1px dashed #0054a6;
+      border-radius: 4px;
+      padding: 10px;
+      text-align: center;
+    }
+    .payment-box h4 {
+      font-size: 9px;
+      color: #0054a6;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .payment-ref {
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      color: #333;
+    }
+    .payment-note {
+      font-size: 8px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .cfdi-section {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 16px;
+      font-size: 8px;
+    }
+    .cfdi-section h3 {
+      font-size: 9px;
+      color: #0054a6;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .cfdi-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2px 8px;
+    }
+    .cfdi-label {
+      color: #666;
+      font-weight: 600;
+    }
+    .cfdi-value {
+      word-break: break-all;
+      font-family: 'Courier New', monospace;
+      font-size: 7px;
+    }
+    .cfdi-qr {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .due-date-bar {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      padding: 8px 12px;
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 10px;
+    }
+    .due-date-bar strong {
+      color: #856404;
+    }
+
+    .footer {
+      border-top: 2px solid #0054a6;
+      padding-top: 8px;
+      text-align: center;
+      font-size: 8px;
+      color: #666;
+    }
+    .footer .contact {
+      margin-bottom: 4px;
+    }
+    .footer .legal {
+      font-size: 7px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>{{tenantName}}</h1>
+      <div class="subtitle">RFC: {{tenantRfc}} | {{tenantAddress}}</div>
+      <div class="subtitle">Recibo de Agua Potable, Alcantarillado y Saneamiento</div>
+    </div>
+    <div class="header-right">
+      <div class="invoice-number">Serie {{serie}} - {{invoiceNumber}}</div>
+      <div class="invoice-date">Fecha: {{billingDate}}</div>
+      <span class="badge badge-{{status}}">{{status}}</span>
+    </div>
+  </div>
+
+  <!-- Customer & Contract Info -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Datos del Usuario</h3>
+      <div class="info-row">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{customerName}}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">RFC:</span>
+        <span class="info-value">{{customerRfc}}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Domicilio:</span>
+        <span class="info-value">{{customerAddress}}</span>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Datos del Servicio</h3>
+      <div class="info-row">
+        <span class="info-label">Contrato:</span>
+        <span class="info-value">{{contractNumber}}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Toma:</span>
+        <span class="info-value">{{tomaNumber}}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Tarifa:</span>
+        <span class="info-value">{{tariffCategory}}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Periodo:</span>
+        <span class="info-value">{{periodStart}} - {{periodEnd}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consumption Data -->
+  {{#if consumptionM3}}
+  <div class="consumption-bar">
+    <div class="consumption-item">
+      <div class="value">{{previousReading}}</div>
+      <div class="label">Lectura Anterior</div>
+    </div>
+    <div class="consumption-arrow">&rarr;</div>
+    <div class="consumption-item">
+      <div class="value">{{currentReading}}</div>
+      <div class="label">Lectura Actual</div>
+    </div>
+    <div class="consumption-arrow">=</div>
+    <div class="consumption-item">
+      <div class="value">{{consumptionM3}} m&sup3;</div>
+      <div class="label">Consumo</div>
+    </div>
+  </div>
+  {{/if}}
+
+  <!-- Line Items -->
+  <table class="line-items">
+    <thead>
+      <tr>
+        <th>Concepto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Subtotal</th>
+        <th>IVA</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each lineItems}}
+      <tr>
+        <td>{{this.conceptName}}</td>
+        <td>{{this.quantity}}</td>
+        <td>{{this.unitPrice}}</td>
+        <td>{{this.subtotal}}</td>
+        <td>{{this.ivaAmount}}</td>
+        <td>{{this.total}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="totals">
+    <div class="totals-box">
+      <div class="totals-row">
+        <span>Subtotal:</span>
+        <span class="amount">{{subtotal}}</span>
+      </div>
+      <div class="totals-row">
+        <span>IVA:</span>
+        <span class="amount">{{ivaTotal}}</span>
+      </div>
+      <div class="totals-row grand-total">
+        <span>TOTAL {{currency}}:</span>
+        <span class="amount">{{grandTotal}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Due Date -->
+  <div class="due-date-bar">
+    <strong>Fecha limite de pago: {{dueDate}}</strong>
+    &mdash; Pague a tiempo para evitar recargos y posible corte de servicio.
+  </div>
+
+  <!-- Payment References -->
+  <div class="payment-section">
+    {{#if paymentReference}}
+    <div class="payment-box">
+      <h4>Pago en OXXO / Tienda de Conveniencia</h4>
+      <div class="payment-ref">{{paymentReference}}</div>
+      <div class="payment-note">Presente este numero de referencia en caja</div>
+    </div>
+    {{/if}}
+    {{#if speiClabe}}
+    <div class="payment-box">
+      <h4>Transferencia Bancaria / SPEI</h4>
+      <div class="payment-ref" style="font-size: 12px;">{{speiClabe}}</div>
+      <div class="payment-note">Referencia SPEI: {{speiReference}}</div>
+      <div class="payment-note">Banco receptor: BANORTE</div>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- CFDI Fiscal Data -->
+  {{#if folioFiscal}}
+  <div class="cfdi-section">
+    <h3>Datos Fiscales CFDI 4.0</h3>
+    <div class="cfdi-grid">
+      <span class="cfdi-label">Folio Fiscal (UUID):</span>
+      <span class="cfdi-value">{{folioFiscal}}</span>
+
+      <span class="cfdi-label">Fecha Timbrado:</span>
+      <span class="cfdi-value">{{fechaTimbrado}}</span>
+
+      <span class="cfdi-label">No. Certificado SAT:</span>
+      <span class="cfdi-value">{{noCertificadoSAT}}</span>
+
+      <span class="cfdi-label">Sello Digital CFDI:</span>
+      <span class="cfdi-value">{{selloCFD}}</span>
+
+      <span class="cfdi-label">Sello Digital SAT:</span>
+      <span class="cfdi-value">{{selloSAT}}</span>
+
+      <span class="cfdi-label">Cadena Original:</span>
+      <span class="cfdi-value">{{cadenaOriginal}}</span>
+    </div>
+    {{#if qrCodeUrl}}
+    <div class="cfdi-qr">
+      <img src="{{qrCodeUrl}}" alt="QR CFDI" width="100" height="100" />
+    </div>
+    {{/if}}
+  </div>
+  {{/if}}
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="contact">
+      {{contactPhone}} | {{contactEmail}}{{#if contactWebsite}} | {{contactWebsite}}{{/if}}
+    </div>
+    <div class="legal">
+      Este documento es una representacion impresa de un CFDI. Efectos fiscales al pago.
+      Generado por SUPRA Water &copy; 2026.
+    </div>
+  </div>
+
+</body>
+</html>
